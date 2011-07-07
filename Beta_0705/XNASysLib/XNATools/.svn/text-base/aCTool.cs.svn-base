@@ -1,0 +1,60 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using XNASysLib.XNAKernel;
+using System.Collections.Generic;
+
+namespace XNASysLib.XNATools
+{
+    public abstract class aCTool : IManipulator, IDrawableComponent
+    {
+        protected IGame _game;
+        protected ICamera _cam;
+        protected List<IHotSpot> _hotSpots;
+        protected string _toolNm;
+        protected IDrawableComponent _toolTarget;
+        protected SpotOnSelect _spotSelectionHandler;
+        protected bool _isInitialized;
+        protected Matrix _world;
+        public SpotOnSelect SpotSelectionHandler
+        { get { return _spotSelectionHandler; } }
+
+        public Matrix World
+        { get { return _world; }
+            set { _world = value; }
+        }
+        public ICamera Camera
+        { set { _cam = value; } }
+        public List<IHotSpot> HotSpots
+        { get { return _hotSpots; } }
+        public string ToolNm
+        { get { return _toolNm; } }
+        public IDrawableComponent ToolTarget
+        { get { return _toolTarget; } }
+        
+        
+        public aCTool(IGame game)
+        {
+            this._game = game;
+            this._hotSpots = new List<IHotSpot>();
+           
+        
+        }
+        public virtual void Initialize()
+        {
+            this._cam = (ICamera)_game.Services.
+                GetService(typeof(ICamera));
+            this._isInitialized = true;
+        }
+        public virtual void Update(GameTime gameTime)
+        { 
+        
+        }
+        public virtual void Draw(GameTime gameTime)
+        {
+        
+        }
+    }
+
+}

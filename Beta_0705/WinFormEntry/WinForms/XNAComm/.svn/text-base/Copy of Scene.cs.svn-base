@@ -1,0 +1,80 @@
+
+#region File Description
+//-----------------------------------------------------------------------------
+// ModelViewerControl.cs
+//
+// Microsoft XNA Community Game Platform
+// Copyright (C) Microsoft Corporation. All rights reserved.
+//-----------------------------------------------------------------------------
+#endregion
+
+#region Using Statements
+using System;
+using System.Diagnostics;
+using System.Windows.Forms;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Content;
+using SysLib;
+#endregion
+
+namespace WinFormsContentLoading
+{
+    public class Scene:GraphicsDeviceControl, IGame
+    {
+        #region Fields
+        protected GraphicsDevice _device;
+        protected ContentManager _contentManager;
+        protected GameTime _gameTime;
+        protected List<IUpdatableComponent> _components;
+        
+        #endregion
+        #region Properties
+        public GraphicsDevice GraphicsDevice
+        {
+            get { return _device; }
+        }
+        public ContentManager ContentManager
+        {
+            get { return _contentManager; }
+        }
+        public GameTime GameTime
+        {
+            get { return _gameTime; }
+        }
+        public List<IUpdatableComponent> Components
+        {
+            get { return _components; }
+        } 
+        #endregion
+        
+        public Scene()
+            : base()
+        {
+            _components = new List<IUpdatableComponent>();
+            this.Initialize();
+        }
+        protected override void Initialize()
+        {
+            foreach (IUpdatableComponent updatable in this._components)
+                updatable.Initialize();
+
+        }
+
+        public new void Update()
+        {
+            foreach (IUpdatableComponent updatable in this._components)
+                updatable.Update(this._gameTime);
+
+
+            foreach (IDrawComponent drawable in this._components)
+                drawable.Draw(this._gameTime);
+        }
+        protected override void Draw()
+        {
+            //throw new NotImplementedException();
+        }
+    
+    }
+}

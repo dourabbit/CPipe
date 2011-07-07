@@ -1,0 +1,108 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms.VisualStyles;
+using System.Windows.Forms;
+using System.Reflection;
+using XNASysLib.XNAKernel;
+
+namespace WinFormsContentLoading
+{
+    public class PropertyPanal : System.Windows.Forms.TableLayoutPanel
+    {
+        SceneEntry _entry;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+
+
+
+
+        public void Initialize()
+        {
+
+
+        }
+        public PropertyPanal(SceneEntry entry)
+            : base()
+        {
+            _entry = entry;
+            //_entry.Scene.SelectorHandler += Show;
+            SelectFunction.OnSelectionChange += Show;
+        }
+        void Show()
+        {
+            ISelectable[] sels=SelectFunction.Selection.ToArray();
+           
+            Show(sels);
+        }
+        protected override void OnPaint(PaintEventArgs e)
+        {
+   
+            base.OnPaint(e);
+        }
+        void Show(params ISelectable[] objs)
+        {
+            this.Controls.Clear();
+            if (objs.Length == 0)
+                return;
+            ISelectable obj = objs[objs.Length - 1];
+
+            PropertyInfo[] properties = obj.GetType().GetProperties();
+            this.AutoSize = true;
+            this.ColumnCount = 2;
+            this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.Location = new System.Drawing.Point(0, 0);
+            this.Name = "PropertyPanal";
+            this.RowCount = properties.Length;
+            this.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.AutoSize, 100));
+            this.Size = new System.Drawing.Size(150, 100);
+            this.TabIndex = 0;
+            this.Initialize();
+
+            int row = -1;
+            foreach (PropertyInfo property in properties)
+            {
+
+                System.Attribute[] attrs =
+                    System.Attribute.GetCustomAttributes(property);
+
+                bool isShowable = false;
+                foreach (Attribute attr in attrs)
+                    isShowable |= (attr is MyShowProperty) ?
+                            true : false;
+
+
+                if (!isShowable)
+                    continue;
+
+
+                row++;
+
+                Label label = new Label();
+                TextBox textBox = new TextBox();
+
+                label.AutoSize = false;
+                label.Location = new System.Drawing.Point(0, 0);
+                label.Size = new System.Drawing.Size(150, 30);
+                label.TabIndex = 1;
+                label.Text = property.Name;
+
+
+                textBox.Location = new System.Drawing.Point(0, 0);
+                textBox.Name = "textBox_" + property.Name;
+                textBox.Size = new System.Drawing.Size(30, 30);
+
+                Binding b = new Binding("Text", obj, property.Name);
+
+                textBox.DataBindings.Add(b);
+                //textBox.key
+
+                this.Controls.Add(label, 0, row);
+                this.Controls.Add(textBox, 1, row);
+
+
+            }
+            this.InitLayout();
+        }
+    }
+}

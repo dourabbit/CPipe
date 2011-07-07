@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace XNASysLib.XNAKernel
+{
+    public class SysEventNotifier : aC_Reactor
+    {
+        IGame _game;
+        SysCollector _sys;
+        public SysEventNotifier(IGame game)
+        {
+            _sys = SysCollector.Singleton;
+            this._proceedType = new int[1] { 0 };
+            _game = game;
+        }
+        public override void Dispatch(ISysData gameData)
+        {
+            if(gameData is SysEvn)
+            base.Dispatch(gameData);
+        }
+        public override void ProceedEvent(ISysData gameData)
+        {
+            try
+            {
+                Scene scene = (Scene)_game;
+                SysEvn sysEvn = (SysEvn)gameData;
+                string _params=(string)sysEvn.Params[0];
+                SceneObject_Model newScene= new SceneObject_Model(scene,_params);
+                /* if (scene.SelectorHandler != null)
+                     scene.SelectorHandler.Invoke(newScene);*/
+                
+            }
+            catch
+            { return; }
+            base.ProceedEvent(gameData);
+        }
+    
+    }
+}

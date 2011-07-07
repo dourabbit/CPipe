@@ -1,0 +1,174 @@
+#region File Description
+//-----------------------------------------------------------------------------
+// ModelViewerControl.cs
+//
+// Microsoft XNA Community Game Platform
+// Copyright (C) Microsoft Corporation. All rights reserved.
+//-----------------------------------------------------------------------------
+#endregion
+
+#region Using Statements
+using System;
+using System.Diagnostics;
+using System.Windows.Forms;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using XNASysLib.XNAKernel;
+using XNABuilder;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
+using XNASysLib.Primitives3D;
+using XNASysLib.XNATools;
+#endregion
+
+namespace WinFormsContentLoading
+{
+    /// <summary>
+    /// Example control inherits from GraphicsDeviceControl, and displays
+    /// a spinning 3D model. The main form class is responsible for loading
+    /// the model: this control just displays it.
+    /// </summary>
+    public class SceneEntry : GraphicsDeviceControl
+    {
+
+
+        Scene _scene;
+        ContentBuilder contentBuilder;
+        ContentManager contentManager;
+        DataReactor _dataReactor;
+        System.Drawing.Point _leftTopCorner;
+
+
+        bool _isActive;
+        public bool IsActive
+        { get { return _isActive; }
+
+            set 
+            {
+                _isActive = value;
+               // _dataReactor.ActiveRegion = (value) ?
+               //     this.ActiveRegion : null;
+
+                 if (value)
+                      _dataReactor.ActiveRegion = this.ActiveRegion;
+                  else
+                      _dataReactor.ActiveRegion = null;
+            }
+        }
+
+
+        public Rectangle ActiveRegion
+        {
+            get 
+            {
+ 
+                _leftTopCorner=
+                    this.PointToScreen(new System.Drawing.Point(0,0));
+
+
+                return new Rectangle(_leftTopCorner.X,_leftTopCorner.Y,
+                                    this.Width,this.Height);
+            }
+        
+        }
+        
+        
+        public Scene Scene
+        {
+            get { return _scene; }
+        }
+        public SceneEntry()
+            : base()
+        {
+            _scene = new Scene();
+            _dataReactor = new DataReactor(_scene);
+            //New Notifier
+            new SysEventNotifier(_scene);
+            new CamNavigationNotifier(_scene);
+        }
+
+        /// <summary>
+        /// Initializes the control.
+        /// </summary>
+        protected override void Initialize()
+        {
+
+         
+
+            // Hook the idle event to constantly redraw our animation.
+            Application.Idle += delegate { Invalidate(); };
+
+            /* _scene.GraphicsDevice = (GraphicsDevice)this.Services.
+                 GetService(typeof(GraphicsDevice));*/
+
+
+
+            _scene.GraphicsDevice = ((IGraphicsDeviceService)this.Services.
+                GetService(typeof(IGraphicsDeviceService))).GraphicsDevice;
+
+            contentBuilder = new ContentBuilder();
+
+            contentManager = new ContentManager(this.Services,
+                                                contentBuilder.OutputDirectory);
+
+            dCamera cam = new dCamera(_scene);
+            new MouseSelectionManager(_scene);
+            new SelectFunction(_scene);
+
+            
+            _scene.Components.Add(_dataReactor);
+            
+            _scene.Services = this.Services;
+            _scene.Services.AddService<ContentBuilder>(contentBuilder);
+            _scene.Services.AddService<ContentManager>(contentManager);
+            _scene.Services.AddService<ICamera>(cam);
+
+           
+            _scene.Services.AddService<DataReactor>(_dataReactor);
+
+
+            //
+            //this.MouseMove += new MouseEventHandler(RegistMouse);
+            //this.MouseLeave += new EventHandler(UnRegistMouse);
+            this.ClientSizeChanged += new EventHandler(OnSizeChanged);
+           
+            _dataReactor.ActiveRegion = null;
+            
+        }
+        void OnSizeChanged(object sender, EventArgs e)
+        {
+            this.IsActive = this._isActive;
+        }
+
+        
+        /// <summary>
+        /// Draws the control.
+        /// </summary>
+        protected override void Draw()
+        {
+
+            _scene.Update();
+
+            CheckRegisting(this.ActiveRegion);
+         
+           
+
+        }
+
+        void CheckRegisting(Rectangle rectangle)
+        {
+
+
+            this.IsActive=
+            (rectangle.Intersects(new Rectangle(Mouse.GetState().X,
+                                Mouse.GetState().Y, 0, 0)));
+                
+            
+        }
+
+
+       
+
+
+    }
+}

@@ -1,0 +1,67 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+
+namespace XNASysLib.XNAKernel
+{
+    public struct CameraData : IDisposable, ISysData
+    {
+        public int ISysDataType
+        {
+            get { return -10; }
+        }
+        public double ISysDataTime
+        {
+            get
+            {
+                if (_gameTime == null)
+                    return 0;
+                return (double)_gameTime;
+            }
+            set { _gameTime = value; }
+        }
+
+        double? _gameTime;
+
+        ICamera _cam;
+        public ICamera Camera
+        {
+            get { return _cam; }
+        }
+
+        public void Dispose()
+        {
+            this._gameTime = null;
+        }
+        public CameraData(ICamera cam)
+        {
+            this._cam = cam;
+            this._gameTime = null;
+            //TempCode
+            this.ISysInvoker();
+        }
+
+        public void ISysInvoker()
+        {
+            SysCollector.Singleton.Listener.Invoke(this);
+        }
+        
+
+        //TempCode
+        public int CompareTo(object obj)
+        {
+
+            CameraData data = (CameraData)obj;
+
+            if (data.ISysDataTime
+               == this.ISysDataTime)
+                return 0;
+
+            return data.ISysDataTime
+                > this.ISysDataTime ?
+                1 : -1;
+        }
+
+    }
+}

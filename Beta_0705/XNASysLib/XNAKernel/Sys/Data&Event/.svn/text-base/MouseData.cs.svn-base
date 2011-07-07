@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+
+namespace XNASysLib.XNAKernel
+{
+    public struct MouseData : IDisposable, ISysData
+    {
+        public int ISysDataType
+        {
+            get { return -1; }
+        }
+        public double ISysDataTime
+        {
+            get
+            {
+                if (_gameTime == null)
+                    return 0;
+                return (double)_gameTime;
+            }
+            set { _gameTime = value; }
+        }
+
+        double? _gameTime;
+        /// <summary>
+        /// Mouse World Position
+        /// Which centre of screen is origin point
+        /// </summary>
+        public Point MousePos;
+        public Rectangle SelectionRect;
+        public Vector3 SelectionCentre;
+        public Vector3[] SelectionWorldPos; 
+        public bool IsLeftBtnDown;
+        public bool IsLeftBtnUp;
+        public bool IsMiddleDown;
+        public bool IsMiddleUp;
+        public bool IsRightBtnDown;
+        public bool IsRightBtnUp;
+        public bool IsMoving;
+        public bool IsDragging
+        {
+            get { return IsLeftBtnDown & IsMoving; }
+        }
+        public bool IsClicking
+        {
+            get { return (IsLeftBtnDown ^ IsRightBtnDown^IsMiddleDown); }
+        }
+        public bool IsReleasing
+        {
+            get { return (IsLeftBtnUp ^ IsRightBtnUp^IsMiddleUp) & !IsMoving; }
+        }
+
+        public void Dispose()
+        {
+            this._gameTime = null;
+            this.MousePos = Point.Zero;
+            this.SelectionRect = Rectangle.Empty;
+        }
+
+        public void ISysInvoker()
+        {
+            SysCollector.Singleton.Listener.Invoke(this);
+        }
+
+        public int CompareTo(object obj)
+        {
+            MouseData data = (MouseData)obj;
+
+            if (data.ISysDataTime
+               == this.ISysDataTime)
+                return 0;
+
+            return data.ISysDataTime
+                > this.ISysDataTime ?
+                1 : -1;
+        }
+
+    }
+}
