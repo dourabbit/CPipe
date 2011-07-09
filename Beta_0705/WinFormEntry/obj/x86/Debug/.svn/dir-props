@@ -1,9 +1,0 @@
-K 10
-svn:ignore
-V 119
-WinFormEntry.exe
-WinFormEntry.pdb
-WinFormEntry.Properties.Resources.resources
-WinFormEntry.csproj.FileListAbsolute.txt
-
-END

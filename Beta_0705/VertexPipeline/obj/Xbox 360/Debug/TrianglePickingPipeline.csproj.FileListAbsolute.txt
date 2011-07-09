@@ -1,5 +1,0 @@
-U:\chengfuc\Desktop\CPipe\Test_1006\Test\TrianglePickingPipeline\bin\Xbox 360\Debug\TrianglePickingPipeline.dll
-U:\chengfuc\Desktop\CPipe\Test_1006\Test\TrianglePickingPipeline\bin\Xbox 360\Debug\TrianglePickingPipeline.pdb
-U:\chengfuc\Desktop\CPipe\Test_1006\Test\TrianglePickingPipeline\obj\Xbox 360\Debug\ResolveAssemblyReference.cache
-U:\chengfuc\Desktop\CPipe\Test_1006\Test\TrianglePickingPipeline\obj\Xbox 360\Debug\TrianglePickingPipeline.dll
-U:\chengfuc\Desktop\CPipe\Test_1006\Test\TrianglePickingPipeline\obj\Xbox 360\Debug\TrianglePickingPipeline.pdb
