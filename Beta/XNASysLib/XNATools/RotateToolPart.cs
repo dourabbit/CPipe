@@ -28,11 +28,11 @@ namespace XNASysLib.XNATools
         Vector3 _z;
         //Quaternion _initialAxis;
         Color _initialCol;
-        public OnSelected SelectionHandler
-        {
-            get { return _selCompData.SelectionHandler; }
-            set { _selCompData.SelectionHandler = value; }
-        }
+        //public OnSelected SelectionHandler
+        //{
+        //    get { return _selCompData.SelectionHandler; }
+        //    set { _selCompData.SelectionHandler = value; }
+        //}
 
         aCTool _tool;
         bool _isActive;

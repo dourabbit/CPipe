@@ -229,8 +229,8 @@ namespace XNASysLib.XNAKernel
 
             //contentManager.Load<NodesGrp>("_PipeA");
             SpriteFont font= contentManager.Load<SpriteFont>("_FontSetup");
-            _hub = new SceneHub(_game, font, 
-                new Microsoft.Xna.Framework.Graphics.SpriteBatch(_game.GraphicsDevice));
+            _hub = new SceneHub(_game, font);//, 
+                //new Microsoft.Xna.Framework.Graphics.SpriteBatch(_game.GraphicsDevice));
             this.TransformNode = new VertexPipeline.TransformNode();
             _isIntialized = true;
 

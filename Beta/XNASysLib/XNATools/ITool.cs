@@ -39,8 +39,8 @@ namespace XNASysLib.XNATools
         GeometricPrimitive model
         { get; }
         */
-        OnSelected SelectionHandler
-        { get; set; }
+        //OnSelected SelectionHandler
+        //{ get; set; }
         //   string ID
         // { get; }
     }

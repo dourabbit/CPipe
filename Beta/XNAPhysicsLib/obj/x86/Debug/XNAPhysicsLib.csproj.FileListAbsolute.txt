@@ -460,3 +460,9 @@ C:\Users\Chengfuc\Dropbox\Beta_0705\XNAPhysicsLib\bin\x86\Debug\XNAPhysicsLib.dl
 C:\Users\Chengfuc\Dropbox\Beta_0705\XNAPhysicsLib\bin\x86\Debug\XNAPhysicsLib.pdb
 C:\Users\Chengfuc\Dropbox\Beta_0705\XNAPhysicsLib\obj\x86\Debug\XNAPhysicsLib.dll
 C:\Users\Chengfuc\Dropbox\Beta_0705\XNAPhysicsLib\obj\x86\Debug\XNAPhysicsLib.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNAPhysicsLib\bin\x86\Debug\XNAPhysicsLib.dll
+C:\Users\Chengfuc\CPipe\Beta\XNAPhysicsLib\bin\x86\Debug\XNAPhysicsLib.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNAPhysicsLib\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Chengfuc\CPipe\Beta\XNAPhysicsLib\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Chengfuc\CPipe\Beta\XNAPhysicsLib\obj\x86\Debug\XNAPhysicsLib.dll
+C:\Users\Chengfuc\CPipe\Beta\XNAPhysicsLib\obj\x86\Debug\XNAPhysicsLib.pdb

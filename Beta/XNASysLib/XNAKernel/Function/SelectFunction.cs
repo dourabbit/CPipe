@@ -41,8 +41,11 @@ namespace XNASysLib.XNAKernel
             if (_selection.Contains(obj) && _selection.Count == 1)
                 return;
 
-            _selection.Clear();
+            if (IsSelected(obj))
+                return;
 
+            _selection.Clear();
+            
             /*
             if (obj is SceneCompileObj)
             {
@@ -59,6 +62,8 @@ namespace XNASysLib.XNAKernel
 
             */
             _selection.Add(obj);
+            newSelEvn(obj);
+
             //obj.Data.SelectionHandler.Invoke(obj,true);
         }
 
@@ -79,6 +84,10 @@ namespace XNASysLib.XNAKernel
                     tmp = tmp.Parent;
             }
             OBJTYPE objT;
+            if ((ISceneNod)model.Parent == null)
+                return;
+
+
             if (((ISceneNod)model.Parent).Type == typeof(Pipe))
                 objT = OBJTYPE.Pipe;
             else if (((ISceneNod)model.Parent).Type == typeof(Valve))

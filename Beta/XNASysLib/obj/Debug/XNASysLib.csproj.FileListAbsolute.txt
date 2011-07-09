@@ -864,3 +864,14 @@ C:\Users\Chengfuc\Dropbox\Beta_0705\XNASysLib\bin\Debug\XNABuilder.pdb
 C:\Users\Chengfuc\Dropbox\Beta_0705\XNASysLib\bin\Debug\XNAPhysicsLib.pdb
 C:\Users\Chengfuc\Dropbox\Beta_0705\XNASysLib\obj\Debug\XNASysLib.dll
 C:\Users\Chengfuc\Dropbox\Beta_0705\XNASysLib\obj\Debug\XNASysLib.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Debug\XNASysLib.dll
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Debug\XNASysLib.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Debug\VertexPipeline.dll
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Debug\XNABuilder.dll
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Debug\XNAPhysicsLib.dll
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Debug\VertexPipeline.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Debug\XNABuilder.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Debug\XNAPhysicsLib.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\obj\Debug\XNASysLib.dll
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\obj\Debug\XNASysLib.pdb

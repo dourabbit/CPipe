@@ -14,11 +14,11 @@ namespace XNASysLib.XNATools
         
         PipeBase _centreTarget;
         float _offset;
-        public OnSelected SelectionHandler
-        {
-            get { return _selCompData.SelectionHandler; }
-            set { _selCompData.SelectionHandler = value; }
-        }
+        //public OnSelected SelectionHandler
+        //{
+        //    get { return _selCompData.SelectionHandler; }
+        //    set { _selCompData.SelectionHandler = value; }
+        //}
     
         bool _isActive;
         public bool IsActive

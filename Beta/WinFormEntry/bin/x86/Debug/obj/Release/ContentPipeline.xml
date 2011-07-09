@@ -16,14 +16,14 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Release</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Chengfuc\Dropbox\Beta_0705\WinFormEntry\bin\x86\Debug\</RootDirectory>
+      <RootDirectory>C:\Users\Chengfuc\CPipe\Beta\WinFormEntry\bin\x86\Debug\</RootDirectory>
       <LoggerRootDirectory Null="true" />
-      <IntermediateDirectory>C:\Users\Chengfuc\Dropbox\Beta_0705\WinFormEntry\bin\x86\Debug\obj\Release\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Chengfuc\Dropbox\Beta_0705\WinFormEntry\bin\x86\Debug\ProcessDir\bin\</OutputDirectory>
+      <IntermediateDirectory>C:\Users\Chengfuc\CPipe\Beta\WinFormEntry\bin\x86\Debug\obj\Release\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Chengfuc\CPipe\Beta\WinFormEntry\bin\x86\Debug\ProcessDir\bin\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Users\Chengfuc\Dropbox\Beta_0705\VertexPipeline\bin\x86\Debug\VertexPipeline.dll</Key>
+        <Key>C:\Users\Chengfuc\CPipe\Beta\VertexPipeline\bin\x86\Debug\VertexPipeline.dll</Key>
         <Value>2011-07-06T14:03:34.3586512-04:00</Value>
       </Assembly>
       <Assembly>

@@ -26,11 +26,11 @@ namespace XNASysLib.XNATools
         { get { return _offset; } }
 
 
-        public OnSelected SelectionHandler
-        {
-            get { return _selCompData.SelectionHandler; }
-            set { _selCompData.SelectionHandler = value; }
-        }
+        //public OnSelected SelectionHandler
+        //{
+        //    get { return _selCompData.SelectionHandler; }
+        //    set { _selCompData.SelectionHandler = value; }
+        //}
 
 
         bool _isActive;

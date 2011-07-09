@@ -91,3 +91,4 @@ C:\Users\Chengfuc\Dropbox\Beta_0617\WinFormEntry\bin\x86\Debug\obj\Release\Resol
 C:\Users\Chengfuc\Dropbox\Beta_0627\WinFormEntry\bin\x86\Debug\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Jimmy\Dropbox\Beta_0627\WinFormEntry\bin\x86\Debug\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Chengfuc\Dropbox\Beta_0705\WinFormEntry\bin\x86\Debug\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Chengfuc\CPipe\Beta\WinFormEntry\bin\x86\Debug\obj\Release\ResolveAssemblyReference.cache

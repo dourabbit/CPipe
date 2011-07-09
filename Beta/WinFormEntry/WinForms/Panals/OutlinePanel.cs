@@ -59,7 +59,46 @@ namespace WinFormsContentLoading
                     Add(child, childModel);
             }
         }
+        void newEvn(object sender)
+        {
+            if (!(sender is SceneNodHierachyModel))
+                return;
 
+            SceneNodHierachyModel obj = (SceneNodHierachyModel)sender;
+            obj.AfterInitializedHandler += delegate()
+            {
+                if (obj.Type == null)
+                    Add(_buildingRoot, obj);
+
+
+
+                else
+                    switch (obj.Type.Name)
+                    {
+                        case "Pipe":
+                            Add(_pipeRoot, obj);
+                            break;
+                        case "Valve":
+                            Add(_valveRoot, obj);
+                            break;
+                        case "Chamber":
+                            Add(_chamberRoot, obj);
+                            break;
+                        case "Well":
+                            Add(_wellRoot, obj);
+                            break;
+                        case "HoleEllipse":
+                            Add(_holeRoot, obj);
+                            break;
+
+
+                        default:
+                            Add(_buildingRoot, obj);
+                            break;
+                    }
+
+            };
+        }
         void sysEvent(ISysData gameData)
         {
             ISysEnv evn = gameData as ISysEnv;
@@ -69,45 +108,8 @@ namespace WinFormsContentLoading
             SYSEVN e = evn.Event;
             
             if (e == SYSEVN.New)
-            {
-                if (!(sender is SceneNodHierachyModel))
-                    return;
+                this.newEvn(sender);
 
-                SceneNodHierachyModel obj = (SceneNodHierachyModel)sender;
-                obj.AfterInitializedHandler += delegate()
-                {
-                    if (obj.Type == null)
-                        Add(_buildingRoot, obj);
-
-
-
-                    else
-                        switch (obj.Type.Name)
-                        {
-                            case "Pipe":
-                                Add(_pipeRoot, obj);
-                                break;
-                            case "Valve":
-                                Add(_valveRoot, obj);
-                                break;
-                            case "Chamber":
-                                Add(_chamberRoot, obj);
-                                break;
-                            case "Well":
-                                Add(_wellRoot, obj);
-                                break;
-                            case "HoleEllipse":
-                                Add(_holeRoot, obj);
-                                break;
-
-
-                            default:
-                                Add(_buildingRoot, obj);
-                                break;
-                        }
-
-                };
-            }
             else if (e == SYSEVN.Select)
             {
                 string fullNm="";
@@ -126,29 +128,66 @@ namespace WinFormsContentLoading
         }
         void select(OBJTYPE type, object[] nodeNms)
         {
+            if (nodeNms == null || nodeNms.Length == 0)
+                _treeView.SelectedNode = null;
+
             List<string> nodenms = new List<string>();
             foreach (string nm in nodeNms)
                 nodenms.Add(nm);
-
+            MyNode root;
             switch (type)
             { 
                 case OBJTYPE.Pipe:
+                    root = _pipeRoot;
                     break;
                 case OBJTYPE.Building:
+                    root = _buildingRoot;
                     break;
                 case OBJTYPE.Chamber:
-                    break;
-                case OBJTYPE.HoleEllipse:
+                    root=_chamberRoot;
                     break;
                 case OBJTYPE.Valve:
+                    root=_valveRoot;
                     break;
                 case OBJTYPE.Well:
+                    root=_wellRoot;
                     break;
-
+                case OBJTYPE.HoleEllipse:
+                    root = _holeRoot;
+                    break;
+                case OBJTYPE.HoleRect:
+                    root = _holeRoot;
+                    break;
                 default:
+                    root = null;
                     break;
             }
+            TreeNode node=null;
+            findTreeNod(root, nodenms, ref node);
+            _treeView.SelectedNode = node;
             
+        }
+
+        void findTreeNod(TreeNode parentNod, List<string> nodenms, ref TreeNode result)
+        {
+            foreach (TreeNode nod in parentNod.Nodes)
+            {
+                if (nod.Text == nodenms[0])
+                {
+                    nodenms.RemoveAt(0);
+                    if (nodenms.Count == 0)
+                    {
+                        result = nod;
+                        return;
+                    }
+                    else
+                    {
+                        findTreeNod(nod,nodenms,ref result);
+                    }
+                }
+            }
+            return;
+         
         }
         void afterCheck(object sender, TreeViewEventArgs e)
         {
@@ -183,7 +222,7 @@ namespace WinFormsContentLoading
 
                 //SelectFunction.Select(id);
                 SelectFunction.Select(node.Obj);
-                MyConsole.WriteLine("SSSSSSSSSSSSS");
+                node.Obj.Data.SelectionHandler.Invoke(node.Obj,true);
             }
             catch (Exception ef)
             {

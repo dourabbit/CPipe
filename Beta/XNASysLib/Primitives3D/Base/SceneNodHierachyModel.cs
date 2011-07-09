@@ -114,8 +114,8 @@ namespace XNASysLib.Primitives3D
                GetService(typeof(MyContentManager));
 
             SpriteFont font = contentManager.Load<SpriteFont>("_FontSetup");
-            _hub = new SceneHub(_game, font,
-                new Microsoft.Xna.Framework.Graphics.SpriteBatch(_game.GraphicsDevice));
+            _hub = new SceneHub(_game, font);//,
+                //new Microsoft.Xna.Framework.Graphics.SpriteBatch(_game.GraphicsDevice));
             base.Initialize();
             //foreach (SceneNodHierachyModel curNod in this.Children)
             //{

@@ -25,7 +25,7 @@ namespace XNASysLib.Primitives3D
     public class SceneHub : DrawableComponent
     {
         protected SpriteFont _font;
-        protected static SpriteBatch _sprite;
+        protected SpriteBatch _sprite;
         public string Output { get; set; }
 
 
@@ -47,31 +47,34 @@ namespace XNASysLib.Primitives3D
         { get; set; }
 
 
-        public SceneHub(IGame game, SpriteFont font, SpriteBatch sprite)
+        public SceneHub(IGame game, SpriteFont font)
             : base(game)
            
         {
-            _sprite = sprite;
+            _sprite = new SpriteBatch(game.GraphicsDevice);
             _font = font;
         }
 
         public void Draw(GameTime gameTime, string output,Vector3 pos)
         {
-            _sprite.Begin();
-           
-            this.Output = output;
-            
-            Vector2 offset= this._font.MeasureString(this.Output);
-            this.OutputPos3f = pos;
-            
-            Vector2 outPos= new Vector2(
-            OutputPos.X - offset.X / 2,
-            OutputPos.Y - offset.Y);
+            if (output == null)
+                return;
+                _sprite.Begin();
 
-            _sprite.DrawString(_font, Output, outPos, Color.Blue);
+                this.Output = output;
+
+                Vector2 offset = this._font.MeasureString(this.Output);
+                this.OutputPos3f = pos;
+
+                Vector2 outPos = new Vector2(
+                OutputPos.X - offset.X / 2,
+                OutputPos.Y - offset.Y);
+
+                _sprite.DrawString(_font, Output, outPos, Color.Blue);
 
 
-            _sprite.End();
+                _sprite.End();
+          
         }
 
         public override void Draw(GameTime gameTime, ICamera cam)
