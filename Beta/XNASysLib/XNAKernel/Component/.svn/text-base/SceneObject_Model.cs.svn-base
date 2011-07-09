@@ -1,0 +1,517 @@
+﻿#region File Description
+//-----------------------------------------------------------------------------
+// BloomComponent.cs
+//
+// Microsoft XNA Community Game Platform
+// Copyright (C) Microsoft Corporation. All rights reserved.
+//-----------------------------------------------------------------------------
+#endregion
+
+#region Using Statements
+using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using XNABuilder;
+using System.IO;
+using System.Collections.Generic;
+using System.Collections;
+#endregion
+
+namespace XNASysLib.XNAKernel
+{
+
+    public class SceneObject_Model : DrawableComponent, ISelectable//, IEnumerator<IDrawableComponent>, IEnumerable<IDrawableComponent>
+    {
+        float _modelRadius;
+
+        protected Model _model;
+        protected GraphicsDevice GraphicsDevice;
+        protected Matrix[] _boneTransforms;
+        protected Vector3 _modelCenter;
+        protected ContentManager _contentManager;
+        protected ContentBuilder _contentBuilder;
+        protected string _AssetNm;
+        //protected ICamera _camera;
+
+        protected Vector3 _scale;
+        protected Quaternion _rotQuaternion;
+        protected Vector3 _rotation; 
+        protected Vector3 _translation;
+        protected RasterizerState _rasterizerState;
+
+
+
+        public override Matrix World
+        {
+            get { return base.World; }
+            set 
+            {
+                base.World = value;
+                this._translation = value.Translation;
+                this._data.dataModifitionHandler.Invoke();
+            }
+        }
+
+        #region showProperties
+
+
+
+        [MyShowProperty]
+        public float TranslateX
+        {
+            get { return _translation.X; }
+            set
+            {
+
+                _translation.X = value;
+
+                this._data.dataModifitionHandler.Invoke();
+            }
+        }
+        [MyShowProperty]
+        public float TranslateY
+        {
+            get { return _translation.Y; }
+            set
+            {
+                _translation.Y = value;
+
+                this._data.dataModifitionHandler.Invoke();
+            }
+        }
+        [MyShowProperty]
+        public float TranslateZ
+        {
+            get
+            {
+
+                return _translation.Z;
+            }
+            set
+            {
+                _translation.Z = value;
+
+                this._data.dataModifitionHandler.Invoke();
+            }
+        }
+        [MyShowProperty]
+        public float RotationX
+        {
+            get
+            {
+                return _rotation.X;
+            }
+            set
+            {
+                _rotation.X = (value);
+                AbsoluteRotation();
+
+                this._data.dataModifitionHandler.Invoke();
+            }
+        }
+        [MyShowProperty]
+        public float RotationY
+        {
+            get
+            {
+                return _rotation.Y;
+            }
+            set
+            {
+                _rotation.Y = (value);
+                AbsoluteRotation();
+
+                this._data.dataModifitionHandler.Invoke();
+            }
+        }
+        [MyShowProperty]
+        public float RotationZ
+        {
+            get
+            {
+                return _rotation.Z;
+            }
+            set
+            {
+                _rotation.Z = (value);
+                AbsoluteRotation();
+
+                this._data.dataModifitionHandler.Invoke();
+            }
+        }
+
+        #endregion
+        protected string ID;
+       // int _index;
+        
+        public Dictionary<string, object> TagData
+        {
+            get{
+                 Dictionary<string, object> _tag
+                     = (Dictionary<string, object>)this._model.Tag;
+                if (_tag == null)
+                {
+                throw new InvalidOperationException(
+                    "Model.Tag is not set correctly. Make sure your model " +
+                    "was built using the custom TrianglePickingProcessor.");
+                }
+                return _tag;
+            }
+        }
+
+        public SceneObject_Model(IGame game)
+            : base(game)
+        {
+            _world = Matrix.Identity;
+            _translation = Vector3.Zero;
+            _rotQuaternion = Quaternion.Identity;
+            _scale = Vector3.One;
+        }
+        public SceneObject_Model(IGame game, string assetNm)
+            : this(game)
+        {
+            _AssetNm = assetNm;
+            this._data.IsVisible = true;
+            //TempCode
+            this._data.IsInCam = true;
+
+            this._data.dataModifitionHandler += OnModify;
+            this._data.SelectionHandler += OnSeletion;
+            _rasterizerState = RasterizerState.CullNone;
+            
+        }
+        void OnSeletion(bool isSelected)
+        {
+            if (isSelected)
+            {
+                _rasterizerState = new RasterizerState()
+                {
+                    FillMode = FillMode.WireFrame,
+                    CullMode = CullMode.None,
+                };
+                //((Scene)_game).SelectorHandler.Invoke(this);
+            }
+            else
+            {
+                _rasterizerState = RasterizerState.CullNone;
+               // ((Scene)_game).SelectorHandler.Invoke(null);
+            } 
+        }
+        void OnModify()
+        {
+
+            this._data.BoundingSpheres =
+                new BoundingSphere[1];
+
+            BoundingSphere Bsphere =
+                (BoundingSphere)TagData["BoundingSphere"];
+
+            Bsphere.Center=this._translation;
+            this._data.BoundingSpheres[0] = Bsphere;
+            
+        }
+        public override void Initialize()
+        {
+            this._contentBuilder = (ContentBuilder)_game.Services.
+                GetService(typeof(ContentBuilder));
+            //_contentManager = game.ContentManager;
+            //_contentBuilder.PreCompileHandler += this._contentBuilder.WriteLog;
+            _contentManager = (ContentManager)_game.Services.
+                GetService(typeof(ContentManager));
+
+            //TempCode
+            this._camera = (ICamera)_game.Services.
+                GetService(typeof(ICamera));
+            GraphicsDevice = ((IGraphicsDeviceService )_game.Services.
+                GetService(typeof(IGraphicsDeviceService))).GraphicsDevice;
+            base.Initialize();
+        }
+        protected override void LoadContent()
+        {
+            //this._contentBuilder.Clear();
+            string assetNm = Path.GetFileNameWithoutExtension(_AssetNm);
+
+            this._contentBuilder.Add(this._AssetNm, assetNm, null, "TrianglePickingProcessor");
+
+            
+           // this._contentBuilder.BuildProj.Save("./content.proj");
+
+            string error = _contentBuilder.Build();
+            if (string.IsNullOrEmpty(error))
+            {
+                this._model = _contentManager.Load<Model>(assetNm);
+                // Look up our custom collision data from the Tag property of the model.
+                Dictionary<string, object> tagData = (Dictionary<string, object>)_model.Tag;
+
+                if (tagData == null)
+                {
+                    throw new InvalidOperationException(
+                        "Model.Tag is not set correctly. Make sure your model " +
+                        "was built using the custom TrianglePickingProcessor.");
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException
+                ("Model Error"+error);
+
+
+            }
+            ProcessModel();
+            base.LoadContent();
+        }
+
+        protected virtual void ProcessModel()
+        {
+            _boneTransforms = new Matrix[this._model.Bones.Count];
+            _model.CopyAbsoluteBoneTransformsTo(_boneTransforms);
+            _modelCenter = Vector3.Zero;
+
+            foreach (ModelMesh mesh in _model.Meshes)
+            {
+                BoundingSphere meshBounds = mesh.BoundingSphere;
+                Matrix trans = _boneTransforms[mesh.ParentBone.Index];
+                Vector3 meshCenter = Vector3.Transform(meshBounds.Center, trans);
+                _modelCenter += meshCenter;
+            }
+            _modelCenter /= _model.Meshes.Count;
+
+          
+            // Now we know the center point, we can compute the model radius
+            // by examining the radius of each mesh bounding sphere.
+            _modelRadius = 0;
+
+            foreach (ModelMesh mesh in _model.Meshes)
+            {
+                BoundingSphere meshBounds = mesh.BoundingSphere;
+                Matrix transform = _boneTransforms[mesh.ParentBone.Index];
+                Vector3 meshCenter = Vector3.Transform(meshBounds.Center, transform);
+
+                float transformScale = transform.Forward.Length();
+
+                float meshRadius = (meshCenter - _modelCenter).Length() +
+                                   (meshBounds.Radius * transformScale);
+
+                _modelRadius = Math.Max(_modelRadius, meshRadius);
+            }
+
+            this._data.dataModifitionHandler.Invoke();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            //TempCode 1012
+            if (!_Initialized)
+                this.Initialize();
+
+
+            _world = Matrix.CreateFromQuaternion(_rotQuaternion) * 
+                Matrix.CreateTranslation(_translation) * 
+                Matrix.CreateScale(_scale);
+
+            if (!SelectFunction.Selection.Contains(this))
+                this.OnSeletion(false);
+            base.Update(gameTime);
+        }
+        public override void Draw(GameTime gameTime)
+        {
+
+            if (_model == null || !_data.IsInCam || !_data.IsVisible)
+
+                return;
+            
+
+
+            // Clear to the default control background color.
+            Color backColor = new Color(Color.Black.R, Color.Black.G, Color.Black.B);
+
+           // GraphicsDevice.Clear(backColor);
+            _game.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
+            
+                //_world = _camera.WorldMatrix;
+                Matrix view = _camera.ViewMatrix;
+                Matrix projection = _camera.ProjectionMatrix;
+                //Matrix projection = Matrix.CreatePerspectiveFieldOfView
+                //    (1, _camera.Viewport.AspectRatio,0.01f, 10000f);
+                //Console.WriteLine(view.ToString());
+
+                // Draw the model.
+                foreach (ModelMesh mesh in _model.Meshes)
+                {    foreach (BasicEffect effect in mesh.Effects)
+                       {
+                           effect.World = _boneTransforms[mesh.ParentBone.Index]*_world;
+                           effect.View = view;
+                           effect.Projection = projection;
+
+                           effect.EnableDefaultLighting();
+                           effect.PreferPerPixelLighting = true;
+                           effect.SpecularPower = 16;
+                       }
+
+
+                       mesh.Draw();
+                    #region Old ModelMeshPart Draw Custom effect
+
+                    /* foreach (ModelMeshPart mp in mesh.MeshParts)
+                    {
+
+                        if (mp.Effect is BasicEffect)
+                        {
+                            BasicEffect effect = (BasicEffect)mp.Effect;
+                            effect.World = _boneTransforms[mesh.ParentBone.Index] * world;
+                            effect.View = view;
+                            effect.Projection = projection;
+                            effect.GraphicsDevice.DepthStencilState 
+                                = DepthStencilState.Default;
+                            effect.EnableDefaultLighting();
+                            effect.PreferPerPixelLighting = true;
+                            effect.SpecularPower = 16;
+
+                        }
+                        else
+                        {
+                            Effect myEff = mp.Effect;
+                            if (myEff.CurrentTechnique.Name == "trans")
+                            {
+                                myEff.Parameters["WorldViewProjection"].SetValue(world * view * projection);
+
+                            }
+                            else
+                            {
+
+                                myEff.Parameters["WorldITXf"].SetValue(Matrix.Transpose(Matrix.Invert(_boneTransforms[mesh.ParentBone.Index] * world)));
+                                myEff.Parameters["WvpXf"].SetValue(Matrix.Multiply(_boneTransforms[mesh.ParentBone.Index] * world, Matrix.Multiply(view, projection)));
+                                myEff.Parameters["WorldXf"].SetValue(_boneTransforms[mesh.ParentBone.Index] * world);
+                                myEff.Parameters["ViewIXf"].SetValue(Matrix.Invert(view));
+                                myEff.Parameters["gLamp0DirPos"].SetValue(new Vector4(18.3f, 73f, 332f, 1f));
+
+                            }
+                        }*/
+                    
+                    #endregion
+               }
+
+
+               
+
+                if (_rasterizerState.FillMode == FillMode.WireFrame)
+                {
+                    _game.GraphicsDevice.BlendState = BlendState.Additive;
+                    _game.GraphicsDevice.RasterizerState = _rasterizerState;
+                   
+                       foreach (ModelMesh mesh in _model.Meshes)
+                        {
+                            foreach (BasicEffect effect in mesh.Effects)
+                            {
+                                effect.World = _boneTransforms[mesh.ParentBone.Index] * _world;
+                                effect.View = view;
+                                effect.Projection = projection;
+
+                                effect.EnableDefaultLighting();
+                                effect.PreferPerPixelLighting = true;
+                                effect.SpecularPower = 16;
+                            }
+
+
+                            mesh.Draw();
+                        }
+                }
+
+                _game.GraphicsDevice.BlendState = BlendState.Opaque;
+                _game.GraphicsDevice.RasterizerState = RasterizerState.CullNone;
+                base.Draw(gameTime);
+       }
+
+
+
+            /*   if (_model != null)
+               {
+                
+
+                   Vector3 eyePosition = _modelCenter;
+
+                   eyePosition.Z += _modelRadius * 2;
+                   eyePosition.Y += _modelRadius;
+
+                   float aspectRatio = GraphicsDevice.Viewport.AspectRatio;
+
+                   float nearClip = _modelRadius / 100;
+                   float farClip = _modelRadius * 100;
+
+                   //Matrix view = Matrix.CreateLookAt(eyePosition, _modelCenter, Vector3.Up);
+                   Matrix view = _camera.ViewMatrix;
+                   Matrix projection = Matrix.CreatePerspectiveFieldOfView(1, aspectRatio,
+                                                                       nearClip, farClip);
+
+                   // Draw the model.
+                   foreach (ModelMesh mesh in _model.Meshes)
+                   {
+                       foreach (BasicEffect effect in mesh.Effects)
+                       {
+                           effect.World = _boneTransforms[mesh.ParentBone.Index];
+                           effect.View = view;
+                           effect.Projection = projection;
+
+                           effect.EnableDefaultLighting();
+                           effect.PreferPerPixelLighting = true;
+                           effect.SpecularPower = 16;
+                       }
+
+                       mesh.Draw();
+                   }
+               }*/
+
+        protected void AbsoluteRotation()
+        {
+
+            Vector3 radianAngle = (_rotation /360)* 2*MathHelper.Pi;
+            _rotQuaternion = Quaternion.Identity;
+            _rotQuaternion = Quaternion.Normalize(
+                    Quaternion.CreateFromYawPitchRoll
+                    (radianAngle.Y, radianAngle.X, radianAngle.Z)
+                );
+
+
+        }
+        protected void RelativeRotation(Vector3 axis, float angle)
+        {
+            angle = (angle / 360) * 2 * MathHelper.Pi;
+            axis = Vector3.Transform(axis, Matrix.CreateFromQuaternion(_rotQuaternion));
+            _rotQuaternion = Quaternion.Normalize(
+                                                Quaternion.CreateFromAxisAngle(axis, angle)
+                                                *
+                                                _rotQuaternion
+                                                );
+        }
+
+        /*public bool MoveNext()
+        {
+            _index++;
+            return _index < SceneObject_Model._drawCompData.Count;
+
+        }
+        public object Current
+        {
+            get
+            {
+                try
+                {
+                    return SceneObject_Model._drawCompData[_index];
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    throw new InvalidOperationException
+                        ("DrawableEum out of Range");
+                }
+
+            }
+        }
+       
+        public void Reset()
+        {
+            this._index = -1;
+        }*/
+        }
+    }
+

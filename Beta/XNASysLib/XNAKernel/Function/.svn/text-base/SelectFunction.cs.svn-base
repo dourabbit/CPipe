@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using XNAPhysicsLib;
+
+namespace XNASysLib.XNAKernel
+{
+    public delegate void SelectionChanged();
+    
+    public class SelectFunction:DrawableComponent
+    {
+        DebugDraw _debugDraw;
+        ICamera _cam;
+    
+        public static SelectionChanged OnSelectionChange;
+
+        static List<ISelectable> _oldSelection = new List<ISelectable>();
+        static List<ISelectable> _selection
+        = new List<ISelectable>();
+
+        public static List<ISelectable> Selection
+        { get { return _selection; } }
+        
+        public static void Select(ISelectable obj)
+        {
+            _selection.Clear();
+            _selection.Add(obj);
+            obj.Data.SelectionHandler.Invoke(true);
+        }
+        public static void DeSelect(ISelectable obj)
+        {
+            if (_selection.Exists(
+                delegate(ISelectable member)
+                {
+                    return
+                        member == obj ? true : false;
+                }))
+            {
+                _selection.Remove(obj);
+                obj.Data.SelectionHandler.Invoke(false);
+            }
+        }
+        public SelectFunction(IGame game)
+            : base(game)
+        {
+        }
+        public override void Initialize()
+        {
+
+            _debugDraw = new DebugDraw(_game.GraphicsDevice);
+            _cam = (ICamera)_game.Services.GetService(typeof(ICamera));
+
+
+            base.Initialize();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (_oldSelection.Count != _selection.Count)
+            {
+                _oldSelection.Clear();
+                foreach (ISelectable sel in _selection)
+                {
+                    
+                    _oldSelection.Add(sel);
+                }
+
+                OnSelectionChange.Invoke();
+            }
+            base.Update(gameTime);
+        }
+        public override void Draw(GameTime gameTime)
+        {
+            _debugDraw.Begin(_cam.ViewMatrix,_cam.ProjectionMatrix);
+            //_debugDraw.DrawWireGrid(Vector3.UnitX*5,Vector3.UnitZ*5,
+             //          new Vector3(-2.5f,0,-2.5f),20,20,Color.Green);
+
+            foreach (ISelectable scomp in _selection)
+                _debugDraw.DrawWireSphere(scomp.Data.BoundingSpheres[0],
+                    Color.Green);
+
+
+            _debugDraw.End();
+            base.Draw(gameTime);
+        }
+    }
+}

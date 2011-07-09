@@ -1,0 +1,42 @@
+﻿#region File Description
+//-----------------------------------------------------------------------------
+// BloomComponent.cs
+//
+// Microsoft XNA Community Game Platform
+// Copyright (C) Microsoft Corporation. All rights reserved.
+//-----------------------------------------------------------------------------
+#endregion
+
+#region Using Statements
+using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+#endregion
+
+namespace XNASysLib.XNAKernel
+{
+    public delegate void OnSelected(bool isSelected);
+    public delegate void OnDrag(Point scrPStart, Point scrPEnd);
+    public delegate void OnDataModified();
+
+    public struct SelectableCompData
+    {
+        public string ID;
+        public BoundingSphere[] BoundingSpheres;
+        public bool IsVisible;
+        public bool IsInCam;
+        public OnDataModified dataModifitionHandler;
+        public OnSelected SelectionHandler;
+    }
+    public interface ISelectable
+    {
+        SelectableCompData Data
+        { get; }
+    }
+    public interface IDraggable:ISelectable
+    {
+        OnDrag DragHandler
+        { get; }
+    }
+}

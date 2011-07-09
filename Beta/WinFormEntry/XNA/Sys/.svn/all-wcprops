@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dourabbit/!svn/ver/5/trunk/WinFormsContentLoading/XNA/Sys
+END
+aC_SysData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/dourabbit/!svn/ver/5/trunk/WinFormsContentLoading/XNA/Sys/aC_SysData.cs
+END
+IGameData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/dourabbit/!svn/ver/5/trunk/WinFormsContentLoading/XNA/Sys/IGameData.cs
+END
+ISysData.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/dourabbit/!svn/ver/5/trunk/WinFormsContentLoading/XNA/Sys/ISysData.cs
+END
+aC_Reactor.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/dourabbit/!svn/ver/5/trunk/WinFormsContentLoading/XNA/Sys/aC_Reactor.cs
+END
+SysDataList.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/dourabbit/!svn/ver/5/trunk/WinFormsContentLoading/XNA/Sys/SysDataList.cs
+END
+SysCollector.cs
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/dourabbit/!svn/ver/5/trunk/WinFormsContentLoading/XNA/Sys/SysCollector.cs
+END
+DataReactor.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/dourabbit/!svn/ver/5/trunk/WinFormsContentLoading/XNA/Sys/DataReactor.cs
+END

@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 129
+VertexPipeline.dll
+VertexPipeline.pdb
+WinFormEntry.exe
+WinFormEntry.vshost.exe
+WinFormEntry.vshost.exe.manifest
+WinFormEntry.pdb
+
+END

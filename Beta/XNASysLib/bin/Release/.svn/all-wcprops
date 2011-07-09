@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/dourabbit/!svn/ver/5/trunk/XNASysLib/bin/Release
+END
+XNASysLib.pdb
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/dourabbit/!svn/ver/5/trunk/XNASysLib/bin/Release/XNASysLib.pdb
+END
+XNABuilder.pdb
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/dourabbit/!svn/ver/5/trunk/XNASysLib/bin/Release/XNABuilder.pdb
+END
+XNASysLib.dll
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/dourabbit/!svn/ver/5/trunk/XNASysLib/bin/Release/XNASysLib.dll
+END
+XNABuilder.dll
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/dourabbit/!svn/ver/5/trunk/XNASysLib/bin/Release/XNABuilder.dll
+END

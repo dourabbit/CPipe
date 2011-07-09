@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Content;
+
+namespace XNASysLib.XNAKernel
+{
+
+    public class SysCollector : IDisposable
+    {
+        public delegate void GameListener(ISysData gameData);
+        public GameListener Listener;
+        ContentManager _contentManager;
+
+        public static SysCollector Singleton;
+        public static List<Scene> Scenes=new List<Scene>();
+        
+        public SysCollector()
+        {
+            Singleton = this;
+            Scenes.Add(new Scene());
+        }
+        public virtual void Initialize()
+        {
+            this.Listener += this.DispatchData;
+        
+        }
+
+        public virtual void DispatchData(ISysData gameData)
+        {
+
+            foreach (aC_Reactor item in aC_Reactor.ReactorPool)
+            {
+                item.Dispatch(gameData);
+            }
+        }
+        public void Dispose()
+        {
+            aC_Reactor.ReactorPool = new List<aC_Reactor>();
+
+        }
+
+    }
+
+    
+}

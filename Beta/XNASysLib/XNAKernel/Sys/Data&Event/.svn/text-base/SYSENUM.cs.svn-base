@@ -1,0 +1,17 @@
+﻿using System;
+
+namespace XNASysLib.XNAKernel
+{
+
+    public enum OBJTYPE
+    { 
+        Model=0,
+        Camera
+    }
+    public enum SYSEVN
+    { 
+        New=0,
+        Save,
+        Import
+    }
+}

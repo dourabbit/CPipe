@@ -1,0 +1,150 @@
+
+#region File Description
+//-----------------------------------------------------------------------------
+// ModelViewerControl.cs
+//
+// Microsoft XNA Community Game Platform
+// Copyright (C) Microsoft Corporation. All rights reserved.
+//-----------------------------------------------------------------------------
+#endregion
+
+#region Using Statements
+using System;
+using System.Diagnostics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Content;
+using XNASysLib.XNAKernel;
+using System.ComponentModel.Design;
+using XNASysLib.XNATools;
+#endregion
+
+namespace XNASysLib.XNAKernel
+{
+    public partial class Scene: IGame
+    {
+        #region Fields
+        protected string ID;
+        protected GraphicsDevice _device;
+        protected ContentManager _contentManager;
+        protected GameTime _gameTime;
+        protected List<IUpdatableComponent> _components;
+        protected bool _visible;
+        protected static ServiceContainer _service;
+        public static List<Scene> Scenes = new List<Scene>();
+        #endregion
+        #region Properties
+        public ServiceContainer Services
+        {
+            get { return _service; }
+            set { _service = value; }
+        }
+        public bool Visible
+        {
+            get { return _visible; }
+            set { _visible = value; }
+        }
+        public GraphicsDevice GraphicsDevice
+        {
+            get { return _device; }
+            set { _device = value; }
+        }
+        public ContentManager ContentManager
+        {
+            get { return _contentManager; }
+        }
+        public GameTime GameTime
+        {
+            get { return _gameTime; }
+        }
+        public List<IUpdatableComponent> Components
+        {
+            get { return _components; }
+        } 
+        #endregion
+        
+       // public delegate void ChangeOBJHandler (IDrawableComponent obj);
+       // public ChangeOBJHandler SelectorHandler;
+
+        public Scene()
+        {
+            _components = new List<IUpdatableComponent>();
+            Scenes.Add(this);
+            this.Initialize();
+        }
+        protected virtual void Initialize()
+        {
+            _visible = true;
+            
+        }
+
+        /*public static void Select(IGame game,string ID)
+        { 
+            if(game is Scene)
+                ((Scene)game).Select(ID);
+            else
+                throw new NullReferenceException("Scene is Null");
+        }
+        public ISelectable Select(string ID)
+        {
+            ISelectable returnValue = null;
+            foreach(IUpdatableComponent Ucomp in this._components)
+                if(Ucomp is IDrawableComponent)
+                {
+                    if (((ISelectable)Ucomp).Data.ID == ID)
+                    {
+                        if(returnValue==null)
+                            returnValue = (ISelectable)Ucomp;
+                        else
+                            throw new ArgumentException("Find more than one objs");
+                    }
+                }
+            if (returnValue == null)
+                throw new ArgumentException("Cannot find any");
+
+            return returnValue;
+        }*/
+        public virtual void Update()
+        {
+            try
+            {
+                aCTool tool = (aCTool)_components.Find(
+                    delegate(IUpdatableComponent matcher)
+                    {
+                        return matcher is aCTool ?
+                            true : false;
+                    });
+
+                if (tool != null && SelectFunction.Selection.Count == 0)
+                    _components.Remove(tool);
+
+
+                foreach (IUpdatableComponent updatable in this._components)
+                    updatable.Update(this._gameTime);
+
+                if (_visible)
+                {
+                    foreach (IUpdatableComponent U in this._components)
+                    {
+                        IDrawableComponent drawable = U as IDrawableComponent;
+                        if (drawable != null)
+                            drawable.Draw(this._gameTime);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MyConsole.WriteLine(e.Message);
+            }
+        }
+
+        public void Add(IUpdatableComponent component)
+        {
+            this._components.Add(component);
+        }
+        
+
+    
+    }
+}

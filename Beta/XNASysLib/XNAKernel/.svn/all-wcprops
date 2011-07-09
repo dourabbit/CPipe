@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/dourabbit/!svn/ver/9/trunk/XNASysLib/XNAKernel
+END
+dCamera.cs
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/dourabbit/!svn/ver/5/trunk/XNASysLib/XNAKernel/dCamera.cs
+END
+ContentBuilder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/dourabbit/!svn/ver/5/trunk/XNASysLib/XNAKernel/ContentBuilder.cs
+END
+Bloom.cs
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dourabbit/!svn/ver/5/trunk/XNASysLib/XNAKernel/Bloom.cs
+END
+BloomSettings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/dourabbit/!svn/ver/5/trunk/XNASysLib/XNAKernel/BloomSettings.cs
+END
+_CameraFree.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/dourabbit/!svn/ver/5/trunk/XNASysLib/XNAKernel/_CameraFree.cs
+END

@@ -1,0 +1,44 @@
+﻿#region File Description
+//-----------------------------------------------------------------------------
+// BloomComponent.cs
+//
+// Microsoft XNA Community Game Platform
+// Copyright (C) Microsoft Corporation. All rights reserved.
+//-----------------------------------------------------------------------------
+#endregion
+
+#region Using Statements
+using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+#endregion
+
+namespace XNASysLib.XNAKernel
+{
+    public class UpdatableComponent : IUpdatableComponent
+    {
+        protected IGame _game;
+        protected bool _Initialized = false;
+
+        public UpdatableComponent(IGame game)
+        {
+            this._game = game;
+            _game.Components.Add(this);
+        }
+
+        public virtual void Initialize()
+        {
+
+            _Initialized = true;  
+        }
+        public virtual void Update(GameTime gameTime)
+        {
+            if (!_Initialized)
+            {
+                this.Initialize();
+            }
+        
+        }
+    }
+}

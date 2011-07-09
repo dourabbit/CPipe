@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/dourabbit/!svn/ver/9/trunk/XNABuilder
+END
+ContentBuilder.cs
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dourabbit/!svn/ver/5/trunk/XNABuilder/ContentBuilder.cs
+END
+XNABuilder.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/dourabbit/!svn/ver/8/trunk/XNABuilder/XNABuilder.csproj
+END
+ErrorLogger.cs
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/dourabbit/!svn/ver/5/trunk/XNABuilder/ErrorLogger.cs
+END
