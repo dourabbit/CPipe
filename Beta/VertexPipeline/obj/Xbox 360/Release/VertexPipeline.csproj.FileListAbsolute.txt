@@ -23,3 +23,8 @@ C:\Users\Chengfuc\Dropbox\Beta_0612\VertexPipeline\bin\Xbox 360\Release\VertexPi
 C:\Users\Chengfuc\Dropbox\Beta_0612\VertexPipeline\obj\Xbox 360\Release\ResolveAssemblyReference.cache
 C:\Users\Chengfuc\Dropbox\Beta_0612\VertexPipeline\obj\Xbox 360\Release\VertexPipeline.dll
 C:\Users\Chengfuc\Dropbox\Beta_0612\VertexPipeline\obj\Xbox 360\Release\VertexPipeline.pdb
+C:\Users\Chengfuc\CPipe\Beta\VertexPipeline\bin\Xbox 360\Release\VertexPipeline.dll
+C:\Users\Chengfuc\CPipe\Beta\VertexPipeline\bin\Xbox 360\Release\VertexPipeline.pdb
+C:\Users\Chengfuc\CPipe\Beta\VertexPipeline\obj\Xbox 360\Release\ResolveAssemblyReference.cache
+C:\Users\Chengfuc\CPipe\Beta\VertexPipeline\obj\Xbox 360\Release\VertexPipeline.dll
+C:\Users\Chengfuc\CPipe\Beta\VertexPipeline\obj\Xbox 360\Release\VertexPipeline.pdb

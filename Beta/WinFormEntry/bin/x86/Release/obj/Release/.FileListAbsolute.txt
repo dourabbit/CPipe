@@ -11,3 +11,4 @@ C:\Users\Jimmy\Dropbox\Beta_0609\WinFormEntry\bin\x86\Release\obj\Release\Resolv
 C:\Users\Jimmy\Dropbox\Beta_0612\WinFormEntry\bin\x86\Release\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Chengfuc\Dropbox\Beta_0612\WinFormEntry\bin\x86\Release\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Jimmy\Dropbox\Beta_0616\WinFormEntry\bin\x86\Release\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Chengfuc\CPipe\Beta\WinFormEntry\bin\x86\Release\obj\Release\ResolveAssemblyReference.cache

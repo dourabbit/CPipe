@@ -190,3 +190,14 @@ C:\Users\Jimmy\Dropbox\Beta_0616\XNASysLib\bin\Release\XNAPhysicsLib.pdb
 C:\Users\Jimmy\Dropbox\Beta_0616\XNASysLib\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Jimmy\Dropbox\Beta_0616\XNASysLib\obj\Release\XNASysLib.dll
 C:\Users\Jimmy\Dropbox\Beta_0616\XNASysLib\obj\Release\XNASysLib.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Release\XNASysLib.dll
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Release\XNASysLib.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Release\VertexPipeline.dll
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Release\XNABuilder.dll
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Release\XNAPhysicsLib.dll
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Release\VertexPipeline.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Release\XNABuilder.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\bin\Release\XNAPhysicsLib.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\obj\Release\XNASysLib.dll
+C:\Users\Chengfuc\CPipe\Beta\XNASysLib\obj\Release\XNASysLib.pdb

@@ -38,3 +38,8 @@ C:\Users\Chengfuc\Dropbox\Beta_0521\XNABuilder\bin\Release\XNABuilder.pdb
 C:\Users\Chengfuc\Dropbox\Beta_0521\XNABuilder\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Chengfuc\Dropbox\Beta_0521\XNABuilder\obj\Release\XNABuilder.dll
 C:\Users\Chengfuc\Dropbox\Beta_0521\XNABuilder\obj\Release\XNABuilder.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNABuilder\bin\Release\XNABuilder.dll
+C:\Users\Chengfuc\CPipe\Beta\XNABuilder\bin\Release\XNABuilder.pdb
+C:\Users\Chengfuc\CPipe\Beta\XNABuilder\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Chengfuc\CPipe\Beta\XNABuilder\obj\Release\XNABuilder.dll
+C:\Users\Chengfuc\CPipe\Beta\XNABuilder\obj\Release\XNABuilder.pdb
