@@ -361,8 +361,8 @@ namespace WinFormsContentLoading
 
                 textBox.Location = new System.Drawing.Point(0, 0);
                 textBox.Name = "textBox_" + showList[row].Name;
-                textBox.Size = new System.Drawing.Size(50, 30);
-                if (showList[row].Name == "Color")
+                textBox.Size = new System.Drawing.Size(90, 30);
+                if (showList[row].Name == "ObjColor")
                 {
 
                     textBox.Click += this.TextBoxClick;
