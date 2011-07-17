@@ -58,7 +58,7 @@
     <Compile Include="Primitives3D\Base\Loader\NodePipeLoader.cs" />
     <Compile Include="Primitives3D\Base\Loader\NodCreator.cs" />
     <Compile Include="Primitives3D\Base\SceneNodHierachyModel.cs" />
-    <Compile Include="Primitives3D\Base\SceneNodModel.cs" />
+    <None Include="Primitives3D\Base\SceneNodModel.cs" />
     <Compile Include="Primitives3D\Base\Loader\NodeModelLoader.cs" />
     <Compile Include="Primitives3D\PipeBase.cs" />
     <Compile Include="Primitives3D\Base\SceneXNAObj.cs" />

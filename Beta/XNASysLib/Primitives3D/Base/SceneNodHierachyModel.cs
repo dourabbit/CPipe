@@ -286,27 +286,33 @@ namespace XNASysLib.Primitives3D
             {
                 this._selCompData.BoundingSpheres =
                     new BoundingSphere[1];
+
+                float scale = this.TransformNode.Scale.X;
+                scale = (scale < this.TransformNode.Scale.Y) ? this.TransformNode.Scale.Y : scale;
+                scale = (scale < this.TransformNode.Scale.Z) ? this.TransformNode.Scale.Z : scale;
+
                 this._selCompData.BoundingSpheres[0] = ShapeNode.BoundingSpheres[0];
 
-                if (_selCompData.BoundingSpheres[0].Radius == 0)//ShapeNode RenderData hasn't been initialized
-                {
-                    //Bsphere = null;
-                }
-                else
-                {
+                //if (_selCompData.BoundingSpheres[0].Radius == 0)//ShapeNode RenderData hasn't been initialized
+                //{
+                //    //Bsphere = null;
+                //}
+                //else
+                //{
 
-                    float scale = TransformNode.Scale.X > TransformNode.Scale.Y ?
-                        TransformNode.Scale.X : TransformNode.Scale.Y;
-                    scale = scale > TransformNode.Scale.Z ?
-                        scale : TransformNode.Scale.Z;
+                //    float scale = TransformNode.Scale.X > TransformNode.Scale.Y ?
+                //        TransformNode.Scale.X : TransformNode.Scale.Y;
+                //    scale = scale > TransformNode.Scale.Z ?
+                //        scale : TransformNode.Scale.Z;
 
-                }
+                //}
 
                 this._selCompData.shape = ShapeNode;
                 this._selCompData.transform = TransformNode;
                 this._selCompData.BoundingSpheres[0].Center =
                     Vector3.Transform(this._selCompData.BoundingSpheres[0].Center,
                                       this.TransformNode.AbsoluteTransform);
+                this._selCompData.BoundingSpheres[0].Radius *= scale;
                
                 MyConsole.WriteLine(this._selCompData.transform.AbsoluteTransform.ToString());
             }

@@ -103,12 +103,18 @@ namespace XNASysLib.Primitives3D
 
                 this._selCompData.BoundingSpheres =
                     new BoundingSphere[1];
+
+                float scale = this.TransformNode.Scale.X;
+                scale = (scale < this.TransformNode.Scale.Y) ? this.TransformNode.Scale.Y : scale;
+                scale = (scale < this.TransformNode.Scale.Z) ? this.TransformNode.Scale.Z : scale;
+
                 BoundingSphere bSphere =
                       ShapeNode.BoundingSpheres[0];
               
               
                 ShapeNode.GetBounding(out bSphere.Center, out bSphere.Radius);
                 bSphere.Center = Vector3.Transform(bSphere.Center,this.TransformNode.AbsoluteTransform);
+                bSphere.Radius *= scale;
                 this._selCompData.BoundingSpheres[0] = bSphere; 
 
 
