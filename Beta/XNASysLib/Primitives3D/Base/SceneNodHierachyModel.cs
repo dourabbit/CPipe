@@ -1,4 +1,4 @@
-﻿#define _DEBUG
+﻿
 #region File Description
 //-----------------------------------------------------------------------------
 // BloomComponent.cs

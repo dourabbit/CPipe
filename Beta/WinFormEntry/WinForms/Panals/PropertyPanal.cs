@@ -116,15 +116,15 @@ namespace WinFormsContentLoading
         void OnSelectionUpdate()
         {
             ISelectable[] sels=SelectFunction.Selection.ToArray();
-            if (sels.Length == 0)
-            {
+            //if (sels.Length == 0)
+            //{
                 _selsList.RemoveAll(
                     delegate(ISelectable sel) 
                     {
                         return !sel.KeepSel; 
                     });
                 this.Initialize();
-            }
+            //}
 
             //Convert sel to root node, if it was hierachy node
             foreach (ISelectable sel in sels)

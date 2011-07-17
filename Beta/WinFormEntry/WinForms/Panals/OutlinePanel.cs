@@ -172,6 +172,8 @@ namespace WinFormsContentLoading
         {
             foreach (TreeNode nod in parentNod.Nodes)
             {
+                if (nodenms.Count == 0)
+                    return;
                 if (nod.Text == nodenms[0])
                 {
                     nodenms.RemoveAt(0);
