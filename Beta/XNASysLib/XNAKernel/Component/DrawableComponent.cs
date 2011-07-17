@@ -26,7 +26,11 @@ namespace XNASysLib.XNAKernel
         protected ICamera _camera;
         protected BasicEffect _basicEffect;
         protected RasterizerState _rasterizerState;
-
+        protected bool _isMuteTransform;
+        public virtual bool  IsMuteTransform
+        {
+            get { return _isMuteTransform; }
+        }
         public AfterInitialized AfterInitializedHandler;
        
         protected Color _color;

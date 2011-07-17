@@ -20,7 +20,7 @@ namespace XNASysLib.XNATools
        MoveToolPart _zaxis;
 
        Vector3 _centerPos;
-       ISelectable _curSel;
+       //ISelectable _curSel;
 
        
        float _length = 1;
@@ -108,10 +108,15 @@ namespace XNASysLib.XNATools
 
             base.Initialize();
         }
+        void move()
+        { 
+            
+        }
         public override void Update(GameTime gameTime)
         {
             bool result = true;
-
+            Vector3 translate = Vector3.Zero;
+                
             foreach (IHotSpot spot in this._hotSpots)
             {
                 MoveToolPart toolPart =(MoveToolPart)spot;
@@ -120,15 +125,19 @@ namespace XNASysLib.XNATools
                 result &=
                     toolPart.State == InteractiveObjState.AwayFrom ? 
                     true : false;
-                
-                if (toolPart.IsActive)// Move others if active
+
+               if (toolPart.IsActive)// Move others if active
                 {
                     
-                        //Move the center target
+                   
+                    //Move the center target
+                    if (!_toolTarget.IsMuteTransform)
                         _toolTarget.TransformNode.Translate =
                         toolPart.TransformNode.Translate - toolPart.Offset;
-                        
-                    MyConsole.WriteLine(_toolTarget.TransformNode.Translate.ToString() + ":::");
+
+                    translate = toolPart.TransformNode.Translate - toolPart.Offset;
+               
+                    //MyConsole.WriteLine(_toolTarget.TransformNode.Translate.ToString() + ":::");
                    
                     
                     foreach (IHotSpot spot2 in this._hotSpots)
@@ -140,7 +149,7 @@ namespace XNASysLib.XNATools
                            
                             //Move the unactive tool part
                             unactiveToolPart.
-                                Move(_toolTarget.TransformNode.World.Translation);//World.Translation);
+                                Move(translate);//_toolTarget.TransformNode.World.Translation);
                            
                             
                         }
@@ -155,12 +164,8 @@ namespace XNASysLib.XNATools
             if (result && Mouse.GetState().LeftButton == ButtonState.Pressed&&
                 Keyboard.GetState().IsKeyUp(Keys.LeftAlt))
                 this.Dispose();
-
-           
-            //reserve center pos for drawing the line
-            //_centerPos =Vector3.Transform
-            //    (_toolTarget.TransformNode.Pivot.Translation,
-            //    _toolTarget.TransformNode.World);
+            if (_toolTarget.IsMuteTransform)
+                this.Dispose();
 
             _centerPos = _toolTarget.TransformNode.Translate + _toolTarget.TransformNode.Pivot.Translation;
 

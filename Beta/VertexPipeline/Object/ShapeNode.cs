@@ -33,7 +33,7 @@ namespace VertexPipeline
         public IndexBuffer IndexBuffer;
     }
     public delegate void PreDraw();
-
+    public delegate void ShapeNodeChanging();
     public class ShapeNode : IShapeNode
     {
         public string ID { get; set; }
@@ -56,6 +56,7 @@ namespace VertexPipeline
         }
         private List<VertexPositionNormalTexture> _vertices; 
         public PreDraw PreDrawHandler;
+        public ShapeNodeChanging ShapeNodeChangingHandler;
         public DynamicVertexBuffer VertexBuffer { get; internal set; }
 
         public ShapeNode GetCopy()

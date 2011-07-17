@@ -19,12 +19,23 @@ namespace WinFormsContentLoading
 {
     public static class LanguagePack 
     {
+        static string[] baseObj = new string[]
+        {
+            "名称",
+             "东西位置-x",
+            "上下-y",
+            "南北位置-z",
+            "俯仰旋转角度-x",
+            "水平旋转角度-y",
+            "滚动旋转角度-z",
+            "颜色"
+        };
         static string[] pipe = new string[]
         {
             "名称",
-            "东西位置-x",
-            "南北位置-y",
-            "深度-z",
+             "东西位置-x",
+            "上下-y",
+            "南北位置-z",
             "俯仰旋转角度-x",
             "水平旋转角度-y",
             "滚动旋转角度-z",
@@ -35,9 +46,9 @@ namespace WinFormsContentLoading
         static string[] commPipe = new string[]
         {
             "名称",
-             "东西位置-x",
-             "南北位置-y",
-             "深度-z",
+            "东西位置-x",
+            "上下-y",
+            "南北位置-z",
              "俯仰旋转角度-x",
             "水平旋转角度-y",
              "滚动旋转角度-z",
@@ -51,9 +62,9 @@ namespace WinFormsContentLoading
         static string[] valve = new string[]
         {
             "名称",
-            "东西位置-x",
-            "南北位置-y",
-            "深度-z",
+           "东西位置-x",
+            "上下-y",
+            "南北位置-z",
             "俯仰旋转角度-x",
             "水平旋转角度-y",
             "滚动旋转角度-z",
@@ -62,9 +73,10 @@ namespace WinFormsContentLoading
 
         static string[] chamber = new string[]
         {
-           "东西位置-x",
-            "南北位置-y",
-            "深度-z",
+             "名称",
+            "东西位置-x",
+            "上下-y",
+            "南北位置-z",
             "俯仰旋转角度-x",
             "水平旋转角度-y",
             "滚动旋转角度-z",
@@ -73,9 +85,10 @@ namespace WinFormsContentLoading
         };
         static string[] well = new string[]
         {
+             "名称",
            "东西位置-x",
-            "南北位置-y",
-            "深度-z",
+            "上下-y",
+            "南北位置-z",
             "俯仰旋转角度-x",
             "水平旋转角度-y",
             "滚动旋转角度-z",
@@ -85,10 +98,10 @@ namespace WinFormsContentLoading
         
         };
         static string[] holeRect = new string[]
-        {
-           "东西位置-x",
-            "南北位置-y",
-            "深度-z",
+        { "名称",
+            "东西位置-x",
+            "上下-y",
+            "南北位置-z",
             "俯仰旋转角度-x",
             "水平旋转角度-y",
             "滚动旋转角度-z",
@@ -99,10 +112,10 @@ namespace WinFormsContentLoading
         
         };
         static string[] holeEllipse = new string[]
-        {
+        { "名称",
             "东西位置-x",
-            "南北位置-y",
-            "深度-z",
+            "上下-y",
+            "南北位置-z",
             "俯仰旋转角度-x",
             "水平旋转角度-y",
             "滚动旋转角度-z",
@@ -137,8 +150,9 @@ namespace WinFormsContentLoading
                 return holeRect[index];
             else if (type == typeof(Well))
                 return well[index];
+            else
+                return baseObj[index];
 
-            return "";
         }
     
     

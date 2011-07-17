@@ -114,9 +114,9 @@ namespace XNASysLib.XNATools
             this._selCompData.dataModifitionHandler.Invoke();
             base.Initialize();
         }
-        protected override void OnModify()
+        protected override void OnModifyBoundingSpheres()
         {
-            base.OnModify();
+            base.OnModifyBoundingSpheres();
         }
 
         public override void Update(GameTime gameTime)

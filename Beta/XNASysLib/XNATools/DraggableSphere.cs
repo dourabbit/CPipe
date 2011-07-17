@@ -155,7 +155,7 @@ namespace XNASysLib.XNATools
            
            base.Initialize();
         }
-        protected override void OnModify()
+        protected override void OnModifyBoundingSpheres()
         {
             if (_modelRadius == 0)
             {
@@ -184,7 +184,7 @@ namespace XNASysLib.XNATools
                 this._selCompData.shape = this.ShapeNode;
             
             }
-            base.OnModify();
+            base.OnModifyBoundingSpheres();
         }
         protected override void LoadContent()
         {

@@ -161,7 +161,7 @@ namespace XNASysLib.XNATools
            
            base.Initialize();
         }
-        protected override void OnModify()
+        protected override void OnModifyBoundingSpheres()
         {
             if (_modelRadius == 0)
             {

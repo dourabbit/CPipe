@@ -27,13 +27,7 @@ namespace XNASysLib.Primitives3D
     {
 
         protected Vector3 _SideCenter=Vector3.Zero;
-       // private Vector3 _SideBCenter;
         protected List<int> _SideBoundaryIndexer;
-        //private List<int> _SideBIndexer;
-        //private float _front = 1f;
-        /*private float _rear = -1f;*/
-       // private Vector3 _SideAObjSpace;
-        //private Vector3 _SideBObjSpace;
 
         protected const float ZThreshold=3;
 
@@ -87,8 +81,22 @@ namespace XNASysLib.Primitives3D
             
              _SideCenter=Vector3.Zero;
         }
+        public override void OnShapeNodeChange()
+        {
+            //if (this.TransformNode.AbsoluteTransform.Translation.Y > 3)
+            //    this._isMuteTransform = true;
+            //else
+            //    this._isMuteTransform = false;
 
-        protected override void OnModify()
+            MyConsole.WriteLine(this.NodeNm+"?????????????????");
+
+        }
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+        }
+
+        protected override void OnModifyBoundingSpheres()
         {
             if (ShapeNode != null)
             {
@@ -101,23 +109,7 @@ namespace XNASysLib.Primitives3D
               
                 ShapeNode.GetBounding(out bSphere.Center, out bSphere.Radius);
                 bSphere.Center = Vector3.Transform(bSphere.Center,this.TransformNode.AbsoluteTransform);
-                this._selCompData.BoundingSpheres[0] = bSphere;
-
-                //if (_selCompData.BoundingSpheres[0].Radius == 0)//ShapeNode RenderData hasn't been initialized
-                //{
-                //    //Bsphere = null;
-                //}
-                //else
-                //{
-
-                //    float scale = TransformNode.Scale.X > TransformNode.Scale.Y ?
-                //        TransformNode.Scale.X : TransformNode.Scale.Y;
-                //    scale = scale > TransformNode.Scale.Z ?
-                //        scale : TransformNode.Scale.Z;
-
-                //    //Bsphere.Radius *= scale;
-
-                //}
+                this._selCompData.BoundingSpheres[0] = bSphere; 
 
 
                 
@@ -140,9 +132,6 @@ namespace XNASysLib.Primitives3D
         {
             base.LoadContent();
             GetBoundary(out _SideCenter);
-            /*
-            this.MouseOfPipe[0] = new BoundingSphere(_SideCenter, 1f);
-            this.MouseOfPipe[1] = new BoundingSphere(_SideBCenter, 1f);*/
         }
 
 

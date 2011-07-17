@@ -25,26 +25,26 @@ namespace XNASysLib.Primitives3D
     public class Chamber : SceneNodHierachyModel
     {
         //int _color;
-        [MyShowProperty]
-        public string Color
-        {
-            get { return _color.ToString(); }
-            set
-            {
-                //Color col = new Microsoft.Xna.Framework.Color(
+        //[MyShowProperty]
+        //public string Color
+        //{
+        //    get { return _color.ToString(); }
+        //    set
+        //    {
+        //        //Color col = new Microsoft.Xna.Framework.Color(
 
-                MyConsole.WriteLine(value);
+        //        MyConsole.WriteLine(value);
 
-                int r = Int32.Parse(value.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-                int g = Int32.Parse(value.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-                int b = Int32.Parse(value.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+        //        int r = Int32.Parse(value.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+        //        int g = Int32.Parse(value.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+        //        int b = Int32.Parse(value.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
 
-                this._color = new Color(r, g, b);
+        //        this._color = new Color(r, g, b);
 
 
 
-            }
-        }
+        //    }
+        //}
         public Chamber(IGame game)
             : base(game)
         { 

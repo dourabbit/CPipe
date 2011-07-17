@@ -165,12 +165,11 @@ namespace WinFormsContentLoading
         void Show(ISelectable obj)
         {
             this.Initialize();
-            List<PropertyInfo> showList = new List<PropertyInfo>();
-            int row = -1;
 
             PropertyInfo[] properties = obj.GetType().GetProperties();
             //row = showList.Count - 1;
-            ShowProperties(row, obj, properties, showList);
+           List<PropertyInfo>showList=
+            ShowProperties( obj, properties);
 
             _table.ColumnCount = 2;
             _table.RowCount = showList.Count;
@@ -313,8 +312,9 @@ namespace WinFormsContentLoading
 
         }
 
-        void ShowProperties(int row,ISelectable obj, PropertyInfo[] properties, List<PropertyInfo> showList)
+        List<PropertyInfo> ShowProperties(ISelectable obj, PropertyInfo[] properties)
         {
+            List<PropertyInfo> showList = new List<PropertyInfo>();
             foreach (PropertyInfo property in properties)
             {
 
@@ -341,12 +341,11 @@ namespace WinFormsContentLoading
                     })
                 )
                     continue;
-
-
-
-                row++;
                 showList.Add(property);
+            }
 
+            for (int row = 0; row<showList.Count;row++)
+            {
                 Label label = new Label();
                 TextBox textBox = new TextBox();
 
@@ -359,18 +358,16 @@ namespace WinFormsContentLoading
 
                 //label.Text = property.Name;
                 label.Text = LanguagePack.GetNm(obj.GetType(), row);
-                if(label.Text=="")
-                    label.Text = LanguagePack.GetNm(obj.GetType(), row);
 
                 textBox.Location = new System.Drawing.Point(0, 0);
-                textBox.Name = "textBox_" + property.Name;
+                textBox.Name = "textBox_" + showList[row].Name;
                 textBox.Size = new System.Drawing.Size(50, 30);
-                if (property.Name == "Color")
+                if (showList[row].Name == "Color")
                 {
 
                     textBox.Click += this.TextBoxClick;
                 }
-                Binding b = new Binding("Text", obj, property.Name,true,DataSourceUpdateMode.OnPropertyChanged);
+                Binding b = new Binding("Text", obj, showList[row].Name, true, DataSourceUpdateMode.OnPropertyChanged);
                 textBox.DataBindings.Add(b);
                 
 
@@ -379,10 +376,9 @@ namespace WinFormsContentLoading
                 _table.Controls.Add(label, 0, row);
                 _table.Controls.Add(textBox, 1, row);
 
-
-
-
             }// end of foreach property
+
+            return showList;
         }
     }
 }

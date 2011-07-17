@@ -48,7 +48,19 @@ namespace XNASysLib.Primitives3D
             }
         }
 
-       
+        [MyShowProperty]
+        public override string Name
+        {
+            get
+            {
+                return base.Name;
+            }
+            set
+            {
+                base.Name = value;
+            }
+        }
+
         [MyShowProperty]
         public override float TranslateX
         {
@@ -137,15 +149,19 @@ namespace XNASysLib.Primitives3D
             get { return _depth; }
             set { _depth = value; }
         }
-
-
-        int _color;
         [MyShowProperty]
-        public int Color
+        public override string ObjColor
         {
-            get { return _color; }
-            set { _color = value; }
+            get
+            {
+                return base.ObjColor;
+            }
+            set
+            {
+                base.ObjColor = value;
+            }
         }
+
         public Well(IGame game)
             : base(game)
         { 

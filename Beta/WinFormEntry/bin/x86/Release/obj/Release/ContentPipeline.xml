@@ -10,26 +10,6 @@
       <Output>ProcessDir\bin\Tex2DDraw.xnb</Output>
       <Time>2010-03-13T22:37:50-05:00</Time>
     </Item>
-    <Item>
-      <Source>Content\model\ground\lou1.FBX</Source>
-      <Name>lou1</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ShapeN_SkinDProcessor</Processor>
-      <Options>None</Options>
-      <Output>ProcessDir\bin\lou1.xnb</Output>
-      <Time>2011-06-29T11:35:40.4044193-04:00</Time>
-      <Dependency>
-        <Key>obj\Release\Content\model\ground\lou1_0.xml</Key>
-        <Value>2011-07-16T11:04:33.6171879-04:00</Value>
-      </Dependency>
-    </Item>
-    <Item>
-      <Source>Content\model\ground\lou1.FBX</Source>
-      <Importer>FbxImporter</Importer>
-      <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>obj\Release\Content\model\ground\lou1_0.xml</Output>
-      <Time>2011-06-29T11:35:40.4044193-04:00</Time>
-    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
@@ -44,7 +24,7 @@
     <Assemblies>
       <Assembly>
         <Key>C:\Users\Chengfuc\CPipe\Beta\VertexPipeline\bin\x86\Debug\VertexPipeline.dll</Key>
-        <Value>2011-07-06T14:03:34.3586512-04:00</Value>
+        <Value>2011-07-16T22:48:57.3435348-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>

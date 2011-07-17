@@ -57,6 +57,8 @@ namespace VertexPipeline
     {
         TransformNode TransformNode
         { get; set; }
+        bool IsMuteTransform
+        { get; }
     }
     public delegate void OnDataModified();
     

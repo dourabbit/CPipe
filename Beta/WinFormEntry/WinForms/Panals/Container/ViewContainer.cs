@@ -66,7 +66,7 @@ namespace WinFormsContentLoading
                 //});
             cam_List.Name = "CamsList";
             cam_List.Size = new System.Drawing.Size(37, 20);
-            cam_List.Text = "CamsList";
+            cam_List.Text = "视图列表";
 
             cam_List.Click+=cam_List_Click;
             
@@ -74,11 +74,11 @@ namespace WinFormsContentLoading
             //StripMenuItem:camContr
             //
             cam_Contr.Name = "CamContr";
-            cam_Contr.Text = "CamContr";
+            cam_Contr.Text = "视图控制";
             cam_Contr.Size=new System.Drawing.Size(37,20);
             ToolStripMenuItem newCam = new ToolStripMenuItem();
             newCam.Name = "New Camera";
-            newCam.Text = "New Camera";
+            newCam.Text = "新建视图";
             newCam.Size = new System.Drawing.Size(37, 20);
             newCam.Click += new EventHandler(delegate(object sender, EventArgs e)
                 {
@@ -99,7 +99,7 @@ namespace WinFormsContentLoading
             menuStrip.Name = "ViewMenuStrip";
             menuStrip.Size = new System.Drawing.Size(650, 25);
             menuStrip.TabIndex = 3;
-            menuStrip.Text = "ViewMenuStrip";
+            menuStrip.Text = "视图";
 
 
             ((System.ComponentModel.ISupportInitialize)

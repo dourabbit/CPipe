@@ -56,8 +56,113 @@ namespace XNASysLib.Primitives3D
         public ObjData ObjDataGen;
 
         protected SceneHub _hub;
+        [MyShowProperty]
+        public override string Name
+        {
+            get
+            {
+                return base.Name;
+            }
+            set
+            {
+                base.Name = value;
+            }
+        }
+
+        [MyShowProperty]
+        public override float TranslateX
+        {
+            get
+            {
+                return base.TranslateX;
+            }
+            set
+            {
+                base.TranslateX = value;
+            }
+        }
+        [MyShowProperty]
+        public override float TranslateY
+        {
+            get
+            {
+                return base.TranslateY;
+            }
+            set
+            {
+                base.TranslateY = value;
+            }
+        }
+        [MyShowProperty]
+        public override float TranslateZ
+        {
+            get
+            {
+                return base.TranslateZ;
+            }
+            set
+            {
+                base.TranslateZ = value;
+            }
+        }
+        [MyShowProperty]
+        public override float RotationX
+        {
+            get
+            {
+                return base.RotationX;
+            }
+            set
+            {
+                base.RotationX = value;
+            }
+        }
+        [MyShowProperty]
+        public override float RotationY
+        {
+            get
+            {
+                return base.RotationY;
+            }
+            set
+            {
+                base.RotationY = value;
+            }
+        }
+        [MyShowProperty]
+        public override float RotationZ
+        {
+            get
+            {
+                return base.RotationZ;
+            }
+            set
+            {
+                base.RotationZ = value;
+            }
+        }
+
+        [MyShowProperty]
+        public virtual string ObjColor
+        {
+            get { return _color.ToString(); }
+            set
+            {
+                //Color col = new Microsoft.Xna.Framework.Color(
+
+                MyConsole.WriteLine(value);
+
+                int r = Int32.Parse(value.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+                int g = Int32.Parse(value.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+                int b = Int32.Parse(value.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+
+                this._color = new Color(r, g, b);
 
 
+
+            }
+        }
+        
 #if _DEBUG
         DebugDraw _debugDraw;
 #endif
@@ -114,36 +219,46 @@ namespace XNASysLib.Primitives3D
                GetService(typeof(MyContentManager));
 
             SpriteFont font = contentManager.Load<SpriteFont>("_FontSetup");
-            _hub = new SceneHub(_game, font);//,
-                //new Microsoft.Xna.Framework.Graphics.SpriteBatch(_game.GraphicsDevice));
+            _hub = new SceneHub(_game, font);
+
             base.Initialize();
-            //foreach (SceneNodHierachyModel curNod in this.Children)
-            //{
-            //    curNod.Initialize();
-            //}
+
             OnUpdate();
+            if (this.ShapeNode != null)
+                this.ShapeNode.ShapeNodeChangingHandler += this.OnShapeNodeChange;
             this.TransformNode.DataModifiedHandler += OnTransformDataChange;
             this.TransformNode.DataModifiedHandler.Invoke();
             _dataSlotIndex = DataReactor.GetDataSlot(typeof(ObjData));
         }
-        public object GetCopy()
+        public new object GetCopy()
         {
-
             return this.MemberwiseClone();
+        }
+        public virtual void OnShapeNodeChange()
+        {
+            MyConsole.WriteLine(this.NodeNm+this.TransformNode.AbsoluteTransform.ToString());
+            
         }
         public virtual void OnTransformDataChange()
         {
 
+
             OnUpdate();
-            OnModify();
+            OnModifyBoundingSpheres();
             this.ObjDataGen= new ObjData(this,_dataSlotIndex);
-           
         }
         /// <summary>
         /// Update TransformNode hierachily
         /// </summary>
-        public void OnUpdate()
+        public virtual void OnUpdate()
         {
+            if (ShapeNode != null) //if the root node has shape info
+            {
+                if (ShapeNode.ShapeNodeChangingHandler != null)
+                    ShapeNode.ShapeNodeChangingHandler.Invoke();
+
+                this.ShapeNode.UpdateShapeNod(_game.GraphicsDevice);
+            }
 
             if (this.Parent != null)
             {
@@ -152,15 +267,11 @@ namespace XNASysLib.Primitives3D
                     ((SceneNodHierachyModel)this.Parent).
                         TransformNode.AbsoluteTransform;
                 MyConsole.WriteLine(this.ID+this.TransformNode.AbsoluteTransform.ToString());
-                if (ShapeNode != null) //if the root node has shape info
-                    this.ShapeNode.UpdateShapeNod( _game.GraphicsDevice);
+              
             }
             else //No parent means it is the root node.
             {
                 this.TransformNode.AbsoluteTransform = this.TransformNode.World;
-
-                if (ShapeNode != null) //if the root node has shape info
-                    this.ShapeNode.UpdateShapeNod(_game.GraphicsDevice);
 
             }
 
@@ -169,7 +280,7 @@ namespace XNASysLib.Primitives3D
                 curNod.OnUpdate();
             }
         }
-        protected override void OnModify()
+        protected override void OnModifyBoundingSpheres()
         {
             if (ShapeNode != null)
             {
@@ -201,7 +312,7 @@ namespace XNASysLib.Primitives3D
             }
             foreach (SceneNodHierachyModel curNod in this.Children)
             {
-                curNod.OnModify();
+                curNod.OnModifyBoundingSpheres();
             }
 
         }

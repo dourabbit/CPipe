@@ -204,17 +204,6 @@ namespace XNASysLib.XNATools
 
             base.Initialize();
 
-            //this.TransformNode.Translate =
-            //   Vector3.Transform(_rotationCenter.Pivot.Translation,_rotationCenter.World);
-
-            //_x= _rotationCenter.World.Right;
-            //_x.Normalize();
-            
-            //_y= _rotationCenter.World.Up;
-            //_y.Normalize();
-
-            //_z= _rotationCenter.World.Backward;
-            //_z.Normalize();
             _x = _rotationCenter.AbsoluteTransform.Right;
             _x.Normalize();
 
@@ -266,7 +255,7 @@ namespace XNASysLib.XNATools
 
         }
 
-        protected override void OnModify()
+        protected override void OnModifyBoundingSpheres()
         {
             this._selCompData.BoundingSpheres =
                    new BoundingSphere[1];

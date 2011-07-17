@@ -147,7 +147,7 @@ namespace WinFormsContentLoading
 
             dCamera cam = new dCamera(_scene);
             dCamOrth front = new dCamOrth(new Vector3(0,0,10),new Vector3(0,0,0),_scene);
-            front.ID = "FrontCam";
+            front.ID = "ф╫йсм╪";
             _scene.Components.Add(front);
             //dCamera cam2 = new dCamera(_scene);
             //new SelectFunction(_scene);

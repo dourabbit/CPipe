@@ -122,7 +122,7 @@ namespace XNASysLib.XNAKernel
             _rotation = new Quaternion(0, 0, 0, 1);
             this._rotX = 0;
             this._rotY = 0;
-            _game.Components.GetNm("persp", out _ID);
+            _game.Components.GetNm("透视图", out _ID);
             _game.Components.Add(this);
             //this._ID = "Persp";
         }

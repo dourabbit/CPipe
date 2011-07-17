@@ -36,7 +36,7 @@ namespace XNASysLib.Primitives3D
             _AssetNm = assetNm;
             this._keepSel = false;
         }
-        protected override void OnModify()
+        protected override void OnModifyBoundingSpheres()
         {
 
             this._selCompData.BoundingSpheres =

@@ -139,7 +139,7 @@ namespace WinFormsContentLoading
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(882, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(882, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -152,37 +152,37 @@ namespace WinFormsContentLoading
             this.保存ToolStripMenuItem,
             this.另存ToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.fileToolStripMenuItem.Text = "文件";
             // 
             // 新建ToolStripMenuItem
             // 
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.新建ToolStripMenuItem.Text = "新建";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.openToolStripMenuItem.Text = "打开...";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.exitToolStripMenuItem.Text = "退出";
             // 
             // 保存ToolStripMenuItem
             // 
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.保存ToolStripMenuItem.Text = "保存";
             // 
             // 另存ToolStripMenuItem
             // 
             this.另存ToolStripMenuItem.Name = "另存ToolStripMenuItem";
-            this.另存ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.另存ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.另存ToolStripMenuItem.Text = "另存为...";
             // 
             // 编辑ToolStripMenuItem
@@ -198,61 +198,61 @@ namespace WinFormsContentLoading
             this.锁定ToolStripMenuItem,
             this.取消锁定ToolStripMenuItem});
             this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
-            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.编辑ToolStripMenuItem.Text = "编辑";
             // 
             // 撤销ToolStripMenuItem
             // 
             this.撤销ToolStripMenuItem.Name = "撤销ToolStripMenuItem";
-            this.撤销ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.撤销ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.撤销ToolStripMenuItem.Text = "撤销";
             // 
             // 重做ToolStripMenuItem
             // 
             this.重做ToolStripMenuItem.Name = "重做ToolStripMenuItem";
-            this.重做ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.重做ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.重做ToolStripMenuItem.Text = "重做";
             // 
             // 复制ToolStripMenuItem
             // 
             this.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem";
-            this.复制ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.复制ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.复制ToolStripMenuItem.Text = "复制";
             // 
             // 粘贴ToolStripMenuItem
             // 
             this.粘贴ToolStripMenuItem.Name = "粘贴ToolStripMenuItem";
-            this.粘贴ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.粘贴ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.粘贴ToolStripMenuItem.Text = "粘贴";
             // 
             // 删除ToolStripMenuItem
             // 
             this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
-            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.删除ToolStripMenuItem.Text = "删除";
             // 
             // 隐藏ToolStripMenuItem
             // 
             this.隐藏ToolStripMenuItem.Name = "隐藏ToolStripMenuItem";
-            this.隐藏ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.隐藏ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.隐藏ToolStripMenuItem.Text = "隐藏";
             // 
             // 显示全部ToolStripMenuItem
             // 
             this.显示全部ToolStripMenuItem.Name = "显示全部ToolStripMenuItem";
-            this.显示全部ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.显示全部ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.显示全部ToolStripMenuItem.Text = "显示全部";
             // 
             // 锁定ToolStripMenuItem
             // 
             this.锁定ToolStripMenuItem.Name = "锁定ToolStripMenuItem";
-            this.锁定ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.锁定ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.锁定ToolStripMenuItem.Text = "锁定";
             // 
             // 取消锁定ToolStripMenuItem
             // 
             this.取消锁定ToolStripMenuItem.Name = "取消锁定ToolStripMenuItem";
-            this.取消锁定ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.取消锁定ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.取消锁定ToolStripMenuItem.Text = "取消锁定";
             // 
             // 镜头ToolStripMenuItem
@@ -264,37 +264,37 @@ namespace WinFormsContentLoading
             this.旋转ToolStripMenuItem,
             this.平抑ToolStripMenuItem});
             this.镜头ToolStripMenuItem.Name = "镜头ToolStripMenuItem";
-            this.镜头ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.镜头ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.镜头ToolStripMenuItem.Text = "镜头";
             // 
             // 透视ToolStripMenuItem
             // 
             this.透视ToolStripMenuItem.Name = "透视ToolStripMenuItem";
-            this.透视ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.透视ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.透视ToolStripMenuItem.Text = "透视摄像机";
             // 
             // 顶视ToolStripMenuItem
             // 
             this.顶视ToolStripMenuItem.Name = "顶视ToolStripMenuItem";
-            this.顶视ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.顶视ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.顶视ToolStripMenuItem.Text = "顶视摄像机";
             // 
             // 缩放ToolStripMenuItem
             // 
             this.缩放ToolStripMenuItem.Name = "缩放ToolStripMenuItem";
-            this.缩放ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.缩放ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.缩放ToolStripMenuItem.Text = "缩放";
             // 
             // 旋转ToolStripMenuItem
             // 
             this.旋转ToolStripMenuItem.Name = "旋转ToolStripMenuItem";
-            this.旋转ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.旋转ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.旋转ToolStripMenuItem.Text = "旋转";
             // 
             // 平抑ToolStripMenuItem
             // 
             this.平抑ToolStripMenuItem.Name = "平抑ToolStripMenuItem";
-            this.平抑ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.平抑ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.平抑ToolStripMenuItem.Text = "平抑";
             // 
             // 创建ToolStripMenuItem
@@ -308,49 +308,49 @@ namespace WinFormsContentLoading
             this.道路ToolStripMenuItem,
             this.车辆ToolStripMenuItem});
             this.创建ToolStripMenuItem.Name = "创建ToolStripMenuItem";
-            this.创建ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.创建ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.创建ToolStripMenuItem.Text = "创建";
             // 
             // 管道ToolStripMenuItem
             // 
             this.管道ToolStripMenuItem.Name = "管道ToolStripMenuItem";
-            this.管道ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.管道ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.管道ToolStripMenuItem.Text = "管道";
             // 
             // 空洞ToolStripMenuItem
             // 
             this.空洞ToolStripMenuItem.Name = "空洞ToolStripMenuItem";
-            this.空洞ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.空洞ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.空洞ToolStripMenuItem.Text = "空洞";
             // 
             // 破损ToolStripMenuItem
             // 
             this.破损ToolStripMenuItem.Name = "破损ToolStripMenuItem";
-            this.破损ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.破损ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.破损ToolStripMenuItem.Text = "破损";
             // 
             // 阀门ToolStripMenuItem
             // 
             this.阀门ToolStripMenuItem.Name = "阀门ToolStripMenuItem";
-            this.阀门ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.阀门ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.阀门ToolStripMenuItem.Text = "阀门";
             // 
             // 建筑物ToolStripMenuItem
             // 
             this.建筑物ToolStripMenuItem.Name = "建筑物ToolStripMenuItem";
-            this.建筑物ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.建筑物ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.建筑物ToolStripMenuItem.Text = "建筑物";
             // 
             // 道路ToolStripMenuItem
             // 
             this.道路ToolStripMenuItem.Name = "道路ToolStripMenuItem";
-            this.道路ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.道路ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.道路ToolStripMenuItem.Text = "道路";
             // 
             // 车辆ToolStripMenuItem
             // 
             this.车辆ToolStripMenuItem.Name = "车辆ToolStripMenuItem";
-            this.车辆ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.车辆ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.车辆ToolStripMenuItem.Text = "车辆";
             // 
             // 工具ToolStripMenuItem
@@ -365,55 +365,55 @@ namespace WinFormsContentLoading
             this.颜料桶ToolStripMenuItem,
             this.标尺ToolStripMenuItem});
             this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
-            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.工具ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.工具ToolStripMenuItem.Text = "工具";
             // 
             // 选择ToolStripMenuItem
             // 
             this.选择ToolStripMenuItem.Name = "选择ToolStripMenuItem";
-            this.选择ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.选择ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.选择ToolStripMenuItem.Text = "选择";
             // 
             // 移动ToolStripMenuItem
             // 
             this.移动ToolStripMenuItem.Name = "移动ToolStripMenuItem";
-            this.移动ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.移动ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.移动ToolStripMenuItem.Text = "移动";
             // 
             // 旋转ToolStripMenuItem1
             // 
             this.旋转ToolStripMenuItem1.Name = "旋转ToolStripMenuItem1";
-            this.旋转ToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.旋转ToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.旋转ToolStripMenuItem1.Text = "旋转";
             // 
             // 打开自动吸附ToolStripMenuItem
             // 
             this.打开自动吸附ToolStripMenuItem.Name = "打开自动吸附ToolStripMenuItem";
-            this.打开自动吸附ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.打开自动吸附ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.打开自动吸附ToolStripMenuItem.Text = "打开自动吸附";
             // 
             // 关闭自动吸附ToolStripMenuItem
             // 
             this.关闭自动吸附ToolStripMenuItem.Name = "关闭自动吸附ToolStripMenuItem";
-            this.关闭自动吸附ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.关闭自动吸附ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.关闭自动吸附ToolStripMenuItem.Text = "关闭自动吸附";
             // 
             // 推拉ToolStripMenuItem
             // 
             this.推拉ToolStripMenuItem.Name = "推拉ToolStripMenuItem";
-            this.推拉ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.推拉ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.推拉ToolStripMenuItem.Text = "推/拉";
             // 
             // 颜料桶ToolStripMenuItem
             // 
             this.颜料桶ToolStripMenuItem.Name = "颜料桶ToolStripMenuItem";
-            this.颜料桶ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.颜料桶ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.颜料桶ToolStripMenuItem.Text = "颜料桶";
             // 
             // 标尺ToolStripMenuItem
             // 
             this.标尺ToolStripMenuItem.Name = "标尺ToolStripMenuItem";
-            this.标尺ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.标尺ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.标尺ToolStripMenuItem.Text = "标尺";
             // 
             // 窗口ToolStripMenuItem
@@ -423,31 +423,31 @@ namespace WinFormsContentLoading
             this.显示隐藏工具栏ToolStripMenuItem,
             this.显示隐藏创建面板ToolStripMenuItem});
             this.窗口ToolStripMenuItem.Name = "窗口ToolStripMenuItem";
-            this.窗口ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.窗口ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.窗口ToolStripMenuItem.Text = "窗口";
             // 
             // 属性栏ToolStripMenuItem
             // 
             this.属性栏ToolStripMenuItem.Name = "属性栏ToolStripMenuItem";
-            this.属性栏ToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.属性栏ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.属性栏ToolStripMenuItem.Text = "属性栏";
             // 
             // 显示隐藏工具栏ToolStripMenuItem
             // 
             this.显示隐藏工具栏ToolStripMenuItem.Name = "显示隐藏工具栏ToolStripMenuItem";
-            this.显示隐藏工具栏ToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.显示隐藏工具栏ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.显示隐藏工具栏ToolStripMenuItem.Text = "显示/隐藏工具栏";
             // 
             // 显示隐藏创建面板ToolStripMenuItem
             // 
             this.显示隐藏创建面板ToolStripMenuItem.Name = "显示隐藏创建面板ToolStripMenuItem";
-            this.显示隐藏创建面板ToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.显示隐藏创建面板ToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.显示隐藏创建面板ToolStripMenuItem.Text = "显示/隐藏创建面板";
             // 
             // 渲染ToolStripMenuItem
             // 
             this.渲染ToolStripMenuItem.Name = "渲染ToolStripMenuItem";
-            this.渲染ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.渲染ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.渲染ToolStripMenuItem.Text = "渲染";
             // 
             // 帮助ToolStripMenuItem
@@ -456,25 +456,25 @@ namespace WinFormsContentLoading
             this.关于ToolStripMenuItem,
             this.帮助文档ToolStripMenuItem});
             this.帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.帮助ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.帮助ToolStripMenuItem.Text = "帮助";
             // 
             // 关于ToolStripMenuItem
             // 
             this.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.关于ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.关于ToolStripMenuItem.Text = "关于";
             // 
             // 帮助文档ToolStripMenuItem
             // 
             this.帮助文档ToolStripMenuItem.Name = "帮助文档ToolStripMenuItem";
-            this.帮助文档ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.帮助文档ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.帮助文档ToolStripMenuItem.Text = "帮助文档";
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -511,16 +511,16 @@ namespace WinFormsContentLoading
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(882, 504);
-            this.splitContainer1.SplitterDistance = 70;
+            this.splitContainer1.Size = new System.Drawing.Size(882, 549);
+            this.splitContainer1.SplitterDistance = 76;
             this.splitContainer1.TabIndex = 4;
             // 
             // HoleBox
             // 
             this.HoleBox.Image = ((System.Drawing.Image)(resources.GetObject("HoleBox.Image")));
-            this.HoleBox.Location = new System.Drawing.Point(403, 42);
+            this.HoleBox.Location = new System.Drawing.Point(403, 46);
             this.HoleBox.Name = "HoleBox";
-            this.HoleBox.Size = new System.Drawing.Size(28, 28);
+            this.HoleBox.Size = new System.Drawing.Size(28, 30);
             this.HoleBox.TabIndex = 27;
             this.HoleBox.UseVisualStyleBackColor = true;
             this.HoleBox.Click += new System.EventHandler(this.HoleBox_Click);
@@ -530,9 +530,9 @@ namespace WinFormsContentLoading
             // HoleEllipse
             // 
             this.HoleEllipse.Image = ((System.Drawing.Image)(resources.GetObject("HoleEllipse.Image")));
-            this.HoleEllipse.Location = new System.Drawing.Point(369, 42);
+            this.HoleEllipse.Location = new System.Drawing.Point(369, 46);
             this.HoleEllipse.Name = "HoleEllipse";
-            this.HoleEllipse.Size = new System.Drawing.Size(28, 28);
+            this.HoleEllipse.Size = new System.Drawing.Size(28, 30);
             this.HoleEllipse.TabIndex = 26;
             this.HoleEllipse.UseVisualStyleBackColor = true;
             this.HoleEllipse.Click += new System.EventHandler(this.HoleEllipse_Click);
@@ -542,9 +542,9 @@ namespace WinFormsContentLoading
             // WellBtn
             // 
             this.WellBtn.Image = ((System.Drawing.Image)(resources.GetObject("WellBtn.Image")));
-            this.WellBtn.Location = new System.Drawing.Point(235, 42);
+            this.WellBtn.Location = new System.Drawing.Point(235, 46);
             this.WellBtn.Name = "WellBtn";
-            this.WellBtn.Size = new System.Drawing.Size(28, 28);
+            this.WellBtn.Size = new System.Drawing.Size(28, 30);
             this.WellBtn.TabIndex = 25;
             this.WellBtn.UseVisualStyleBackColor = true;
             this.WellBtn.Click += new System.EventHandler(this.WellBtn_Click);
@@ -554,9 +554,9 @@ namespace WinFormsContentLoading
             // ChamberBtn
             // 
             this.ChamberBtn.Image = ((System.Drawing.Image)(resources.GetObject("ChamberBtn.Image")));
-            this.ChamberBtn.Location = new System.Drawing.Point(269, 42);
+            this.ChamberBtn.Location = new System.Drawing.Point(269, 46);
             this.ChamberBtn.Name = "ChamberBtn";
-            this.ChamberBtn.Size = new System.Drawing.Size(28, 28);
+            this.ChamberBtn.Size = new System.Drawing.Size(28, 30);
             this.ChamberBtn.TabIndex = 24;
             this.ChamberBtn.UseVisualStyleBackColor = true;
             this.ChamberBtn.Click += new System.EventHandler(this.ChamberBtn_Click);
@@ -566,9 +566,9 @@ namespace WinFormsContentLoading
             // ValveBtn
             // 
             this.ValveBtn.Image = ((System.Drawing.Image)(resources.GetObject("ValveBtn.Image")));
-            this.ValveBtn.Location = new System.Drawing.Point(303, 42);
+            this.ValveBtn.Location = new System.Drawing.Point(303, 46);
             this.ValveBtn.Name = "ValveBtn";
-            this.ValveBtn.Size = new System.Drawing.Size(28, 28);
+            this.ValveBtn.Size = new System.Drawing.Size(28, 30);
             this.ValveBtn.TabIndex = 23;
             this.ValveBtn.UseVisualStyleBackColor = true;
             this.ValveBtn.Click += new System.EventHandler(this.ValveBtn_Click);
@@ -578,9 +578,9 @@ namespace WinFormsContentLoading
             // PipeEBtn
             // 
             this.PipeEBtn.Image = ((System.Drawing.Image)(resources.GetObject("PipeEBtn.Image")));
-            this.PipeEBtn.Location = new System.Drawing.Point(602, 42);
+            this.PipeEBtn.Location = new System.Drawing.Point(602, 46);
             this.PipeEBtn.Name = "PipeEBtn";
-            this.PipeEBtn.Size = new System.Drawing.Size(28, 28);
+            this.PipeEBtn.Size = new System.Drawing.Size(28, 30);
             this.PipeEBtn.TabIndex = 22;
             this.PipeEBtn.UseVisualStyleBackColor = true;
             this.PipeEBtn.Click += new System.EventHandler(this.PipeEBtn_Click);
@@ -588,9 +588,9 @@ namespace WinFormsContentLoading
             // PipeDBtn
             // 
             this.PipeDBtn.Image = ((System.Drawing.Image)(resources.GetObject("PipeDBtn.Image")));
-            this.PipeDBtn.Location = new System.Drawing.Point(573, 42);
+            this.PipeDBtn.Location = new System.Drawing.Point(573, 46);
             this.PipeDBtn.Name = "PipeDBtn";
-            this.PipeDBtn.Size = new System.Drawing.Size(28, 28);
+            this.PipeDBtn.Size = new System.Drawing.Size(28, 30);
             this.PipeDBtn.TabIndex = 21;
             this.PipeDBtn.UseVisualStyleBackColor = true;
             this.PipeDBtn.Click += new System.EventHandler(this.PipeDBtn_Click);
@@ -598,9 +598,9 @@ namespace WinFormsContentLoading
             // PipeCBtn
             // 
             this.PipeCBtn.Image = ((System.Drawing.Image)(resources.GetObject("PipeCBtn.Image")));
-            this.PipeCBtn.Location = new System.Drawing.Point(539, 42);
+            this.PipeCBtn.Location = new System.Drawing.Point(539, 46);
             this.PipeCBtn.Name = "PipeCBtn";
-            this.PipeCBtn.Size = new System.Drawing.Size(28, 28);
+            this.PipeCBtn.Size = new System.Drawing.Size(28, 30);
             this.PipeCBtn.TabIndex = 20;
             this.PipeCBtn.UseVisualStyleBackColor = true;
             this.PipeCBtn.Click += new System.EventHandler(this.PipeCBtn_Click);
@@ -608,9 +608,9 @@ namespace WinFormsContentLoading
             // PipeBBtn
             // 
             this.PipeBBtn.Image = ((System.Drawing.Image)(resources.GetObject("PipeBBtn.Image")));
-            this.PipeBBtn.Location = new System.Drawing.Point(505, 42);
+            this.PipeBBtn.Location = new System.Drawing.Point(505, 46);
             this.PipeBBtn.Name = "PipeBBtn";
-            this.PipeBBtn.Size = new System.Drawing.Size(28, 28);
+            this.PipeBBtn.Size = new System.Drawing.Size(28, 30);
             this.PipeBBtn.TabIndex = 19;
             this.PipeBBtn.UseVisualStyleBackColor = true;
             this.PipeBBtn.Click += new System.EventHandler(this.PipeBBtn_Click);
@@ -618,9 +618,9 @@ namespace WinFormsContentLoading
             // PipeABtn
             // 
             this.PipeABtn.Image = ((System.Drawing.Image)(resources.GetObject("PipeABtn.Image")));
-            this.PipeABtn.Location = new System.Drawing.Point(471, 42);
+            this.PipeABtn.Location = new System.Drawing.Point(471, 46);
             this.PipeABtn.Name = "PipeABtn";
-            this.PipeABtn.Size = new System.Drawing.Size(28, 28);
+            this.PipeABtn.Size = new System.Drawing.Size(28, 30);
             this.PipeABtn.TabIndex = 18;
             this.PipeABtn.UseVisualStyleBackColor = true;
             this.PipeABtn.Click += new System.EventHandler(this.PipeABtn_Click);
@@ -629,7 +629,7 @@ namespace WinFormsContentLoading
             // 
             this.RotateBtn.Location = new System.Drawing.Point(437, 3);
             this.RotateBtn.Name = "RotateBtn";
-            this.RotateBtn.Size = new System.Drawing.Size(28, 28);
+            this.RotateBtn.Size = new System.Drawing.Size(28, 30);
             this.RotateBtn.TabIndex = 17;
             this.RotateBtn.UseVisualStyleBackColor = true;
             this.RotateBtn.Click += new System.EventHandler(this.RotateBtn_Click);
@@ -639,7 +639,7 @@ namespace WinFormsContentLoading
             this.button17.Image = ((System.Drawing.Image)(resources.GetObject("button17.Image")));
             this.button17.Location = new System.Drawing.Point(134, 3);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(28, 28);
+            this.button17.Size = new System.Drawing.Size(28, 30);
             this.button17.TabIndex = 16;
             this.button17.UseVisualStyleBackColor = true;
             // 
@@ -648,7 +648,7 @@ namespace WinFormsContentLoading
             this.button16.Image = ((System.Drawing.Image)(resources.GetObject("button16.Image")));
             this.button16.Location = new System.Drawing.Point(573, 3);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(28, 28);
+            this.button16.Size = new System.Drawing.Size(28, 30);
             this.button16.TabIndex = 15;
             this.button16.UseVisualStyleBackColor = true;
             // 
@@ -657,7 +657,7 @@ namespace WinFormsContentLoading
             this.button15.Image = ((System.Drawing.Image)(resources.GetObject("button15.Image")));
             this.button15.Location = new System.Drawing.Point(335, 3);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(28, 28);
+            this.button15.Size = new System.Drawing.Size(28, 30);
             this.button15.TabIndex = 14;
             this.button15.UseVisualStyleBackColor = true;
             // 
@@ -665,7 +665,7 @@ namespace WinFormsContentLoading
             // 
             this.ExtrudeBtn.Location = new System.Drawing.Point(505, 3);
             this.ExtrudeBtn.Name = "ExtrudeBtn";
-            this.ExtrudeBtn.Size = new System.Drawing.Size(28, 28);
+            this.ExtrudeBtn.Size = new System.Drawing.Size(28, 30);
             this.ExtrudeBtn.TabIndex = 13;
             this.ExtrudeBtn.UseVisualStyleBackColor = true;
             this.ExtrudeBtn.Click += new System.EventHandler(this.ExtrudeBtn_Click);
@@ -675,7 +675,7 @@ namespace WinFormsContentLoading
             this.SnapBtn.Image = ((System.Drawing.Image)(resources.GetObject("SnapBtn.Image")));
             this.SnapBtn.Location = new System.Drawing.Point(539, 3);
             this.SnapBtn.Name = "SnapBtn";
-            this.SnapBtn.Size = new System.Drawing.Size(28, 28);
+            this.SnapBtn.Size = new System.Drawing.Size(28, 30);
             this.SnapBtn.TabIndex = 12;
             this.SnapBtn.UseVisualStyleBackColor = true;
             this.SnapBtn.Click += new System.EventHandler(this.SnapBtn_Click);
@@ -685,7 +685,7 @@ namespace WinFormsContentLoading
             this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
             this.button11.Location = new System.Drawing.Point(369, 3);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(28, 28);
+            this.button11.Size = new System.Drawing.Size(28, 30);
             this.button11.TabIndex = 10;
             this.button11.UseVisualStyleBackColor = true;
             // 
@@ -694,7 +694,7 @@ namespace WinFormsContentLoading
             this.MoveBtn.Image = ((System.Drawing.Image)(resources.GetObject("MoveBtn.Image")));
             this.MoveBtn.Location = new System.Drawing.Point(403, 3);
             this.MoveBtn.Name = "MoveBtn";
-            this.MoveBtn.Size = new System.Drawing.Size(28, 28);
+            this.MoveBtn.Size = new System.Drawing.Size(28, 30);
             this.MoveBtn.TabIndex = 9;
             this.MoveBtn.UseVisualStyleBackColor = true;
             this.MoveBtn.Click += new System.EventHandler(this.MoveBtn_Click);
@@ -704,7 +704,7 @@ namespace WinFormsContentLoading
             this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
             this.button9.Location = new System.Drawing.Point(303, 3);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(28, 28);
+            this.button9.Size = new System.Drawing.Size(28, 30);
             this.button9.TabIndex = 8;
             this.button9.UseVisualStyleBackColor = true;
             // 
@@ -713,7 +713,7 @@ namespace WinFormsContentLoading
             this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
             this.button8.Location = new System.Drawing.Point(269, 3);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(28, 28);
+            this.button8.Size = new System.Drawing.Size(28, 30);
             this.button8.TabIndex = 7;
             this.button8.UseVisualStyleBackColor = true;
             // 
@@ -722,7 +722,7 @@ namespace WinFormsContentLoading
             this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
             this.button7.Location = new System.Drawing.Point(235, 3);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(28, 28);
+            this.button7.Size = new System.Drawing.Size(28, 30);
             this.button7.TabIndex = 6;
             this.button7.UseVisualStyleBackColor = true;
             // 
@@ -731,7 +731,7 @@ namespace WinFormsContentLoading
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
             this.button6.Location = new System.Drawing.Point(167, 3);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(28, 28);
+            this.button6.Size = new System.Drawing.Size(28, 30);
             this.button6.TabIndex = 5;
             this.button6.UseVisualStyleBackColor = true;
             // 
@@ -740,7 +740,7 @@ namespace WinFormsContentLoading
             this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
             this.button5.Location = new System.Drawing.Point(201, 3);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(28, 28);
+            this.button5.Size = new System.Drawing.Size(28, 30);
             this.button5.TabIndex = 4;
             this.button5.UseVisualStyleBackColor = true;
             // 
@@ -749,7 +749,7 @@ namespace WinFormsContentLoading
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.Location = new System.Drawing.Point(105, 3);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(28, 28);
+            this.button4.Size = new System.Drawing.Size(28, 30);
             this.button4.TabIndex = 3;
             this.button4.UseVisualStyleBackColor = true;
             // 
@@ -758,7 +758,7 @@ namespace WinFormsContentLoading
             this.CopyBtn.Image = ((System.Drawing.Image)(resources.GetObject("CopyBtn.Image")));
             this.CopyBtn.Location = new System.Drawing.Point(71, 3);
             this.CopyBtn.Name = "CopyBtn";
-            this.CopyBtn.Size = new System.Drawing.Size(28, 28);
+            this.CopyBtn.Size = new System.Drawing.Size(28, 30);
             this.CopyBtn.TabIndex = 2;
             this.CopyBtn.UseVisualStyleBackColor = true;
             this.CopyBtn.Click += new System.EventHandler(this.CopyBtn_Click);
@@ -768,7 +768,7 @@ namespace WinFormsContentLoading
             this.RedoBtn.Image = ((System.Drawing.Image)(resources.GetObject("RedoBtn.Image")));
             this.RedoBtn.Location = new System.Drawing.Point(37, 3);
             this.RedoBtn.Name = "RedoBtn";
-            this.RedoBtn.Size = new System.Drawing.Size(28, 28);
+            this.RedoBtn.Size = new System.Drawing.Size(28, 30);
             this.RedoBtn.TabIndex = 1;
             this.RedoBtn.UseVisualStyleBackColor = true;
             this.RedoBtn.Click += new System.EventHandler(this.RedoBtn_Click);
@@ -778,7 +778,7 @@ namespace WinFormsContentLoading
             this.UndoBtn.Image = ((System.Drawing.Image)(resources.GetObject("UndoBtn.Image")));
             this.UndoBtn.Location = new System.Drawing.Point(3, 3);
             this.UndoBtn.Name = "UndoBtn";
-            this.UndoBtn.Size = new System.Drawing.Size(28, 28);
+            this.UndoBtn.Size = new System.Drawing.Size(28, 30);
             this.UndoBtn.TabIndex = 0;
             this.UndoBtn.UseVisualStyleBackColor = true;
             this.UndoBtn.Click += new System.EventHandler(this.UndoBtn_Click);
@@ -793,8 +793,8 @@ namespace WinFormsContentLoading
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(882, 430);
-            this.splitContainer2.SplitterDistance = 366;
+            this.splitContainer2.Size = new System.Drawing.Size(882, 469);
+            this.splitContainer2.SplitterDistance = 399;
             this.splitContainer2.TabIndex = 0;
             // 
             // splitContainer3
@@ -806,7 +806,7 @@ namespace WinFormsContentLoading
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.ViewParentPanalContainer);
-            this.splitContainer3.Size = new System.Drawing.Size(882, 366);
+            this.splitContainer3.Size = new System.Drawing.Size(882, 399);
             this.splitContainer3.SplitterDistance = 188;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -815,15 +815,15 @@ namespace WinFormsContentLoading
             this.ViewParentPanalContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ViewParentPanalContainer.Location = new System.Drawing.Point(0, 0);
             this.ViewParentPanalContainer.Name = "ViewParentPanalContainer";
-            this.ViewParentPanalContainer.Size = new System.Drawing.Size(690, 366);
+            this.ViewParentPanalContainer.Size = new System.Drawing.Size(690, 399);
             this.ViewParentPanalContainer.SplitterDistance = 561;
             this.ViewParentPanalContainer.TabIndex = 0;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 529);
+            this.ClientSize = new System.Drawing.Size(882, 573);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "MainForm";

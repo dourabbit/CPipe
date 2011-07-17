@@ -93,7 +93,7 @@ namespace XNASysLib.Primitives3D
             this.ShapeNode.ID = _ID + "_Shape";
             base.LoadContent();
         }
-        protected override void OnModify()
+        protected override void OnModifyBoundingSpheres()
         {
 
             this._selCompData.BoundingSpheres =

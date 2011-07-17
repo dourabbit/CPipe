@@ -111,57 +111,22 @@ namespace XNASysLib.Primitives3D
         #region showProperties
 
 
-        /*
-        public virtual Matrix World
+        [MyShowProperty]
+        public virtual string Name
         {
-            get {return base.TransformNode.World; }//return _world; }
-            set 
+            get
             {
-                TransformNode.World = value;
-               // this._translation = _world.Translation;
-                //this._selCompData.dataModifitionHandler.Invoke();
+
+                //return ((SceneNodHierachyModel)this.Root).NodeNm;
+                return this._ID;
             }
-        }
-        public virtual Vector3 Translate
-        {
-            get { return base.TransformNode.Translate; }
-            set 
+            set
             {
-                base.TransformNode.Translate = value;
 
-                this._selCompData.dataModifitionHandler.Invoke();
+                //((SceneNodHierachyModel)this.Root).NodeNm = value;
+                this._ID = value;
             }
         }
-        public virtual Vector3 Scale
-        {
-            get { return base.TransformNode.Scale; }
-            set { base.TransformNode.Scale = value; }
-        }
-
-        /// <summary>
-        /// Pivot in ObjSpace
-        /// </summary>
-        public virtual Vector3 Pivot
-        {
-            get 
-            { 
-                return TransformNode.Pivot; 
-            }
-            set { base.TransformNode.Pivot = value; }
-        }
-        public virtual Vector3 Rotate
-        {
-            get { return base.TransformNode.Rotate; }
-            set { base.TransformNode.Rotate = value; }
-        }
-        public virtual Quaternion Quaternion
-        {
-            get { return base.TransformNode.RotQuaternion; }
-        }
-        */
-
-        //Vector3 _translation;
-        //Vector3 _rotation;
         [MyShowProperty]
         public virtual float TranslateX
         {
@@ -329,7 +294,7 @@ namespace XNASysLib.Primitives3D
             
             this._selCompData.SelectionHandler += OnSelected;
             
-            this._selCompData.dataModifitionHandler += OnModify;
+            this._selCompData.dataModifitionHandler += OnModifyBoundingSpheres;
 
 
 
@@ -352,7 +317,7 @@ namespace XNASysLib.Primitives3D
             
         }
 
-        protected virtual void OnModify()
+        protected virtual void OnModifyBoundingSpheres()
         {
 
             this._selCompData.BoundingSpheres =

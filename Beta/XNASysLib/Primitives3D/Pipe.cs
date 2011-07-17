@@ -24,21 +24,104 @@ namespace XNASysLib.Primitives3D
 {
     public class Pipe :PipeBase
     {
-               [MyShowProperty]
-        public virtual string Name
+        [MyShowProperty]
+        public override string Name
         {
             get
             {
 
-                return ((SceneNodHierachyModel)this.Root).NodeNm;
+                //return ((SceneNodHierachyModel)this.Root).NodeNm;
+                return this.NodeNm;
             }
             set
             {
 
-                ((SceneNodHierachyModel)this.Root).NodeNm = value;
+                //((SceneNodHierachyModel)this.Root).NodeNm = value;
+                this.NodeNm = value;
             }
         }
 
+
+
+        //[MyShowProperty]
+        //public override float TranslateX
+        //{
+        //    get
+        //    {
+        //        object obj = this.Root;
+
+        //        return ((SceneNodHierachyModel)this.Root).TranslateX;
+        //    }
+        //    set
+        //    {
+
+        //        ((SceneNodHierachyModel)Root).TranslateX = value;
+        //    }
+        //}
+        //[MyShowProperty]
+        //public override float TranslateY
+        //{
+        //    get
+        //    {
+
+        //        return ((SceneNodHierachyModel)this.Root).TranslateY;
+        //    }
+        //    set
+        //    {
+        //        ((SceneNodHierachyModel)Root).TranslateY = value;
+        //    }
+        //}
+        //[MyShowProperty]
+        //public override float TranslateZ
+        //{
+        //    get
+        //    {
+
+        //        return ((SceneNodHierachyModel)this.Root).TranslateZ;
+        //    }
+        //    set
+        //    {
+
+        //        ((SceneNodHierachyModel)this.Root).TranslateZ = value;
+        //    }
+        //}
+        //[MyShowProperty]
+        //public override float RotationX
+        //{
+        //    get
+        //    {
+        //        return ((SceneNodHierachyModel)this.Root).RotationX;
+        //    }
+        //    set
+        //    {
+        //        ((SceneNodHierachyModel)this.Root).RotationX = value;
+        //    }
+        //}
+        //[MyShowProperty]
+        //public override float RotationY
+        //{
+        //    get
+        //    {
+        //        return ((SceneNodHierachyModel)this.Root).RotationY;
+        //    }
+        //    set
+        //    {
+        //        ((SceneNodHierachyModel)this.Root).RotationY = value;
+        //    }
+        //}
+        //[MyShowProperty]
+        //public override float RotationZ
+        //{
+        //    get
+        //    {
+        //        return ((SceneNodHierachyModel)this.Root).RotationZ;
+        //    }
+        //    set
+        //    {
+
+        //        ((SceneNodHierachyModel)this.Root).RotationZ = value;
+        //    }
+        //}
 
 
         [MyShowProperty]
@@ -46,14 +129,16 @@ namespace XNASysLib.Primitives3D
         {
             get
             {
-                object obj = this.Root;
+                //object obj = this.Root;
 
-                return ((SceneNodHierachyModel)this.Root).TranslateX;
+                //return ((SceneNodHierachyModel)this.Root).TranslateX;
+                return base.TranslateX;
             }
             set
             {
 
-                ((SceneNodHierachyModel)Root).TranslateX = value;
+                //((SceneNodHierachyModel)Root).TranslateX = value;
+                base.TranslateX = value;
             }
         }
         [MyShowProperty]
@@ -61,12 +146,11 @@ namespace XNASysLib.Primitives3D
         {
             get
             {
-
-                return ((SceneNodHierachyModel)this.Root).TranslateY;
+                return base.TranslateY;
             }
             set
             {
-                ((SceneNodHierachyModel)Root).TranslateY = value;
+                base.TranslateY = value;
             }
         }
         [MyShowProperty]
@@ -75,12 +159,12 @@ namespace XNASysLib.Primitives3D
             get
             {
 
-                return ((SceneNodHierachyModel)this.Root).TranslateZ;
+                return base.TranslateZ;
             }
             set
             {
 
-                ((SceneNodHierachyModel)this.Root).TranslateZ = value;
+                base.TranslateZ = value;
             }
         }
         [MyShowProperty]
@@ -88,11 +172,11 @@ namespace XNASysLib.Primitives3D
         {
             get
             {
-                return ((SceneNodHierachyModel)this.Root).RotationX;
+                return base.RotationX;
             }
             set
             {
-                ((SceneNodHierachyModel)this.Root).RotationX = value;
+                base.RotationX = value;
             }
         }
         [MyShowProperty]
@@ -100,11 +184,11 @@ namespace XNASysLib.Primitives3D
         {
             get
             {
-                return ((SceneNodHierachyModel)this.Root).RotationY;
+                return base.RotationY;
             }
             set
             {
-                ((SceneNodHierachyModel)this.Root).RotationY = value;
+                base.RotationY = value;
             }
         }
         [MyShowProperty]
@@ -112,15 +196,14 @@ namespace XNASysLib.Primitives3D
         {
             get
             {
-                return ((SceneNodHierachyModel)this.Root).RotationZ;
+                return base.RotationZ;
             }
             set
             {
 
-                ((SceneNodHierachyModel)this.Root).RotationZ = value;
+                base.RotationZ = value;
             }
         }
-
         [MyShowProperty]
         public virtual float Radius
         {
@@ -147,9 +230,9 @@ namespace XNASysLib.Primitives3D
             }
         }
 
-        int _material;
+        string _material;
         [MyShowProperty]
-        public int Material
+        public string Material
         {
             get { return _material; }
             set { _material = value; }
@@ -157,23 +240,15 @@ namespace XNASysLib.Primitives3D
 
         //Color _color = Microsoft.Xna.Framework.Color.Bisque;
         [MyShowProperty]
-        public string Color
+        public override string ObjColor
         {
-            get { return _color.ToString(); }
-            set 
+            get
             {
-                //Color col = new Microsoft.Xna.Framework.Color(
-
-                MyConsole.WriteLine(value);
-
-                int r = Int32.Parse(value.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-                int g = Int32.Parse(value.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-                int b = Int32.Parse(value.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
-
-                this._color = new Color(r,g,b);
-
-
-            
+                return base.ObjColor;
+            }
+            set
+            {
+                base.ObjColor = value;
             }
         }
 
