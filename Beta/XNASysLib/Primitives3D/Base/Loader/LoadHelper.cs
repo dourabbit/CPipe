@@ -44,7 +44,7 @@ namespace XNASysLib.Primitives3D.Base.Loader
             curSceneNod.TransformNode = transNod;
             curSceneNod.TransformNode.AbsoluteTransform = Matrix.Identity;
 
-            //If only one obj, no child at all. New a dummy group
+            //If only one obj, no child at all. New a dummy root group
             if (curSceneNod == root && transNod.Children.Count == 0)
             {
                 SceneNodHierachyModel childSceneH = new SceneNodHierachyModel(game);
@@ -65,43 +65,51 @@ namespace XNASysLib.Primitives3D.Base.Loader
 
             foreach (ShapeNode shape in shapeGrp)
             {
-                if (shape.ParentIndex == curIndex)
+                if (shape.ParentIndex != curIndex)
+                    continue;//skip when it is not current cild
+
+                if (curSceneNod.ShapeNode == null)
                 {
-                    if (curSceneNod.ShapeNode == null)
+                    if (curSceneNod.ID == "root")
                     {
-                        if (curSceneNod.ID != "root")
-                            curSceneNod.ShapeNode = shape;
+                        SceneNodHierachyModel child =
+                         curSceneNod.Children[0] as SceneNodHierachyModel;
+                        
+                        if (child.ShapeNode == null)
+                            child.ShapeNode = shape;
                         else
-                        {
-                            SceneNodHierachyModel child =
-                                curSceneNod.Children[0] as SceneNodHierachyModel;
-                            if (child != null)
-                                child.ShapeNode = shape;
-                        }
+                            ShapeNode.CombineShape(shape, child.ShapeNode);
+                
                     }
                     else
                     {
 
-                        //SceneNodHierachyModel sibling = new SceneNodHierachyModel(_game);
-                        //sibling.NodeNm = transNod.NodeNm;
-                        //sibling.Children = new NodeChildren<INode>();
-                        //sibling.Root = root;
-                        //TransformNode newTransNod = new TransformNode();
-                        //sibling.TransformNode = newTransNod;
-                        //sibling.TransformNode.AbsoluteTransform = Matrix.Identity;
-                        //sibling.ShapeNode = shape;
-                        //curSceneNod.Children.Add(sibling);
-                        ShapeNode.CombineShape(shape, curSceneNod.ShapeNode);
+                        curSceneNod.ShapeNode = shape;
                     }
                 }
+                else
+                {
+
+                    //SceneNodHierachyModel sibling = new SceneNodHierachyModel(_game);
+                    //sibling.NodeNm = transNod.NodeNm;
+                    //sibling.Children = new NodeChildren<INode>();
+                    //sibling.Root = root;
+                    //TransformNode newTransNod = new TransformNode();
+                    //sibling.TransformNode = newTransNod;
+                    //sibling.TransformNode.AbsoluteTransform = Matrix.Identity;
+                    //sibling.ShapeNode = shape;
+                    //curSceneNod.Children.Add(sibling);
+                    ShapeNode.CombineShape(shape, curSceneNod.ShapeNode);
+                }
+                
             }
             // Recurse over any child nodes.
             foreach (TransformNode childTransNod in transNod.Children)
             {
                 SceneNodHierachyModel childSceneH = new SceneNodHierachyModel(game);
-                //new Pipe(_game);
                 curSceneNod.Children.Add(childSceneH);
                 childSceneH.Parent = curSceneNod;
+                //recursive
                 ProcessSceneNod(game,childSceneH, childTransNod, shapeGrp, ref root, ref curIndex);
             }
         }

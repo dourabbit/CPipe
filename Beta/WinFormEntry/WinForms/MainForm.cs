@@ -420,6 +420,47 @@ namespace WinFormsContentLoading
         }
 
 
+        private void BuildingBtn1_Click(object sender, EventArgs e)
+        {
+            NodCreator newScene =
+              new NodCreator(SceneEntry.Scene, "_Building1",
+                  typeof(SceneNodHierachyModel));
+        }
+
+        private void BuildingBtn2_Click(object sender, EventArgs e)
+        {
+            NodCreator newScene =
+             new NodCreator(SceneEntry.Scene, "_Building2",
+                 typeof(SceneNodHierachyModel));
+        }
+
+        private void BuildingBtn3_Click(object sender, EventArgs e)
+        {
+            NodCreator newScene =
+            new NodCreator(SceneEntry.Scene, "_Building3",
+                typeof(SceneNodHierachyModel));
+        }
+
+        private void RoadBtn_Click(object sender, EventArgs e)
+        {
+            NodCreator newScene =
+          new NodCreator(SceneEntry.Scene, "_Road",
+              typeof(SceneNodHierachyModel));
+        }
+
+        private void subwayBtn_Click(object sender, EventArgs e)
+        {
+                NodCreator newScene =
+             new NodCreator(SceneEntry.Scene, "_SubwayStation",
+                 typeof(SceneNodHierachyModel));
+        }
+
+        private void BridgeBtn_Click(object sender, EventArgs e)
+        {
+                    NodCreator newScene =
+            new NodCreator(SceneEntry.Scene, "_Bridge",
+                typeof(SceneNodHierachyModel));
+        }
 
         void HoleBox_MouseLeave(object sender, System.EventArgs e)
         {
@@ -564,7 +605,9 @@ namespace WinFormsContentLoading
             
         }
 
-       
+
+
+
     
 
         

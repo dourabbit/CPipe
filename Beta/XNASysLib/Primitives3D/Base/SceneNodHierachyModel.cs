@@ -7,7 +7,7 @@
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-
+#define _DEBUG
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;

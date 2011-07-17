@@ -81,9 +81,10 @@ namespace WinFormsContentLoading
             this.¹ØÓÚToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.°ïÖúÎÄµµToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.ViewParentPanalContainer = new System.Windows.Forms.SplitContainer();
+            this.RoadBtn = new System.Windows.Forms.Button();
+            this.buildingBtn3 = new System.Windows.Forms.Button();
+            this.buildingBtn2 = new System.Windows.Forms.Button();
+            this.buildingBtn1 = new System.Windows.Forms.Button();
             this.HoleEllipse = new System.Windows.Forms.Button();
             this.WellBtn = new System.Windows.Forms.Button();
             this.ChamberBtn = new System.Windows.Forms.Button();
@@ -101,6 +102,11 @@ namespace WinFormsContentLoading
             this.CopyBtn = new System.Windows.Forms.Button();
             this.RedoBtn = new System.Windows.Forms.Button();
             this.UndoBtn = new System.Windows.Forms.Button();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.ViewParentPanalContainer = new System.Windows.Forms.SplitContainer();
+            this.subwayBtn = new System.Windows.Forms.Button();
+            this.BridgeBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -470,6 +476,12 @@ namespace WinFormsContentLoading
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.BridgeBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.subwayBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.RoadBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.buildingBtn3);
+            this.splitContainer1.Panel1.Controls.Add(this.buildingBtn2);
+            this.splitContainer1.Panel1.Controls.Add(this.buildingBtn1);
             this.splitContainer1.Panel1.Controls.Add(this.HoleEllipse);
             this.splitContainer1.Panel1.Controls.Add(this.WellBtn);
             this.splitContainer1.Panel1.Controls.Add(this.ChamberBtn);
@@ -495,46 +507,50 @@ namespace WinFormsContentLoading
             this.splitContainer1.SplitterDistance = 76;
             this.splitContainer1.TabIndex = 4;
             // 
-            // splitContainer2
+            // RoadBtn
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.RoadBtn.Image = ((System.Drawing.Image)(resources.GetObject("RoadBtn.Image")));
+            this.RoadBtn.Location = new System.Drawing.Point(556, 39);
+            this.RoadBtn.Name = "RoadBtn";
+            this.RoadBtn.Size = new System.Drawing.Size(28, 30);
+            this.RoadBtn.TabIndex = 30;
+            this.RoadBtn.UseVisualStyleBackColor = true;
+            this.RoadBtn.Click += new System.EventHandler(this.RoadBtn_Click);
             // 
-            // splitContainer2.Panel1
+            // buildingBtn3
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(882, 469);
-            this.splitContainer2.SplitterDistance = 398;
-            this.splitContainer2.TabIndex = 0;
+            this.buildingBtn3.Image = ((System.Drawing.Image)(resources.GetObject("buildingBtn3.Image")));
+            this.buildingBtn3.Location = new System.Drawing.Point(492, 39);
+            this.buildingBtn3.Name = "buildingBtn3";
+            this.buildingBtn3.Size = new System.Drawing.Size(28, 30);
+            this.buildingBtn3.TabIndex = 29;
+            this.buildingBtn3.UseVisualStyleBackColor = true;
+            this.buildingBtn3.Click += new System.EventHandler(this.BuildingBtn3_Click);
             // 
-            // splitContainer3
+            // buildingBtn2
             // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
+            this.buildingBtn2.Image = ((System.Drawing.Image)(resources.GetObject("buildingBtn2.Image")));
+            this.buildingBtn2.Location = new System.Drawing.Point(458, 39);
+            this.buildingBtn2.Name = "buildingBtn2";
+            this.buildingBtn2.Size = new System.Drawing.Size(28, 30);
+            this.buildingBtn2.TabIndex = 28;
+            this.buildingBtn2.UseVisualStyleBackColor = true;
+            this.buildingBtn2.Click += new System.EventHandler(this.BuildingBtn2_Click);
             // 
-            // splitContainer3.Panel2
+            // buildingBtn1
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.ViewParentPanalContainer);
-            this.splitContainer3.Size = new System.Drawing.Size(882, 398);
-            this.splitContainer3.SplitterDistance = 151;
-            this.splitContainer3.TabIndex = 0;
-            // 
-            // ViewParentPanalContainer
-            // 
-            this.ViewParentPanalContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ViewParentPanalContainer.Location = new System.Drawing.Point(0, 0);
-            this.ViewParentPanalContainer.Name = "ViewParentPanalContainer";
-            this.ViewParentPanalContainer.Size = new System.Drawing.Size(727, 398);
-            this.ViewParentPanalContainer.SplitterDistance = 536;
-            this.ViewParentPanalContainer.TabIndex = 0;
+            this.buildingBtn1.Image = ((System.Drawing.Image)(resources.GetObject("buildingBtn1.Image")));
+            this.buildingBtn1.Location = new System.Drawing.Point(424, 39);
+            this.buildingBtn1.Name = "buildingBtn1";
+            this.buildingBtn1.Size = new System.Drawing.Size(28, 30);
+            this.buildingBtn1.TabIndex = 27;
+            this.buildingBtn1.UseVisualStyleBackColor = true;
+            this.buildingBtn1.Click += new System.EventHandler(this.BuildingBtn1_Click);
             // 
             // HoleEllipse
             // 
             this.HoleEllipse.Image = ((System.Drawing.Image)(resources.GetObject("HoleEllipse.Image")));
-            this.HoleEllipse.Location = new System.Drawing.Point(340, 46);
+            this.HoleEllipse.Location = new System.Drawing.Point(529, 3);
             this.HoleEllipse.Name = "HoleEllipse";
             this.HoleEllipse.Size = new System.Drawing.Size(28, 30);
             this.HoleEllipse.TabIndex = 26;
@@ -546,7 +562,7 @@ namespace WinFormsContentLoading
             // WellBtn
             // 
             this.WellBtn.Image = ((System.Drawing.Image)(resources.GetObject("WellBtn.Image")));
-            this.WellBtn.Location = new System.Drawing.Point(235, 46);
+            this.WellBtn.Location = new System.Drawing.Point(424, 3);
             this.WellBtn.Name = "WellBtn";
             this.WellBtn.Size = new System.Drawing.Size(28, 30);
             this.WellBtn.TabIndex = 25;
@@ -558,7 +574,7 @@ namespace WinFormsContentLoading
             // ChamberBtn
             // 
             this.ChamberBtn.Image = ((System.Drawing.Image)(resources.GetObject("ChamberBtn.Image")));
-            this.ChamberBtn.Location = new System.Drawing.Point(269, 46);
+            this.ChamberBtn.Location = new System.Drawing.Point(458, 3);
             this.ChamberBtn.Name = "ChamberBtn";
             this.ChamberBtn.Size = new System.Drawing.Size(28, 30);
             this.ChamberBtn.TabIndex = 24;
@@ -570,7 +586,7 @@ namespace WinFormsContentLoading
             // ValveBtn
             // 
             this.ValveBtn.Image = ((System.Drawing.Image)(resources.GetObject("ValveBtn.Image")));
-            this.ValveBtn.Location = new System.Drawing.Point(303, 46);
+            this.ValveBtn.Location = new System.Drawing.Point(492, 3);
             this.ValveBtn.Name = "ValveBtn";
             this.ValveBtn.Size = new System.Drawing.Size(28, 30);
             this.ValveBtn.TabIndex = 23;
@@ -582,7 +598,7 @@ namespace WinFormsContentLoading
             // PipeEBtn
             // 
             this.PipeEBtn.Image = ((System.Drawing.Image)(resources.GetObject("PipeEBtn.Image")));
-            this.PipeEBtn.Location = new System.Drawing.Point(602, 46);
+            this.PipeEBtn.Location = new System.Drawing.Point(751, 3);
             this.PipeEBtn.Name = "PipeEBtn";
             this.PipeEBtn.Size = new System.Drawing.Size(28, 30);
             this.PipeEBtn.TabIndex = 22;
@@ -592,7 +608,7 @@ namespace WinFormsContentLoading
             // PipeDBtn
             // 
             this.PipeDBtn.Image = ((System.Drawing.Image)(resources.GetObject("PipeDBtn.Image")));
-            this.PipeDBtn.Location = new System.Drawing.Point(573, 46);
+            this.PipeDBtn.Location = new System.Drawing.Point(722, 3);
             this.PipeDBtn.Name = "PipeDBtn";
             this.PipeDBtn.Size = new System.Drawing.Size(28, 30);
             this.PipeDBtn.TabIndex = 21;
@@ -602,7 +618,7 @@ namespace WinFormsContentLoading
             // PipeCBtn
             // 
             this.PipeCBtn.Image = ((System.Drawing.Image)(resources.GetObject("PipeCBtn.Image")));
-            this.PipeCBtn.Location = new System.Drawing.Point(539, 46);
+            this.PipeCBtn.Location = new System.Drawing.Point(688, 3);
             this.PipeCBtn.Name = "PipeCBtn";
             this.PipeCBtn.Size = new System.Drawing.Size(28, 30);
             this.PipeCBtn.TabIndex = 20;
@@ -612,7 +628,7 @@ namespace WinFormsContentLoading
             // PipeBBtn
             // 
             this.PipeBBtn.Image = ((System.Drawing.Image)(resources.GetObject("PipeBBtn.Image")));
-            this.PipeBBtn.Location = new System.Drawing.Point(505, 46);
+            this.PipeBBtn.Location = new System.Drawing.Point(654, 3);
             this.PipeBBtn.Name = "PipeBBtn";
             this.PipeBBtn.Size = new System.Drawing.Size(28, 30);
             this.PipeBBtn.TabIndex = 19;
@@ -622,7 +638,7 @@ namespace WinFormsContentLoading
             // PipeABtn
             // 
             this.PipeABtn.Image = ((System.Drawing.Image)(resources.GetObject("PipeABtn.Image")));
-            this.PipeABtn.Location = new System.Drawing.Point(471, 46);
+            this.PipeABtn.Location = new System.Drawing.Point(620, 3);
             this.PipeABtn.Name = "PipeABtn";
             this.PipeABtn.Size = new System.Drawing.Size(28, 30);
             this.PipeABtn.TabIndex = 18;
@@ -632,7 +648,7 @@ namespace WinFormsContentLoading
             // RotateBtn
             // 
             this.RotateBtn.Image = global::WinFormEntry.Properties.Resources.unknown;
-            this.RotateBtn.Location = new System.Drawing.Point(437, 3);
+            this.RotateBtn.Location = new System.Drawing.Point(243, 3);
             this.RotateBtn.Name = "RotateBtn";
             this.RotateBtn.Size = new System.Drawing.Size(28, 30);
             this.RotateBtn.TabIndex = 17;
@@ -642,7 +658,7 @@ namespace WinFormsContentLoading
             // ExtrudeBtn
             // 
             this.ExtrudeBtn.Image = global::WinFormEntry.Properties.Resources.steet;
-            this.ExtrudeBtn.Location = new System.Drawing.Point(505, 3);
+            this.ExtrudeBtn.Location = new System.Drawing.Point(311, 3);
             this.ExtrudeBtn.Name = "ExtrudeBtn";
             this.ExtrudeBtn.Size = new System.Drawing.Size(28, 30);
             this.ExtrudeBtn.TabIndex = 13;
@@ -652,7 +668,7 @@ namespace WinFormsContentLoading
             // SnapBtn
             // 
             this.SnapBtn.Image = ((System.Drawing.Image)(resources.GetObject("SnapBtn.Image")));
-            this.SnapBtn.Location = new System.Drawing.Point(539, 3);
+            this.SnapBtn.Location = new System.Drawing.Point(345, 3);
             this.SnapBtn.Name = "SnapBtn";
             this.SnapBtn.Size = new System.Drawing.Size(28, 30);
             this.SnapBtn.TabIndex = 12;
@@ -662,7 +678,7 @@ namespace WinFormsContentLoading
             // MoveBtn
             // 
             this.MoveBtn.Image = ((System.Drawing.Image)(resources.GetObject("MoveBtn.Image")));
-            this.MoveBtn.Location = new System.Drawing.Point(403, 3);
+            this.MoveBtn.Location = new System.Drawing.Point(209, 3);
             this.MoveBtn.Name = "MoveBtn";
             this.MoveBtn.Size = new System.Drawing.Size(28, 30);
             this.MoveBtn.TabIndex = 9;
@@ -707,6 +723,62 @@ namespace WinFormsContentLoading
             this.UndoBtn.TabIndex = 0;
             this.UndoBtn.UseVisualStyleBackColor = true;
             this.UndoBtn.Click += new System.EventHandler(this.UndoBtn_Click);
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
+            this.splitContainer2.Size = new System.Drawing.Size(882, 469);
+            this.splitContainer2.SplitterDistance = 398;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.ViewParentPanalContainer);
+            this.splitContainer3.Size = new System.Drawing.Size(882, 398);
+            this.splitContainer3.SplitterDistance = 151;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // ViewParentPanalContainer
+            // 
+            this.ViewParentPanalContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ViewParentPanalContainer.Location = new System.Drawing.Point(0, 0);
+            this.ViewParentPanalContainer.Name = "ViewParentPanalContainer";
+            this.ViewParentPanalContainer.Size = new System.Drawing.Size(727, 398);
+            this.ViewParentPanalContainer.SplitterDistance = 536;
+            this.ViewParentPanalContainer.TabIndex = 0;
+            // 
+            // subwayBtn
+            // 
+            this.subwayBtn.Image = ((System.Drawing.Image)(resources.GetObject("subwayBtn.Image")));
+            this.subwayBtn.Location = new System.Drawing.Point(590, 39);
+            this.subwayBtn.Name = "subwayBtn";
+            this.subwayBtn.Size = new System.Drawing.Size(28, 30);
+            this.subwayBtn.TabIndex = 31;
+            this.subwayBtn.UseVisualStyleBackColor = true;
+            this.subwayBtn.Click += new System.EventHandler(this.subwayBtn_Click);
+            // 
+            // BridgeBtn
+            // 
+            this.BridgeBtn.Image = ((System.Drawing.Image)(resources.GetObject("BridgeBtn.Image")));
+            this.BridgeBtn.Location = new System.Drawing.Point(624, 39);
+            this.BridgeBtn.Name = "BridgeBtn";
+            this.BridgeBtn.Size = new System.Drawing.Size(28, 30);
+            this.BridgeBtn.TabIndex = 32;
+            this.BridgeBtn.UseVisualStyleBackColor = true;
+            this.BridgeBtn.Click += new System.EventHandler(this.BridgeBtn_Click);
             // 
             // MainForm
             // 
@@ -810,6 +882,12 @@ namespace WinFormsContentLoading
         private System.Windows.Forms.Button ChamberBtn;
         private System.Windows.Forms.Button WellBtn;
         private System.Windows.Forms.Button HoleEllipse;
+        private Button buildingBtn1;
+        private Button buildingBtn3;
+        private Button buildingBtn2;
+        private Button RoadBtn;
+        private Button subwayBtn;
+        private Button BridgeBtn;
 
 
     }

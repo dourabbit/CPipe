@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------
 #endregion
 
-
+#define _DEBUG
 #region Using Statements
 using System;
 using Microsoft.Xna.Framework;
