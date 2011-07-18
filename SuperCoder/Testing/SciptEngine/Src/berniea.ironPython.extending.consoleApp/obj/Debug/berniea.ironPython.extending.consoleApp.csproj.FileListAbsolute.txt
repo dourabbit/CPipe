@@ -1,0 +1,13 @@
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\bin\Debug\Rules\Rule2.py
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\bin\Debug\Rules\Rule1.py
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\bin\Debug\berniea.ironPython.extending.consoleApp.exe
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\bin\Debug\berniea.ironPython.extending.consoleApp.pdb
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\bin\Debug\berniea.ironPython.extending.ClassLib.dll
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\bin\Debug\IronPython.dll
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\bin\Debug\IronPython.Modules.dll
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\bin\Debug\Microsoft.Scripting.Core.dll
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\bin\Debug\Microsoft.Scripting.dll
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\bin\Debug\berniea.ironPython.extending.ClassLib.pdb
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\obj\Debug\berniea.ironPython.extending.consoleApp.exe
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.consoleApp\obj\Debug\berniea.ironPython.extending.consoleApp.pdb

@@ -26,33 +26,6 @@ namespace XNASysLib.Primitives3D
     {
 
         int _a;
-        [MyShowProperty]
-        public int A
-        {
-            get { return _a; }
-            set { _a = value; }
-        }
-        int _b;
-        [MyShowProperty]
-        public int B
-        {
-            get { return _b; }
-            set { _b = value; }
-        }
-        int _c;
-        [MyShowProperty]
-        public int C
-        {
-            get { return _c; }
-            set { _c = value; }
-        }
-        int _color;
-        [MyShowProperty]
-        public int Color
-        {
-            get { return _color; }
-            set { _color = value; }
-        }
         public HoleEllipse(IGame game)
             : base(game)
         { 

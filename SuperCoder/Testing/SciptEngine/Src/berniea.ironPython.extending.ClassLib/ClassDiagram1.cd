@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="berniea.ironPython.extending.ClassLib.Line">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgACAAAAAAAAAAAAAgAAIAAA=</HashCode>
+      <FileName>Line.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="berniea.ironPython.extending.ClassLib.SaleBasket">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <AssociationLine Name="Lines" Type="berniea.ironPython.extending.ClassLib.Line">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.058" Y="0.091" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAACAAAAAAAAAAA=</HashCode>
+      <FileName>SaleBasket.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Lines" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,5 @@
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.ClassLib\bin\Debug\berniea.ironPython.extending.ClassLib.dll
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.ClassLib\bin\Debug\berniea.ironPython.extending.ClassLib.pdb
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.ClassLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.ClassLib\obj\Debug\berniea.ironPython.extending.ClassLib.dll
+C:\Users\Chengfuc\CPipe\SuperCoder\Testing\SciptEngine\Src\berniea.ironPython.extending.ClassLib\obj\Debug\berniea.ironPython.extending.ClassLib.pdb
