@@ -138,8 +138,9 @@ namespace XNASysLib.XNAKernel
                             break;
                 }
             }
-            catch(Exception e)
+            catch(Exception f)
             {
+                MyConsole.WriteLine("Error in Loading"+f.Message);
                 return; 
             }
             base.ProceedEvent(gameData);

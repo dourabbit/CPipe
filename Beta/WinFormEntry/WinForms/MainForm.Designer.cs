@@ -81,6 +81,7 @@ namespace WinFormsContentLoading
             this.关于ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助文档ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.BreakPointBtn = new System.Windows.Forms.Button();
             this.BridgeBtn = new System.Windows.Forms.Button();
             this.subwayBtn = new System.Windows.Forms.Button();
             this.RoadBtn = new System.Windows.Forms.Button();
@@ -154,31 +155,31 @@ namespace WinFormsContentLoading
             // 新建ToolStripMenuItem
             // 
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.新建ToolStripMenuItem.Text = "新建";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "打开...";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "退出";
             // 
             // 保存ToolStripMenuItem
             // 
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.保存ToolStripMenuItem.Text = "保存";
             // 
             // 另存ToolStripMenuItem
             // 
             this.另存ToolStripMenuItem.Name = "另存ToolStripMenuItem";
-            this.另存ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.另存ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.另存ToolStripMenuItem.Text = "另存为...";
             // 
             // 编辑ToolStripMenuItem
@@ -476,6 +477,7 @@ namespace WinFormsContentLoading
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.BreakPointBtn);
             this.splitContainer1.Panel1.Controls.Add(this.BridgeBtn);
             this.splitContainer1.Panel1.Controls.Add(this.subwayBtn);
             this.splitContainer1.Panel1.Controls.Add(this.RoadBtn);
@@ -506,6 +508,16 @@ namespace WinFormsContentLoading
             this.splitContainer1.Size = new System.Drawing.Size(882, 549);
             this.splitContainer1.SplitterDistance = 76;
             this.splitContainer1.TabIndex = 4;
+            // 
+            // BreakPointBtn
+            // 
+            this.BreakPointBtn.Image = ((System.Drawing.Image)(resources.GetObject("BreakPointBtn.Image")));
+            this.BreakPointBtn.Location = new System.Drawing.Point(563, 3);
+            this.BreakPointBtn.Name = "BreakPointBtn";
+            this.BreakPointBtn.Size = new System.Drawing.Size(28, 30);
+            this.BreakPointBtn.TabIndex = 33;
+            this.BreakPointBtn.UseVisualStyleBackColor = true;
+            this.BreakPointBtn.Click += new System.EventHandler(this.BreakPointBtn_Click);
             // 
             // BridgeBtn
             // 
@@ -888,6 +900,7 @@ namespace WinFormsContentLoading
         private Button RoadBtn;
         private Button subwayBtn;
         private Button BridgeBtn;
+        private Button BreakPointBtn;
 
 
     }

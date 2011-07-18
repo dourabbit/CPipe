@@ -423,6 +423,14 @@ namespace WinFormsContentLoading
         }
 
 
+        private void BreakPointBtn_Click(object sender, EventArgs e)
+        {
+            NodCreator newScene =
+              new NodCreator(SceneEntry.Scene, "_Flag",
+                  typeof(SceneNodHierachyModel));
+        }
+
+
         private void BuildingBtn1_Click(object sender, EventArgs e)
         {
             NodCreator newScene =

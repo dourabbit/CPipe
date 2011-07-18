@@ -130,7 +130,8 @@ namespace VertexPipeline.Animation
             output.SetShapeNode(
                 shapeNm,
                 parentIndex,
-                triangleCount, geometry.Indices,
+                triangleCount,
+                geometry.Indices,
                 verticesData, bSpheres);
         }
 

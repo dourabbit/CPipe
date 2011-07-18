@@ -72,7 +72,7 @@ namespace VertexPipeline.Data
             {
                 Name=name,
                 ParentIndex=parentIndex,
-                //TriangleCount = triangleCount,
+                TriangleCount = triangleCount,
                 BoundingSpheres = boundingSphere,
                 Vertices = cpuVertices,
                 IndexBuffer=indexBuffer

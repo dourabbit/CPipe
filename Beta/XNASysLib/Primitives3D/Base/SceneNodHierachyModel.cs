@@ -393,8 +393,8 @@ namespace XNASysLib.Primitives3D
 
 
             //Draw Hub info
-            if(ShapeNode!=null)
-                _hub.Draw(gameTime, this.ID, this._selCompData.BoundingSpheres[0].Center);
+            //if(ShapeNode!=null)
+            //    _hub.Draw(gameTime, this.ID, this._selCompData.BoundingSpheres[0].Center);
 
             //base.Draw(gameTime, cam);
         }

@@ -33,7 +33,7 @@ namespace VertexPipeline
     {
         public string Name;
         public int ParentIndex;
-        //public int TriangleCount;
+        public int TriangleCount;
         public VertexData[] Vertices;
         public IndexCollection IndexCollection;
         public BoundingSphere[] BoundingSpheres;
