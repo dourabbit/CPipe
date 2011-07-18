@@ -81,6 +81,8 @@ namespace WinFormsContentLoading
             this.¹ØÓÚToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.°ïÖúÎÄµµToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.BridgeBtn = new System.Windows.Forms.Button();
+            this.subwayBtn = new System.Windows.Forms.Button();
             this.RoadBtn = new System.Windows.Forms.Button();
             this.buildingBtn3 = new System.Windows.Forms.Button();
             this.buildingBtn2 = new System.Windows.Forms.Button();
@@ -105,8 +107,6 @@ namespace WinFormsContentLoading
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.ViewParentPanalContainer = new System.Windows.Forms.SplitContainer();
-            this.subwayBtn = new System.Windows.Forms.Button();
-            this.BridgeBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -507,6 +507,26 @@ namespace WinFormsContentLoading
             this.splitContainer1.SplitterDistance = 76;
             this.splitContainer1.TabIndex = 4;
             // 
+            // BridgeBtn
+            // 
+            this.BridgeBtn.Image = ((System.Drawing.Image)(resources.GetObject("BridgeBtn.Image")));
+            this.BridgeBtn.Location = new System.Drawing.Point(624, 39);
+            this.BridgeBtn.Name = "BridgeBtn";
+            this.BridgeBtn.Size = new System.Drawing.Size(28, 30);
+            this.BridgeBtn.TabIndex = 32;
+            this.BridgeBtn.UseVisualStyleBackColor = true;
+            this.BridgeBtn.Click += new System.EventHandler(this.BridgeBtn_Click);
+            // 
+            // subwayBtn
+            // 
+            this.subwayBtn.Image = ((System.Drawing.Image)(resources.GetObject("subwayBtn.Image")));
+            this.subwayBtn.Location = new System.Drawing.Point(590, 39);
+            this.subwayBtn.Name = "subwayBtn";
+            this.subwayBtn.Size = new System.Drawing.Size(28, 30);
+            this.subwayBtn.TabIndex = 31;
+            this.subwayBtn.UseVisualStyleBackColor = true;
+            this.subwayBtn.Click += new System.EventHandler(this.subwayBtn_Click);
+            // 
             // RoadBtn
             // 
             this.RoadBtn.Image = ((System.Drawing.Image)(resources.GetObject("RoadBtn.Image")));
@@ -759,26 +779,6 @@ namespace WinFormsContentLoading
             this.ViewParentPanalContainer.Size = new System.Drawing.Size(727, 398);
             this.ViewParentPanalContainer.SplitterDistance = 536;
             this.ViewParentPanalContainer.TabIndex = 0;
-            // 
-            // subwayBtn
-            // 
-            this.subwayBtn.Image = ((System.Drawing.Image)(resources.GetObject("subwayBtn.Image")));
-            this.subwayBtn.Location = new System.Drawing.Point(590, 39);
-            this.subwayBtn.Name = "subwayBtn";
-            this.subwayBtn.Size = new System.Drawing.Size(28, 30);
-            this.subwayBtn.TabIndex = 31;
-            this.subwayBtn.UseVisualStyleBackColor = true;
-            this.subwayBtn.Click += new System.EventHandler(this.subwayBtn_Click);
-            // 
-            // BridgeBtn
-            // 
-            this.BridgeBtn.Image = ((System.Drawing.Image)(resources.GetObject("BridgeBtn.Image")));
-            this.BridgeBtn.Location = new System.Drawing.Point(624, 39);
-            this.BridgeBtn.Name = "BridgeBtn";
-            this.BridgeBtn.Size = new System.Drawing.Size(28, 30);
-            this.BridgeBtn.TabIndex = 32;
-            this.BridgeBtn.UseVisualStyleBackColor = true;
-            this.BridgeBtn.Click += new System.EventHandler(this.BridgeBtn_Click);
             // 
             // MainForm
             // 

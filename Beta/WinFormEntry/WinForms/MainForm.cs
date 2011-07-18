@@ -307,6 +307,9 @@ namespace WinFormsContentLoading
 
         private void UndoBtn_Click(object sender, EventArgs e)
         {
+            if (TimeMechine.Entry == null)
+                return;
+
             try
             {
                 if (TimeMechine.History.CurIndex == TimeMechine.History.Count - 1)
@@ -339,7 +342,7 @@ namespace WinFormsContentLoading
                 }
                 HistoryEntry entry = TimeMechine.History.Undo();
 
-                if (entry.Target == null)
+                if (entry == null || entry.Target == null || entry.SnapShot.Trans==null)
                 {
                     MyConsole.WriteLine("LastUndo");
                     return;
@@ -358,7 +361,7 @@ namespace WinFormsContentLoading
             try
             {
                 HistoryEntry entry = TimeMechine.History.Redo();
-                if (entry.Target == null)
+                if (entry == null||entry.Target == null)
                 {
                     MyConsole.WriteLine("LastRedo");
                     return;

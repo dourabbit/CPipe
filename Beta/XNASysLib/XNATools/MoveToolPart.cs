@@ -21,7 +21,6 @@ namespace XNASysLib.XNATools
 
         ITransformNode _centreTarget;
         Vector3 _offset;
-        aCTool _tool;
         public Vector3 Offset
         { get { return _offset; } }
 
@@ -129,16 +128,11 @@ namespace XNASysLib.XNATools
         }
         protected override void OnDragStart()
         {
-            if(this._tool.PreExe!=null)
-                this._tool.PreExe.Invoke();
-            this._isActive = true;
+             this._isActive = true;
             base.OnDragStart();
         }
         protected override void OnDragEnd()
         {
-
-            if (this._tool.AfterExe != null)
-                this._tool.AfterExe.Invoke();
 
             this._isActive = false;
 
@@ -146,9 +140,7 @@ namespace XNASysLib.XNATools
         }
         protected override void OnDragExe()
         {
-            if (this._tool.Exe != null)
-                this._tool.Exe.Invoke();
-
+           
             base.OnDragExe();
         }
         public void Move(Vector3 centreTargetPivot)

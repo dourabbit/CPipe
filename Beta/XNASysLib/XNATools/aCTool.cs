@@ -5,6 +5,7 @@ using System;
 using XNASysLib.XNAKernel;
 using System.Collections.Generic;
 using VertexPipeline;
+using XNASysLib.Primitives3D;
 
 namespace XNASysLib.XNATools
 {
@@ -43,6 +44,16 @@ namespace XNASysLib.XNATools
         public virtual void ToolPreExe()
         {
            // MyConsole.WriteLine("ToolPreExe");
+            SceneNodHierachyModel node = (SceneNodHierachyModel)_toolTarget;
+
+            if (node.ShapeNode != null)
+                _targetSnapShot = new
+                    SnapShot(node.TransformNode.GetCopy(),
+                             node.ShapeNode.GetCopy());
+            else
+                _targetSnapShot = new
+              SnapShot(node.TransformNode.GetCopy(),
+                       null);
         
         }
 
@@ -55,6 +66,16 @@ namespace XNASysLib.XNATools
         public virtual void ToolAfterExe()
         {
            // MyConsole.WriteLine("ToolAfterExe");
+            SceneNodHierachyModel target =
+             _toolTarget as SceneNodHierachyModel;
+            if (target == null)
+                new NullReferenceException();
+            //_game.GameTime.ElapsedGameTime.Seconds
+            new SysEvn(0, this,
+                OBJTYPE.Building, SYSEVN.Tool,
+                 new object[3] { this._toolNm, target, _targetSnapShot }
+                 );
+
         }
         
         public aCTool(IGame game)

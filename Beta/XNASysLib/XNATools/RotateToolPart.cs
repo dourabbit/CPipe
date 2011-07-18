@@ -28,13 +28,6 @@ namespace XNASysLib.XNATools
         Vector3 _z;
         //Quaternion _initialAxis;
         Color _initialCol;
-        //public OnSelected SelectionHandler
-        //{
-        //    get { return _selCompData.SelectionHandler; }
-        //    set { _selCompData.SelectionHandler = value; }
-        //}
-
-        aCTool _tool;
         bool _isActive;
         public bool IsActive
         {
@@ -59,7 +52,7 @@ namespace XNASysLib.XNATools
             {
                 _ID = "RotAxisX";
                 this.TransformNode.NodeNm = _ID + "_trans";
-                this.ShapeNode.ID = _ID + "_shape";
+                this.ShapeNode.Name = _ID + "_shape";
                 this.RotationY = 90;
                 _offset = Vector3.Zero;
                 _offset.Y = 90;
@@ -70,7 +63,7 @@ namespace XNASysLib.XNATools
             {
                 _ID = "RotAxisY";
                 this.TransformNode.NodeNm = _ID + "_trans";
-                this.ShapeNode.ID = _ID + "_shape";
+                this.ShapeNode.Name = _ID + "_shape";
                 this.RotationX = 90;
                 _offset = Vector3.Zero;
                 _offset.X = 90;
@@ -81,7 +74,7 @@ namespace XNASysLib.XNATools
             {
                 _ID = "RotAxisZ";
                 this.TransformNode.NodeNm = _ID + "_trans";
-                this.ShapeNode.ID = _ID + "_shape";
+                this.ShapeNode.Name = _ID + "_shape";
                 _offset = Vector3.Zero;
                 this._dragHandler += this.RotOnZ;
                 _initialCol = Color.Blue;
@@ -278,8 +271,6 @@ namespace XNASysLib.XNATools
 
         protected override void OnDragStart()
         {
-            if (this._tool.PreExe != null)
-                this._tool.PreExe.Invoke();
          
             this._isActive = true;
             _x = _rotationCenter.World.Right;
@@ -297,8 +288,6 @@ namespace XNASysLib.XNATools
         }
         protected override void OnDragEnd()
         {
-            if (this._tool.AfterExe != null)
-                this._tool.AfterExe.Invoke();
 
             this._isActive = false;
             _x = _rotationCenter.World.Right;
@@ -316,8 +305,6 @@ namespace XNASysLib.XNATools
         }
         protected override void OnDragExe()
         {
-            if (this._tool.Exe != null)
-                this._tool.Exe.Invoke();
 
             base.OnDragExe();
         }

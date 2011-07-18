@@ -40,7 +40,7 @@ namespace VertexPipeline.Animation
             {
                 Name=name,
                 ParentIndex=parentIndex,
-                TriangleCount = triangleCount,
+                //TriangleCount = triangleCount,
                 IndexCollection = indexCollection,
                 Vertices = vertices,
                 BoundingSpheres = bSpheres,

@@ -27,7 +27,7 @@ namespace XNASysLib.XNATools
     /// </summary>
     public class DraggableRing :SceneDraggablePrimitive //ToolPrimitive
     {
-
+        protected aCTool _tool;
         public GeometricNode ShapeNode { get; set; }
         public float Width{get;set;}
         public float Radius{get;set;}
@@ -232,7 +232,28 @@ namespace XNASysLib.XNATools
 
             base.LoadContent();
         }
+        protected override void OnDragStart()
+        {
+            if (this._tool.PreExe != null)
+                this._tool.PreExe.Invoke();
+            base.OnDragStart();
+        }
+        protected override void OnDragEnd()
+        {
 
+            if (this._tool.AfterExe != null)
+                this._tool.AfterExe.Invoke();
+
+
+            base.OnDragEnd();
+        }
+        protected override void OnDragExe()
+        {
+            if (this._tool.Exe != null)
+                this._tool.Exe.Invoke();
+
+            base.OnDragExe();
+        }
         public override void Update(GameTime gameTime)
         {
             if (!_isInitialized)

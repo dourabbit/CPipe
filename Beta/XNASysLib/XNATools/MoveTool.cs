@@ -46,16 +46,7 @@ namespace XNASysLib.XNATools
 
        public override void ToolAfterExe()
        {
-           SceneNodHierachyModel target =
-               _toolTarget as SceneNodHierachyModel;
-           if (target == null)
-               new NullReferenceException();
-           //_game.GameTime.ElapsedGameTime.Seconds
-
-           new SysEvn(0, this,
-               OBJTYPE.Building,SYSEVN.Tool,
-                new object[3] { this._toolNm, target, _targetSnapShot }
-                );
+       
 
            base.ToolAfterExe();
        }
@@ -69,16 +60,7 @@ namespace XNASysLib.XNATools
        public override void ToolPreExe()
        {
 
-           SceneNodHierachyModel node = (SceneNodHierachyModel)_toolTarget;
-
-           if(node.ShapeNode!=null)
-           _targetSnapShot = new 
-               SnapShot(node.TransformNode.GetCopy(), 
-                        node.ShapeNode.GetCopy());
-           else
-               _targetSnapShot = new
-             SnapShot(node.TransformNode.GetCopy(),
-                      null);
+         
 
            base.ToolPreExe();
        }

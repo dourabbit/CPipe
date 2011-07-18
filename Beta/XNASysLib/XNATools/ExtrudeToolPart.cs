@@ -26,9 +26,10 @@ namespace XNASysLib.XNATools
             get { return _isActive; }
         }
 
-        public ExtrudeToolPart(IGame game, PipeBase pipe, float offset)
+        public ExtrudeToolPart(IGame game, PipeBase pipe, float offset,aCTool tool)
             : base(game, 1f, 16)
         {
+            this._tool = tool;
             _centreTarget = pipe;
             _offset = offset;
 
@@ -155,6 +156,24 @@ namespace XNASysLib.XNATools
             base.OnModifyBoundingSpheres();
         }
 
+        protected override void OnDragStart()
+        {
+            this._isActive = true;
+            base.OnDragStart();
+        }
+        protected override void OnDragEnd()
+        {
+
+            this._isActive = false;
+
+            base.OnDragEnd();
+        }
+        protected override void OnDragExe()
+        {
+
+            base.OnDragExe();
+        }
+
         public override void Update(GameTime gameTime)
         {
             if (!this._isInitialized)
@@ -165,23 +184,6 @@ namespace XNASysLib.XNATools
 
 
         }
-        protected override void OnDragStart()
-        {
-            this._isActive = true;
-            base.OnDragStart();
-        }
-        protected override void OnDragEnd()
-        {
-            this._isActive = false;
-
-            base.OnDragEnd();
-        }
-        protected override void OnDragExe()
-        {
-            
-            base.OnDragExe();
-        }
-    
 
         public override void Draw(GameTime gameTime,ICamera cam)
         {

@@ -17,7 +17,7 @@ namespace XNASysLib.XNAKernel
         }
     }
 
-    public struct HistoryEntry
+    public class HistoryEntry
     {
         public double Time;
         public string ToolNm;
@@ -37,13 +37,11 @@ namespace XNASysLib.XNAKernel
     public class TimeMechine
     {
         static TimeMechine _singleton;
-        static MemoryStack<HistoryEntry> _history;
+        static MemoryStack<HistoryEntry> _history=new MemoryStack<HistoryEntry>();
         public static MemoryStack<HistoryEntry> History
         {
             get
             {
-                if (_history == null)
-                    _history = new MemoryStack<HistoryEntry>();
 
                 return _history;
             }
@@ -52,6 +50,9 @@ namespace XNASysLib.XNAKernel
         {
             get
             {
+
+                if (_history.Count == 0)
+                    return null;
                 return _history[_history.Count-1];
             }
         }

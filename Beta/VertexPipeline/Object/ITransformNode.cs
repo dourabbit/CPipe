@@ -428,7 +428,7 @@ namespace VertexPipeline
     }
     public interface IShapeNode
     {
-        string ID { get; set; }
+        string Name { get; set; }
         List< VertexPositionNormalTexture> Vertices
         { get; }
         DynamicVertexBuffer VertexBuffer

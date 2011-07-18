@@ -63,7 +63,7 @@ namespace XNASysLib.XNATools
                 PipeBase pipe = node as PipeBase;
                 if (pipe != null)
                 {
-                    CombineToolPart part = new CombineToolPart(_game, pipe, _destPartsList);
+                    CombineToolPart part = new CombineToolPart(_game, pipe, _destPartsList,this);
                     //part.OnDragExeHandler = null;
 
                     this._toolPartsList.Add(part);
@@ -82,7 +82,7 @@ namespace XNASysLib.XNATools
                     PipeBase pipe = node as PipeBase;
                     if (pipe != null)
                     {
-                        CombineToolPart part = new CombineToolPart(_game, pipe, _destPartsList);
+                        CombineToolPart part = new CombineToolPart(_game, pipe, _destPartsList,this);
                         part.OnDragExeHandler = null;
                         this._destPartsList.Add(part);
                     }

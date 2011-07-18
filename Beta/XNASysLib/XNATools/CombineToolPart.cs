@@ -60,9 +60,11 @@ namespace XNASysLib.XNATools
             get { return _isActive; }
         }
 
-        public CombineToolPart(IGame game, PipeBase pipe,List<CombineToolPart> parts)
+        public CombineToolPart(IGame game, PipeBase pipe,List<CombineToolPart> parts,aCTool tool)
             : base(game, 1f, 16)
         {
+
+            this._tool = tool;
             _centreTarget = pipe;
             this.ID = "FrontDragger";
 

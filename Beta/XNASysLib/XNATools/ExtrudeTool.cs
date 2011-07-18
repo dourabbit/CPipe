@@ -42,7 +42,7 @@ namespace XNASysLib.XNATools
         public override void Initialize()
         {
             PipeBase target = (PipeBase)_toolTarget;
-            _xaxis = new ExtrudeToolPart(_game, target, 1f);
+            _xaxis = new ExtrudeToolPart(_game, target, 1f, this);
             //_yaxis = new ExtrudeToolPart(_game, target, -1f);
 
             this._hotSpots.Add(_xaxis);
@@ -56,6 +56,27 @@ namespace XNASysLib.XNATools
                     GetService(typeof(ICamera));
 
             base.Initialize();
+        }
+
+        public override void ToolAfterExe()
+        {
+
+
+            base.ToolAfterExe();
+        }
+
+        public override void ToolExe()
+        {
+
+            base.ToolExe();
+        }
+
+        public override void ToolPreExe()
+        {
+
+
+
+            base.ToolPreExe();
         }
         public override void Update(GameTime gameTime)
         {

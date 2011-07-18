@@ -49,7 +49,7 @@ namespace VertexPipeline
         {
             output.Write(value.Name);
             output.Write(value.ParentIndex);
-            output.Write(value.TriangleCount);
+            //output.Write(value.TriangleCount);
             output.WriteObject(value.Vertices);
             output.WriteObject(value.IndexCollection);
             output.WriteObject(value.BoundingSpheres);

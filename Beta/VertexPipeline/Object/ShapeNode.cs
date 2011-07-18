@@ -18,6 +18,13 @@ using System;
 
 namespace VertexPipeline
 {
+    public struct ShapeSerializeData
+    { 
+        public string Name;
+        public ushort[] Indices;
+        public VertexPositionNormalTexture[] Vertices; 
+        public BoundingSphere[] BoundingSpheres;
+    }
 
     /// <summary>
     /// The Struture to store the ShapeNode Data 
@@ -26,7 +33,7 @@ namespace VertexPipeline
     {
         public string Name;
         public int ParentIndex;
-        public int TriangleCount;
+        //public int TriangleCount;
         public VertexData[] Vertices;
         public IndexCollection IndexCollection;
         public BoundingSphere[] BoundingSpheres;
@@ -36,7 +43,7 @@ namespace VertexPipeline
     public delegate void ShapeNodeChanging();
     public class ShapeNode : IShapeNode
     {
-        public string ID { get; set; }
+        public string Name { get; set; }
         public  int ParentIndex{get;set;}
         //protected int _triangleCount;
         protected IndexBuffer _indexBuffer;
@@ -61,7 +68,16 @@ namespace VertexPipeline
 
         public ShapeNode GetCopy()
         {
-            return (ShapeNode)this.MemberwiseClone();
+            return //(ShapeNode)this.MemberwiseClone();
+                new ShapeNode(
+                    new ShapeSerializeData()
+                    {
+
+                        BoundingSpheres = (BoundingSphere[])this.BoundingSpheres.Clone(),
+                        Indices = this.Indices.ToArray(),
+                        Name = this.Name,
+                        Vertices = this.Vertices.ToArray()
+                    });
         }
         public IndexBuffer IndexBuffer
         { get { return _indexBuffer; } }
@@ -71,7 +87,7 @@ namespace VertexPipeline
         //    set { _indexBuffer = value; _triangleCount = _indexBuffer.IndexCount / 3; }
         //}
         public BoundingSphere[] BoundingSpheres { get; set; }
-        public bool IsIntialized { get; set; }
+        bool _isIntialized;
         public ShapeNode(GraphicsDevice graphic)
             //(int numOfVertices,int numOfIndices,GraphicsDevice graphic)
         {
@@ -79,8 +95,22 @@ namespace VertexPipeline
             _indices = new List<ushort>();
             //this._vertexCount = numOfVertices;
             _vertices = new List<VertexPositionNormalTexture>();
-            this.IsIntialized = false;
+            this._isIntialized = false;
             //RenderVertices = new List<VertexPositionNormalTexture>();
+        }
+
+        public ShapeNode(ShapeSerializeData data)
+        {
+            this.Name = data.Name;
+            this._indices = new List<ushort>();
+            foreach (ushort tmp in data.Indices)
+                _indices.Add(tmp);
+            this._vertices = new List<VertexPositionNormalTexture>();
+            foreach (VertexPositionNormalTexture tmp in data.Vertices)
+                _vertices.Add(tmp);
+            this.BoundingSpheres = data.BoundingSpheres;
+            this._isIntialized = false;
+            
         }
         /// <summary>
         /// Combine two shapes into shapeNode, the second arguement
@@ -117,7 +147,7 @@ namespace VertexPipeline
 
         public ShapeNode(ShapeReadingData data)//, TransData transData)
         {
-            this.ID = data.Name;
+            this.Name = data.Name;
             this.ParentIndex = data.ParentIndex;
 
             this._vertices = getVertices(data);
@@ -130,7 +160,7 @@ namespace VertexPipeline
             foreach (ushort index in indices)
                 _indices.Add(index);
             //RenderVertices = new List<VertexPositionNormalTexture>();
-            this.IsIntialized = false;
+            this._isIntialized = false;
             BoundingSpheres = data.BoundingSpheres;
             /*VertexBuffer = new DynamicVertexBuffer(IndexBuffer.GraphicsDevice,
                 typeof(VertexPositionNormalTexture), data.Vertices.Length, BufferUsage.WriteOnly);
@@ -195,17 +225,17 @@ namespace VertexPipeline
 
         public void Freeze(TransformNode node)
         {
-            for (int index = 0; index < Vertices.Count; index++)
+            for (int index = 0; index < _vertices.Count; index++)
             {
-                Vector3 normal = Vertices[index].Normal;
-                Vector2 uv = Vertices[index].TextureCoordinate;
+                Vector3 normal = _vertices[index].Normal;
+                Vector2 uv = _vertices[index].TextureCoordinate;
                 VertexPositionNormalTexture tmp = new VertexPositionNormalTexture
                 {
                     Position = Vector3.Transform( Vertices[index].Position,node.World),
                     Normal = normal,
                     TextureCoordinate = uv
                 };
-                Vertices[index] = tmp;
+                _vertices[index] = tmp;
                 //RenderVertices[index] = tmp;
             }
 
@@ -284,9 +314,9 @@ namespace VertexPipeline
 
         public void UpdateShapeNod(GraphicsDevice g)
         {
-            if (this.IsIntialized == false)
+            if (this._isIntialized == false)
                 this.InitializeVertice(g);
-            this.IsIntialized = true;
+            this._isIntialized = true;
         }
 
         /// <summary>
@@ -319,9 +349,9 @@ namespace VertexPipeline
 
             this._indexBuffer = new IndexBuffer(_graphic, typeof(ushort),_indices.Count, BufferUsage.None);
             VertexBuffer = new DynamicVertexBuffer(_indexBuffer.GraphicsDevice,
-                typeof(VertexPositionNormalTexture), this.Vertices.Count, BufferUsage.WriteOnly);
+                typeof(VertexPositionNormalTexture), this._vertices.Count, BufferUsage.WriteOnly);
             _indexBuffer.SetData(this._indices.ToArray());
-            VertexBuffer.SetData(Vertices.ToArray(), 0, Vertices.Count, SetDataOptions.Discard);
+            VertexBuffer.SetData(Vertices.ToArray(), 0, _vertices.Count, SetDataOptions.Discard);
         }
 
 

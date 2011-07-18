@@ -220,7 +220,9 @@ namespace XNASysLib.Primitives3D
 
             SpriteFont font = contentManager.Load<SpriteFont>("_FontSetup");
             _hub = new SceneHub(_game, font);
-
+            if (_ID == null)
+                _ID = "none";
+            _game.Components.GetNm(_ID, out _ID);
             base.Initialize();
 
             OnUpdate();
