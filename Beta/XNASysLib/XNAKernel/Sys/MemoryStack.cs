@@ -29,9 +29,11 @@ namespace XNASysLib.XNAKernel
         }
     }
 
+    public delegate void MemoryStackChanging(int curIndex, object stack);
     public class MemoryStack<T>: List<T> 
 
     {
+        public event MemoryStackChanging MemChanging;
         int _curIndex=-1;
        // int _maxIndex;
         public int CurIndex
@@ -42,34 +44,47 @@ namespace XNASysLib.XNAKernel
             }
             set
             {
+                if (MemChanging != null)
+                    MemChanging.Invoke(_curIndex,this);
                 _curIndex = value;
             }
         }
         
         public T Undo()
         {
-            MyConsole.WriteLine("Undo:"+_curIndex.ToString()+";List:"+this.Count.ToString());
-
             if (_curIndex <= 0)
             {
-               // throw new MemoryException("It is the end of stack");
-                return  default(T);
+
+                if (MemChanging != null)
+                    MemChanging.Invoke(_curIndex, this);
+
+                // throw new MemoryException("It is the end of stack");
+                return default(T);
             }
-            else 
-              return this[--_curIndex];
+            else
+            {
+                int index = --_curIndex;
+                if (MemChanging != null)
+                    MemChanging.Invoke(index, this);
+                return this[index];
+            }
         }
 
         public T Redo()
         {
-            
-            MyConsole.WriteLine("Redo:"+_curIndex.ToString()+";List:"+this.Count.ToString());
             if (_curIndex >= this.Count - 1)
             {
-               // new MemoryException("the end of stack");
+                if (MemChanging != null)
+                    MemChanging.Invoke(_curIndex, this);
                 return default(T);
             }
             else
-                return this[++_curIndex];
+            {
+                int index = ++_curIndex;
+                if (MemChanging != null)
+                    MemChanging.Invoke(index, this);
+                return this[index];
+            }
         }
 
         public void Push(T historyEntry)
@@ -90,6 +105,9 @@ namespace XNASysLib.XNAKernel
            // _maxIndex++;
 
             this.Add(historyEntry);
+
+            if (MemChanging != null)
+                MemChanging.Invoke(_curIndex, this);
         }
         
     }

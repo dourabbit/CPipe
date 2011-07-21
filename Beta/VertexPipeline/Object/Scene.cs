@@ -19,7 +19,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace VertexPipeline
 {
-    public delegate void SysEvent (object sender, SYSEVN e);
+    public delegate void UpdateHandler();
 
    
     public partial class Scene: IGame
@@ -37,6 +37,7 @@ namespace VertexPipeline
         public static List<Scene> Scenes = new List<Scene>();
         #endregion
         //public SysEvent SysEvnHandler;
+        public event UpdateHandler UpdateScene;
         #region Properties
 
         public Rectangle ActiveViewRect
@@ -93,6 +94,9 @@ namespace VertexPipeline
       
         public virtual void Update()
         {
+            if (this.UpdateScene != null)
+                this.UpdateScene.Invoke();
+
             try
             {
                 foreach (IUpdatableComponent updatable in this._components)
@@ -113,14 +117,10 @@ namespace VertexPipeline
 
                 if (_visible)
                 {
-                    foreach (IUpdatableComponent U in this._components)
+                    foreach (IDrawableComponent drawable in this._components)
                     {
-                        IDrawableComponent drawable = U as IDrawableComponent;
 
-                        if (drawable != null)
-                        {
                             drawable.Draw(this._gameTime,cam);
-                        }
                     }
                 }
             }

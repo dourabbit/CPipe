@@ -155,31 +155,31 @@ namespace WinFormsContentLoading
             // 新建ToolStripMenuItem
             // 
             this.新建ToolStripMenuItem.Name = "新建ToolStripMenuItem";
-            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.新建ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.新建ToolStripMenuItem.Text = "新建";
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.openToolStripMenuItem.Text = "打开...";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.exitToolStripMenuItem.Text = "退出";
             // 
             // 保存ToolStripMenuItem
             // 
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.保存ToolStripMenuItem.Text = "保存";
             // 
             // 另存ToolStripMenuItem
             // 
             this.另存ToolStripMenuItem.Name = "另存ToolStripMenuItem";
-            this.另存ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.另存ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.另存ToolStripMenuItem.Text = "另存为...";
             // 
             // 编辑ToolStripMenuItem
@@ -311,43 +311,43 @@ namespace WinFormsContentLoading
             // 管道ToolStripMenuItem
             // 
             this.管道ToolStripMenuItem.Name = "管道ToolStripMenuItem";
-            this.管道ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.管道ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.管道ToolStripMenuItem.Text = "管道";
             // 
             // 空洞ToolStripMenuItem
             // 
             this.空洞ToolStripMenuItem.Name = "空洞ToolStripMenuItem";
-            this.空洞ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.空洞ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.空洞ToolStripMenuItem.Text = "空洞";
             // 
             // 破损ToolStripMenuItem
             // 
             this.破损ToolStripMenuItem.Name = "破损ToolStripMenuItem";
-            this.破损ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.破损ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.破损ToolStripMenuItem.Text = "破损";
             // 
             // 阀门ToolStripMenuItem
             // 
             this.阀门ToolStripMenuItem.Name = "阀门ToolStripMenuItem";
-            this.阀门ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.阀门ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.阀门ToolStripMenuItem.Text = "阀门";
             // 
             // 建筑物ToolStripMenuItem
             // 
             this.建筑物ToolStripMenuItem.Name = "建筑物ToolStripMenuItem";
-            this.建筑物ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.建筑物ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.建筑物ToolStripMenuItem.Text = "建筑物";
             // 
             // 道路ToolStripMenuItem
             // 
             this.道路ToolStripMenuItem.Name = "道路ToolStripMenuItem";
-            this.道路ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.道路ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.道路ToolStripMenuItem.Text = "道路";
             // 
             // 车辆ToolStripMenuItem
             // 
             this.车辆ToolStripMenuItem.Name = "车辆ToolStripMenuItem";
-            this.车辆ToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.车辆ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.车辆ToolStripMenuItem.Text = "车辆";
             // 
             // 工具ToolStripMenuItem
@@ -368,49 +368,49 @@ namespace WinFormsContentLoading
             // 选择ToolStripMenuItem
             // 
             this.选择ToolStripMenuItem.Name = "选择ToolStripMenuItem";
-            this.选择ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.选择ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.选择ToolStripMenuItem.Text = "选择";
             // 
             // 移动ToolStripMenuItem
             // 
             this.移动ToolStripMenuItem.Name = "移动ToolStripMenuItem";
-            this.移动ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.移动ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.移动ToolStripMenuItem.Text = "移动";
             // 
             // 旋转ToolStripMenuItem1
             // 
             this.旋转ToolStripMenuItem1.Name = "旋转ToolStripMenuItem1";
-            this.旋转ToolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
+            this.旋转ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.旋转ToolStripMenuItem1.Text = "旋转";
             // 
             // 打开自动吸附ToolStripMenuItem
             // 
             this.打开自动吸附ToolStripMenuItem.Name = "打开自动吸附ToolStripMenuItem";
-            this.打开自动吸附ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.打开自动吸附ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.打开自动吸附ToolStripMenuItem.Text = "打开自动吸附";
             // 
             // 关闭自动吸附ToolStripMenuItem
             // 
             this.关闭自动吸附ToolStripMenuItem.Name = "关闭自动吸附ToolStripMenuItem";
-            this.关闭自动吸附ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.关闭自动吸附ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.关闭自动吸附ToolStripMenuItem.Text = "关闭自动吸附";
             // 
             // 推拉ToolStripMenuItem
             // 
             this.推拉ToolStripMenuItem.Name = "推拉ToolStripMenuItem";
-            this.推拉ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.推拉ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.推拉ToolStripMenuItem.Text = "推/拉";
             // 
             // 颜料桶ToolStripMenuItem
             // 
             this.颜料桶ToolStripMenuItem.Name = "颜料桶ToolStripMenuItem";
-            this.颜料桶ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.颜料桶ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.颜料桶ToolStripMenuItem.Text = "颜料桶";
             // 
             // 标尺ToolStripMenuItem
             // 
             this.标尺ToolStripMenuItem.Name = "标尺ToolStripMenuItem";
-            this.标尺ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.标尺ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.标尺ToolStripMenuItem.Text = "标尺";
             // 
             // 窗口ToolStripMenuItem

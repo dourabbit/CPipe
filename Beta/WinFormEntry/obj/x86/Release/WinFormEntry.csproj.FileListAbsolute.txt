@@ -252,3 +252,4 @@ C:\Users\Chengfuc\CPipe\Beta\WinFormEntry\obj\x86\Release\WinFormsContentLoading
 C:\Users\Chengfuc\CPipe\Beta\WinFormEntry\obj\x86\Release\WinFormEntry.Properties.Resources.resources
 C:\Users\Chengfuc\CPipe\Beta\WinFormEntry\obj\x86\Release\GenerateResource.read.1.tlog
 C:\Users\Chengfuc\CPipe\Beta\WinFormEntry\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Chengfuc\CPipe\Beta\WinFormEntry\obj\x86\Release\WinFormEntry.MemStack.resources

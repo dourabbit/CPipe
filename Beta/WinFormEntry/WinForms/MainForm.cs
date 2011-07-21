@@ -6,7 +6,7 @@
 // Copyright (C) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
 #endregion
-
+#define _Debug
 #region Using Statements
 using System;
 using System.IO;
@@ -20,7 +20,9 @@ using XNASysLib.XNATools;
 using Microsoft.Xna.Framework;
 using XNASysLib.Primitives3D;
 using VertexPipeline;
+using WinFormEntry;
 #endregion
+
 
 namespace WinFormsContentLoading
 {
@@ -37,12 +39,19 @@ namespace WinFormsContentLoading
         BottomPanal _bottomPanal;
         ViewPanal _viewPanal;
         OutlinePanel _outlinePanal;
+
+#if _Debug
+
+        MemStack _mem;
+#endif
+        
         /// <summary>
         /// Constructs the main form.
         /// </summary>
         public MainForm()
 
         {
+             
             Initialize();
             
             InitializeComponent();
@@ -97,7 +106,15 @@ namespace WinFormsContentLoading
 
             entry1.MouseMove += this.MouseMoveRegister;
 
-          
+
+            SceneEntry.Scene.UpdateScene += delegate()
+            {
+
+                //this._mem.UpdateList();
+
+            };
+
+            TimeMechine.History.MemChanging += this._mem.UpdateList;
         }
 
         void MouseMoveRegister(object sender, MouseEventArgs e)
@@ -145,8 +162,10 @@ namespace WinFormsContentLoading
 
         void Initialize()
         {
-            
-
+#if _Debug
+            _mem = new MemStack();
+            _mem.Show();
+#endif
             // 
             // _entry
             // 

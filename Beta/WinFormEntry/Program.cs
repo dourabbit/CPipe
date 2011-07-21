@@ -10,6 +10,7 @@
 #region Using Statements
 using System;
 using System.Windows.Forms;
+using WinFormEntry;
 #endregion
 
 namespace WinFormsContentLoading
