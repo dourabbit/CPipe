@@ -1,6 +1,6 @@
 ﻿namespace WinFormEntry
 {
-    partial class MemStack
+    partial class MemStackWin
     {
         /// <summary>
         /// Required designer variable.

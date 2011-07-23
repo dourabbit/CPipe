@@ -59,7 +59,7 @@
     <Compile Include="Primitives3D\Base\Loader\NodCreator.cs" />
     <Compile Include="Primitives3D\Base\SceneNodHierachyModel.cs" />
     <None Include="Primitives3D\Base\_SceneNodModel.cs" />
-    <Compile Include="Primitives3D\Base\Loader\NodeModelLoader.cs" />
+    <Compile Include="Primitives3D\Base\Loader\FBXModelLoader.cs" />
     <Compile Include="Primitives3D\PipeBase.cs" />
     <Compile Include="Primitives3D\Base\SceneXNAObj.cs" />
     <None Include="Primitives3D\Base\_ScenePreloadedObj.cs" />

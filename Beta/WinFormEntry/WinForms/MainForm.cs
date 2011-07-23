@@ -42,7 +42,7 @@ namespace WinFormsContentLoading
 
 #if _Debug
 
-        MemStack _mem;
+        MemStackWin _mem;
 #endif
         
         /// <summary>
@@ -114,6 +114,7 @@ namespace WinFormsContentLoading
 
             };
 
+            TimeMechine.History.Push(new HistoryEntry(TimeMechine.Time, "FirstEntry", null, null));
             TimeMechine.History.MemChanging += this._mem.UpdateList;
         }
 
@@ -163,7 +164,7 @@ namespace WinFormsContentLoading
         void Initialize()
         {
 #if _Debug
-            _mem = new MemStack();
+            _mem = new MemStackWin();
             _mem.Show();
 #endif
             // 
@@ -285,15 +286,18 @@ namespace WinFormsContentLoading
         }
         private void ValveBtn_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-                //new NodePipeLoader(SceneEntry.Scene, "_Valve");
-                new NodCreator(SceneEntry.Scene, "_Valve",typeof(Valve));
+            //NodCreator newScene =
+
+                NodCreator.CreateNode(SceneEntry.Scene, "_Valve",typeof(Valve));
         
         }
         private void PipeABtn_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-               new NodCreator(SceneEntry.Scene, "_PipeA", typeof(Pipe));
+
+            new SysEvn(0, this, OBJTYPE.Pipe, SYSEVN.Import, "_PipeA");
+
+            //NodCreator newScene =
+            //   new NodCreator(SceneEntry.Scene, "_PipeA", typeof(Pipe));
 
             //NodCreator newScene =
             // new NodCreator(SceneEntry.Scene, "_SubwayStation", typeof(SceneNodHierachyModel));
@@ -302,73 +306,75 @@ namespace WinFormsContentLoading
 
         private void PipeBBtn_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-                 new NodCreator(SceneEntry.Scene, "_PipeB", typeof(Pipe));
+            //NodCreator newScene =
+            NodCreator.CreateNode(SceneEntry.Scene, "_PipeB", typeof(Pipe));
         }
 
         private void PipeCBtn_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-                 new NodCreator(SceneEntry.Scene, "_PipeC", typeof(Pipe));
+           // NodCreator newScene =
+            NodCreator.CreateNode(SceneEntry.Scene, "_PipeC", typeof(Pipe));
         }
 
         private void PipeDBtn_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-                 new NodCreator(SceneEntry.Scene, "_PipeD", typeof(Pipe));
+            //NodCreator newScene =
+            //     new NodCreator(SceneEntry.Scene, "_PipeD", typeof(Pipe));
         }
 
         private void PipeEBtn_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-                 new NodCreator(SceneEntry.Scene, "_PipeE", typeof(Pipe));
+            //NodCreator newScene =
+            //     new NodCreator(SceneEntry.Scene, "_PipeE", typeof(Pipe));
         }
 
         private void UndoBtn_Click(object sender, EventArgs e)
         {
-            if (TimeMechine.Entry == null)
+            if (TimeMechine.LastEntry == null)
                 return;
 
             try
             {
-                if (TimeMechine.History.CurIndex == TimeMechine.History.Count - 1)
-                {
-                    if (!TimeMechine.History.Exists(
-                        delegate(HistoryEntry matcher)
-                        {
-                            return matcher.ToolNm == "Undo" ? true : false;
-                        }))
-                    {
-                        TimeMechine.History.CurIndex++;
+                //if (TimeMechine.History.CurIndex == TimeMechine.History.Count - 1)
+                //{
+
+                //    TimeMechine.History.PushLast();
+                //}
 
 
 
-                        //shape node is null when selecting group
-                        if (TimeMechine.Entry.Target.ShapeNode!=null)
-                        TimeMechine.History.Push(
-                              new HistoryEntry
-                                  (TimeMechine.Time, "Undo", TimeMechine.Entry.Target,
-                                   new SnapShot(TimeMechine.Entry.Target.TransformNode.GetCopy(),
-                                                TimeMechine.Entry.Target.ShapeNode.GetCopy())));
+               
 
-                        else
-                            TimeMechine.History.Push(
-                              new HistoryEntry
-                                  (TimeMechine.Time, "Undo", TimeMechine.Entry.Target,
-                                   new SnapShot(TimeMechine.Entry.Target.TransformNode.GetCopy(),
-                                                null)));
-                    }
-                }
-                HistoryEntry entry = TimeMechine.History.Undo();
-
-                if (entry == null || entry.Target == null || entry.SnapShot.Trans==null)
-                {
-                    MyConsole.WriteLine("LastUndo");
+                //if(entry.ToolNm=="aCTool")
+                //if (entry == null || entry.Target == null || entry.SnapShot.Trans==null)
+                //{
+                //    MyConsole.WriteLine("LastUndo");
+                //    return;
+                //}
+                HistoryEntry entry = TimeMechine.History.CurObj;
+                if (entry.ToolNm == "FirstEntry")
                     return;
+
+                switch (entry.ToolNm)
+                { 
+                    case "aCTool":
+                        entry.Target.ShapeNode = entry.SnapShot.Before.Shape;
+                        entry.Target.TransformNode = entry.SnapShot.Before.Trans;
+                        entry.Target.TransformNode.DataModifiedHandler.Invoke();
+                        break;
+
+                    case "FirstEntry":
+                        break;
+
+                    case "New":
+                        SceneEntry.Scene.Components.Remove(entry.Target);
+                        break;
+                    default:
+                        break;
+                
+                
                 }
-                entry.Target.ShapeNode = entry.SnapShot.Shape;
-                entry.Target.TransformNode = entry.SnapShot.Trans;
-                entry.Target.TransformNode.DataModifiedHandler.Invoke();
+                TimeMechine.History.Undo();
             }
             catch (MemoryException f)
             {
@@ -385,9 +391,28 @@ namespace WinFormsContentLoading
                     MyConsole.WriteLine("LastRedo");
                     return;
                 }
-                entry.Target.ShapeNode = entry.SnapShot.Shape;
-                entry.Target.TransformNode = entry.SnapShot.Trans;
-                entry.Target.TransformNode.DataModifiedHandler.Invoke();
+
+                switch (entry.ToolNm)
+                {
+                    case "aCTool":
+                        entry.Target.ShapeNode = entry.SnapShot.After.Shape;
+                        entry.Target.TransformNode = entry.SnapShot.After.Trans;
+                        entry.Target.TransformNode.DataModifiedHandler.Invoke();
+                        break;
+
+                    case "FirstEntry":
+                        break;
+
+                    case "New":
+                        //SceneEntry.Scene.Components.Remove(entry.Target);
+                        SceneEntry.Scene.Components.Add(entry.Target);
+                        break;
+                    default:
+                        break;
+
+
+                }
+
             }
             catch (MemoryException f)
             {
@@ -414,82 +439,82 @@ namespace WinFormsContentLoading
             //NodeModelLoader newScene =
             //    new NodeModelLoader(SceneEntry.Scene,"_Chamber.fbx");
 
-            NodCreator newScene =
-              new NodCreator(SceneEntry.Scene, "_Chamber",
-                  typeof(Chamber));
+            //NodCreator newScene =
+            //  new NodCreator(SceneEntry.Scene, "_Chamber",
+            //      typeof(Chamber));
         }
 
         private void WellBtn_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-              new NodCreator(SceneEntry.Scene, "_Well",
-                  typeof(Well));
+            //NodCreator newScene =
+            //  new NodCreator(SceneEntry.Scene, "_Well",
+            //      typeof(Well));
       
         }
 
         private void HoleEllipse_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-              new NodCreator(SceneEntry.Scene, "_HoleEllipse",
-                  typeof(HoleEllipse));
+            //NodCreator newScene =
+            //  new NodCreator(SceneEntry.Scene, "_HoleEllipse",
+            //      typeof(HoleEllipse));
         }
 
         private void HoleBox_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-              new NodCreator(SceneEntry.Scene, "_HoleBox",
-                  typeof(HoleRect));
+            //NodCreator newScene =
+            //  new NodCreator(SceneEntry.Scene, "_HoleBox",
+            //      typeof(HoleRect));
         }
 
 
         private void BreakPointBtn_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-              new NodCreator(SceneEntry.Scene, "_Flag",
-                  typeof(SceneNodHierachyModel));
+            //NodCreator newScene =
+            //  new NodCreator(SceneEntry.Scene, "_Flag",
+            //      typeof(SceneNodHierachyModel));
         }
 
 
         private void BuildingBtn1_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-              new NodCreator(SceneEntry.Scene, "_Building1",
-                  typeof(SceneNodHierachyModel));
+            //NodCreator newScene =
+            //  new NodCreator(SceneEntry.Scene, "_Building1",
+            //      typeof(SceneNodHierachyModel));
         }
 
         private void BuildingBtn2_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-             new NodCreator(SceneEntry.Scene, "_Building2",
-                 typeof(SceneNodHierachyModel));
+            //NodCreator newScene =
+            // new NodCreator(SceneEntry.Scene, "_Building2",
+            //     typeof(SceneNodHierachyModel));
         }
 
         private void BuildingBtn3_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-            new NodCreator(SceneEntry.Scene, "_Building3",
-                typeof(SceneNodHierachyModel));
+            //NodCreator newScene =
+            //new NodCreator(SceneEntry.Scene, "_Building3",
+            //    typeof(SceneNodHierachyModel));
         }
 
         private void RoadBtn_Click(object sender, EventArgs e)
         {
-            NodCreator newScene =
-          new NodCreator(SceneEntry.Scene, "_Road",
-              typeof(SceneNodHierachyModel));
+          //  NodCreator newScene =
+          //new NodCreator(SceneEntry.Scene, "_Road",
+          //    typeof(SceneNodHierachyModel));
         }
 
         private void subwayBtn_Click(object sender, EventArgs e)
         {
-                NodCreator newScene =
-             new NodCreator(SceneEntry.Scene, "_SubwayStation",
-                 typeof(SceneNodHierachyModel));
+             //   NodCreator newScene =
+             //new NodCreator(SceneEntry.Scene, "_SubwayStation",
+             //    typeof(SceneNodHierachyModel));
         }
 
         private void BridgeBtn_Click(object sender, EventArgs e)
         {
-                    NodCreator newScene =
-            new NodCreator(SceneEntry.Scene, "_Bridge",
-                typeof(SceneNodHierachyModel));
+            //        NodCreator newScene =
+            //new NodCreator(SceneEntry.Scene, "_Bridge",
+            //    typeof(SceneNodHierachyModel));
         }
 
         void HoleBox_MouseLeave(object sender, System.EventArgs e)
@@ -631,7 +656,7 @@ namespace WinFormsContentLoading
             SceneNodHierachyModel model = scomp as SceneNodHierachyModel;
             if (model == null)
                 return;
-            NodCreator newObj = new NodCreator(SceneEntry.Scene, model);
+            //NodCreator newObj = new NodCreator(SceneEntry.Scene, model);
             
         }
 

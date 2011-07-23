@@ -6,14 +6,23 @@ using XNASysLib.XNATools;
 
 namespace XNASysLib.XNAKernel
 {
-    public struct SnapShot
+    public class ObjImage
     {
         public TransformNode Trans;
         public ShapeNode Shape;
-        public SnapShot(TransformNode trans, ShapeNode shape)
+    }
+    public class SnapShots
+    {
+        public ObjImage Before;
+        public ObjImage After;
+        public object[] Script;
+        public string Name;
+        public SnapShots(string name,ObjImage before, ObjImage after, object[] script)
         {
-            Trans = trans;
-            Shape = shape;
+            Name = name;
+            Before = before;
+            After = after;
+            Script = script;
         }
     }
 
@@ -21,10 +30,10 @@ namespace XNASysLib.XNAKernel
     {
         public double Time;
         public string ToolNm;
-        public SnapShot SnapShot;
+        public SnapShots SnapShot;
         public SceneNodHierachyModel Target;
         public HistoryEntry(double time, string toolNm,
-            SceneNodHierachyModel target, SnapShot snapShot)
+            SceneNodHierachyModel target, SnapShots snapShot)
         {
             Time = time;
             ToolNm = toolNm;
@@ -36,7 +45,7 @@ namespace XNASysLib.XNAKernel
 
     public class TimeMechine
     {
-        static TimeMechine _singleton;
+        //static TimeMechine _singleton;
         static MemoryStack<HistoryEntry> _history=new MemoryStack<HistoryEntry>();
         public static MemoryStack<HistoryEntry> History
         {
@@ -46,7 +55,7 @@ namespace XNASysLib.XNAKernel
                 return _history;
             }
         }
-        public static HistoryEntry Entry
+        public static HistoryEntry LastEntry
         {
             get
             {
@@ -56,16 +65,22 @@ namespace XNASysLib.XNAKernel
                 return _history[_history.Count-1];
             }
         }
-        public static TimeMechine Singleton
-        {
-            get
-            {
-                if (_singleton == null)
-                    new TimeMechine();
-
-                return _singleton;
-            }
-        }
+        
+        //public static TimeMechine Singleton
+        //{
+        //    get
+        //    {
+        //        if (_singleton == null)
+        //        {
+        //            new TimeMechine();
+        //            TimeMechine.History.Push(
+        //                       new HistoryEntry
+        //                           (TimeMechine.Time, "FirstEntry", null, null)
+        //                       );
+        //        }
+        //        return _singleton;
+        //    }
+        //}
 
         static double _time;
         public static double Time
@@ -78,7 +93,7 @@ namespace XNASysLib.XNAKernel
 
         public TimeMechine()
         {
-            _singleton = this;
+           // _singleton = this;
         }
 
 
@@ -106,16 +121,38 @@ namespace XNASysLib.XNAKernel
             {
                 Scene scene = (Scene)_game;
                 SysEvn sysEvn = (SysEvn)gameData;
-
+                OBJTYPE objT = sysEvn.ObjType; 
 
                 switch(sysEvn.Event)
                 {
 
                     case SYSEVN.Import:
-                            string _params=(string)sysEvn.Params[0];
-                            FBXModelLoader newScene =
-                                new FBXModelLoader(scene, _params);
-                            break;
+                            string assetNm=(string)sysEvn.Params[0];
+                            SceneNodHierachyModel obj;
+                            switch (objT)
+                            {
+                                case OBJTYPE.Building:
+                                    //FBXModelLoader newScene 
+                                    obj=FBXModelLoader.Import(scene, assetNm);
+                                    break;
+                                case OBJTYPE.Pipe:
+                                    //NodCreator newScene =
+                                    //new NodCreator(scene, "_PipeA", typeof(Pipe));
+                                    obj = NodCreator.CreateNode(scene, assetNm, typeof(Pipe));
+                                    break;
+                                default:
+                                    obj = NodCreator.CreateNode(scene, assetNm, typeof(Pipe));
+                                    break;
+                            }
+                            ObjImage before = null;
+                            ObjImage after = null;
+
+                            TimeMechine.History.Push(
+                                new HistoryEntry(TimeMechine.Time, "New", obj,
+                                                new SnapShots("New", before, after,
+                                                    new object[]{objT, SYSEVN.Import,assetNm,}))
+                                );
+                                break;
                     case SYSEVN.Tool:
                             //        ToolNm---0
                             //        Target---1
@@ -123,9 +160,9 @@ namespace XNASysLib.XNAKernel
                             string toolNm = (string)sysEvn.Params[0];
                             SceneNodHierachyModel target = 
                                 (SceneNodHierachyModel)sysEvn.Params[1];
-                            SnapShot image = (SnapShot)sysEvn.Params[2];
+                            SnapShots image = (SnapShots)sysEvn.Params[2];
 
-                            TimeMechine.History.CurIndex++;
+                            //TimeMechine.History.CurIndex++;
                             TimeMechine.History.Push(
                                 new HistoryEntry
                                     (TimeMechine.Time,toolNm,target,image)

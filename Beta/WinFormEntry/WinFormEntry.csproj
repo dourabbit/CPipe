@@ -71,11 +71,11 @@
   <ItemGroup>
     <Compile Include="LanguagePack.cs" />
     <Compile Include="Initializer.cs" />
-    <Compile Include="MemStack.cs">
+    <Compile Include="MemStackWin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MemStack.Designer.cs">
-      <DependentUpon>MemStack.cs</DependentUpon>
+      <DependentUpon>MemStackWin.cs</DependentUpon>
     </Compile>
     <Compile Include="WinForms\Panals\BottomPanal.cs">
       <SubType>Component</SubType>
@@ -111,7 +111,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MemStack.resx">
-      <DependentUpon>MemStack.cs</DependentUpon>
+      <DependentUpon>MemStackWin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinForms\XNAComm\GraphicsDeviceControl.resx">
       <DependentUpon>GraphicsDeviceControl.cs</DependentUpon>

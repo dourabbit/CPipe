@@ -19,6 +19,7 @@ namespace VertexPipeline
         New=0,
         Save,
         Import,
+        Delete,
         Tool,
         Select
     }

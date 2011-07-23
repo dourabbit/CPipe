@@ -10,10 +10,10 @@ using XNASysLib.XNAKernel;
 
 namespace WinFormEntry
 {
-    public partial class MemStack : Form
+    public partial class MemStackWin : Form
     {
         private System.Windows.Forms.ListBox _listBox;
-        public MemStack()
+        public MemStackWin()
         {
             //InitializeComponent();
 
@@ -58,11 +58,12 @@ namespace WinFormEntry
         {
 
             this._listBox.Items.Clear();
-            foreach(HistoryEntry entry in TimeMechine.History)
-
-                this._listBox.Items.Add("ToolNm:"+entry.ToolNm+
-                                        "ToolTarget:"+entry.Target);
-
+            foreach (HistoryEntry entry in TimeMechine.History)
+                if (entry.Target != null&&entry.ToolNm!=null)
+                    this._listBox.Items.Add("ToolNm:" + entry.ToolNm + "\t" +
+                                            "ToolTarget:" + entry.Target.Name);
+                else
+                    this._listBox.Items.Add("SysInitial");
             this._listBox.SelectedIndex=curIndex;
            // this._listBox.Update();
         }

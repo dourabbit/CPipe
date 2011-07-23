@@ -49,7 +49,50 @@ namespace XNASysLib.XNAKernel
                 _curIndex = value;
             }
         }
+        public T CurObj
+        {
+            get { return this[_curIndex]; }
+        }
+        public T GetNextSibling
+        {
+
+            get
+            {
+                if (_curIndex < this.Count - 1)
+                    return this[_curIndex + 1];
+                else
+                    return default(T);
+            }
+        }
+        //public void PushLast() 
+        //{
+        //    if (!TimeMechine.History.Exists(
+        //                delegate(HistoryEntry matcher)
+        //                {
+        //                    return matcher.ToolNm == "Undo" ? true : false;
+        //                }))
+        //    {
+        //        //TimeMechine.History.CurIndex++;
+
+
+
+        //        //shape node is null when selecting group
+        //        if (TimeMechine.LastEntry.Target.ShapeNode != null)
+        //            TimeMechine.History.Push(
+        //                  new HistoryEntry
+        //                      (TimeMechine.Time, "Undo", TimeMechine.LastEntry.Target,
+        //                       new SnapShots("Undo", TimeMechine.LastEntry.Target.TransformNode.GetCopy(),
+        //                                    TimeMechine.LastEntry.Target.ShapeNode.GetCopy(),null)));
+
+        //        else
+        //            TimeMechine.History.Push(
+        //              new HistoryEntry
+        //                  (TimeMechine.Time, "Undo", TimeMechine.LastEntry.Target,
+        //                   new SnapShots("Undo", TimeMechine.LastEntry.Target.TransformNode.GetCopy(),
+        //                                null, null)));
+        //    }
         
+        //}
         public T Undo()
         {
             if (_curIndex <= 0)
@@ -89,6 +132,8 @@ namespace XNASysLib.XNAKernel
 
         public void Push(T historyEntry)
         {
+            //TimeMechine.History.CurIndex++;
+            _curIndex++;
             //Override the data, then clean the list
             if (_curIndex < this.Count-1)
             {

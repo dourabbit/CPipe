@@ -29,14 +29,14 @@ namespace XNASysLib.Primitives3D
     public class FBXModelLoader:IDisposable
     {
 
-        string _AssetNm;
-        IGame _game;
-        List<TransformNode> nodes = new List<TransformNode>();
-        public FBXModelLoader(IGame game, string assetNm)
-        {
-            _game = game;
+        //string _AssetNm;
+        //IGame _game;
 
-            _AssetNm = assetNm;
+        public static SceneNodHierachyModel Import(IGame game, string assetNm)
+        {
+            //_game = game;
+            //_AssetNm = assetNm;
+            List<TransformNode> nodes = new List<TransformNode>();
             ContentBuilder builder=
                 (ContentBuilder)game.Services.
                 GetService(typeof(ContentBuilder));
@@ -46,7 +46,7 @@ namespace XNASysLib.Primitives3D
                 GetService(typeof(MyContentManager));
 
             NodesGrp shapeGrp = (NodesGrp)LoadNode
-                    (builder, contentManager, String.Empty, "ShapeN_SkinDProcessor");
+                    (builder, contentManager, assetNm, "ShapeN_SkinDProcessor");
 
             TransformNode transNodRoot = new TransformNode(); 
             for (int i = 0; i < shapeGrp.TransData.NameGrp.Count; i++)
@@ -61,8 +61,10 @@ namespace XNASysLib.Primitives3D
             SceneNodHierachyModel sceneRoot = new SceneNodHierachyModel(game);
             
             int index=-1;
-            LoadHelper.ProcessSceneNod(this._game,sceneRoot,transNodRoot,shapeGrp,ref sceneRoot,ref index);
-            game.Components.Add(sceneRoot);   
+            LoadHelper.ProcessSceneNod(game, sceneRoot, transNodRoot, shapeGrp, ref sceneRoot, ref index);
+            game.Components.Add(sceneRoot);
+
+            return sceneRoot;
         }
 
         public void Dispose()
@@ -70,12 +72,12 @@ namespace XNASysLib.Primitives3D
             
         }
 
-        object LoadNode(ContentBuilder builder, 
+        static object LoadNode(ContentBuilder builder, 
                         MyContentManager contentManager,
                         string importNm, string processorNm)
         {
-            string assetNm = Path.GetFileNameWithoutExtension(_AssetNm);
-            builder.Add(this._AssetNm, assetNm, importNm, processorNm);
+            string assetNm = Path.GetFileNameWithoutExtension(importNm);
+            builder.Add(importNm, assetNm, importNm, processorNm);
             object result = null;
 
             string error = builder.Build();

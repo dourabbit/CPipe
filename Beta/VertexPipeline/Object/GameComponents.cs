@@ -33,10 +33,22 @@ namespace VertexPipeline
                 //if (_game.SysEvnHandler != null)
                 //    _game.SysEvnHandler.Invoke(comp, SYSEVN.New);
 
-                new SysEvn(0, comp, OBJTYPE.Building, SYSEVN.New, null);
+               // new SysEvn(0, comp, OBJTYPE.Building, SYSEVN.New, null);
             }
 
             base.Add((T)comp);
+        }
+        public void Remove(IUpdatableComponent comp)
+        {
+            if (comp is IDrawableComponent)
+            {
+                //if (_game.SysEvnHandler != null)
+                //    _game.SysEvnHandler.Invoke(comp, SYSEVN.New);
+
+               // new SysEvn(0, comp, OBJTYPE.Building, SYSEVN.New, null);
+            }
+
+            base.Remove((T)comp);
         }
          /// <summary>
          /// Get name recursively

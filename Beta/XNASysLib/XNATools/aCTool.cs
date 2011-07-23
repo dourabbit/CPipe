@@ -14,11 +14,12 @@ namespace XNASysLib.XNATools
         protected IGame _game;
         protected ICamera _cam;
         protected List<IHotSpot> _hotSpots;
-        protected string _toolNm;
+        private ObjImage _before;
+        protected string _toolNm="aCTool";
         protected ISelectable _toolTarget;
         protected SpotOnSelect _spotSelectionHandler;
         protected bool _isInitialized;
-        protected SnapShot _targetSnapShot;
+        protected SnapShots _targetSnapShot;
 
         public ToolHandler PreExe;
         public ToolHandler Exe;
@@ -46,15 +47,23 @@ namespace XNASysLib.XNATools
            // MyConsole.WriteLine("ToolPreExe");
             SceneNodHierachyModel node = (SceneNodHierachyModel)_toolTarget;
 
-            if (node.ShapeNode != null)
-                _targetSnapShot = new
-                    SnapShot(node.TransformNode.GetCopy(),
-                             node.ShapeNode.GetCopy());
-            else
-                _targetSnapShot = new
-              SnapShot(node.TransformNode.GetCopy(),
-                       null);
-        
+
+
+            //if (node.ShapeNode != null)
+            //    _targetSnapShot = new
+            //        SnapShots("aCTool", node.TransformNode.GetCopy(),
+            //                 node.ShapeNode.GetCopy(), null);
+            //else
+            //    _targetSnapShot = new
+            //  SnapShots("aCTool", node.TransformNode.GetCopy(),
+            //           null, null);
+
+            
+            TransformNode trans = node.TransformNode.GetCopy();
+            ShapeNode shape = null;
+            if(node.ShapeNode != null)
+                shape= node.ShapeNode.GetCopy();
+            _before = new ObjImage { Trans = trans, Shape = shape };
         }
 
         public virtual void ToolExe()
@@ -70,7 +79,16 @@ namespace XNASysLib.XNATools
              _toolTarget as SceneNodHierachyModel;
             if (target == null)
                 new NullReferenceException();
-            //_game.GameTime.ElapsedGameTime.Seconds
+            
+            SceneNodHierachyModel node = (SceneNodHierachyModel)_toolTarget;
+            TransformNode trans = node.TransformNode.GetCopy();
+            ShapeNode shape = null;
+            if(node.ShapeNode != null)
+                shape= node.ShapeNode.GetCopy();
+            ObjImage after = new ObjImage { Trans = trans, Shape = shape };
+
+            _targetSnapShot= new SnapShots("aCTool", _before, after , null);
+
             new SysEvn(0, this,
                 OBJTYPE.Building, SYSEVN.Tool,
                  new object[3] { this._toolNm, target, _targetSnapShot }

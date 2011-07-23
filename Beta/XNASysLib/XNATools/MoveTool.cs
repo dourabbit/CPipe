@@ -31,7 +31,7 @@ namespace XNASysLib.XNATools
        public MoveTool(IGame game, ISelectable target)
             : base(game)
       {
-            this._toolNm = "MoveTool";
+            //this._toolNm = "MoveTool";
             //_cetreTrans = target.World.Translation;
             this._toolTarget = target;
             ((ISelectable)_toolTarget).KeepSel = true;

@@ -32,17 +32,17 @@ namespace XNASysLib.Primitives3D
     public class NodCreator:IDisposable
     {
 
-        string _AssetNm;
-        IGame _game;
-        List<TransformNode> nodes = new List<TransformNode>();
-        Type Type;
+        //string _AssetNm;
+        //IGame _game;
+       // List<TransformNode> nodes = new List<TransformNode>();
+        //Type Type;
 
-        
+        static NodCreator _singleton = new NodCreator();
 
 
-        public void ProcessSceneNod(SceneNodHierachyModel curSceneNod,
+        void ProcessSceneNod(SceneNodHierachyModel curSceneNod,
             TransformNode transNod,NodesGrp shapeGrp, ref SceneNodHierachyModel root,
-            ref int curIndex)
+            ref int curIndex, IGame _game, Type type)
         {
 
             curIndex++;
@@ -64,7 +64,7 @@ namespace XNASysLib.Primitives3D
             {
                
                 //Get the Constructor to new that type of class
-                ConstructorInfo constructor = Type.GetConstructor(new Type[] { _game.GetType() });
+                ConstructorInfo constructor = type.GetConstructor(new Type[] { _game.GetType() });
                 SceneNodHierachyModel childSceneH = (SceneNodHierachyModel)constructor.Invoke(new object[] { _game });
                 
                 curSceneNod.Children.Add(childSceneH);
@@ -124,12 +124,12 @@ namespace XNASysLib.Primitives3D
             // Recurse over any child nodes.
             foreach (TransformNode childTransNod in transNod.Children)
             {
-                ConstructorInfo constructor= Type.GetConstructor(new Type[]{_game.GetType()});
+                ConstructorInfo constructor = type.GetConstructor(new Type[] { _game.GetType() });
                 SceneNodHierachyModel childSceneH = (SceneNodHierachyModel)constructor.Invoke(new object[] { _game });
                 //new Pipe(_game);
                 curSceneNod.Children.Add(childSceneH);
                 childSceneH.Parent = curSceneNod;
-                ProcessSceneNod(childSceneH, childTransNod,shapeGrp,ref root, ref curIndex);
+                ProcessSceneNod(childSceneH, childTransNod, shapeGrp, ref root, ref curIndex, _game, type);
             }
         }
         /// <summary>
@@ -137,9 +137,9 @@ namespace XNASysLib.Primitives3D
         /// </summary>
         /// <param name="game"></param>
         /// <param name="original"></param>
-        public NodCreator(IGame game,SceneNodHierachyModel original )
+        public static SceneNodHierachyModel CopyNode(IGame _game, SceneNodHierachyModel original)
         {
-            _game = game;
+            //_game = game;
             List<SceneNodHierachyModel> newModels = new List<SceneNodHierachyModel>();
             for (int i = 0; i < original.FlattenNods.Count; i++)
             {
@@ -167,14 +167,16 @@ namespace XNASysLib.Primitives3D
                     newModels[parentIndex].Children.Add(newModel);
                 }
             }
-            game.Components.Add(newModels[0]);
+            _game.Components.Add(newModels[0]);
+
+            return newModels[0];
         }
 
-        public NodCreator(IGame game, string assetNm, Type T)
+        public static SceneNodHierachyModel CreateNode(IGame game, string assetNm, Type T)
         {
-            _game = game;
-            Type = T;
-            _AssetNm = assetNm;
+            //_game = game;
+           // Type = T;
+           // _AssetNm = assetNm;
             ContentBuilder builder=
                 (ContentBuilder)game.Services.
                 GetService(typeof(ContentBuilder));
@@ -184,9 +186,10 @@ namespace XNASysLib.Primitives3D
                 GetService(typeof(MyContentManager));
 
             NodesGrp shapeGrp = (NodesGrp)LoadNode
-                    (builder, contentManager, String.Empty, "ShapeN_SkinDProcessor");
+                    (builder, contentManager, assetNm, "ShapeN_SkinDProcessor");
 
-            TransformNode transNodRoot = new TransformNode(); 
+            TransformNode transNodRoot = new TransformNode();
+            List<TransformNode> nodes = new List<TransformNode>();
             for (int i = 0; i < shapeGrp.TransData.NameGrp.Count; i++)
             {
                 TransformNode nod = new TransformNode();
@@ -202,8 +205,9 @@ namespace XNASysLib.Primitives3D
             //ConstructorInfo constructor = Type.GetConstructor(new Type[] { _game.GetType() });
             //SceneNodHierachyModel sceneRoot = (SceneNodHierachyModel)constructor.Invoke(new object[] { _game });
             int index=-1;
-            ProcessSceneNod(sceneRoot,transNodRoot,shapeGrp,ref sceneRoot,ref index);
-            game.Components.Add(sceneRoot);   
+            _singleton.ProcessSceneNod(sceneRoot, transNodRoot, shapeGrp, ref sceneRoot, ref index, game,T);
+            game.Components.Add(sceneRoot);
+            return sceneRoot;
         }
 
         public void Dispose()
@@ -211,17 +215,17 @@ namespace XNASysLib.Primitives3D
         
         }
 
-        object LoadNode(ContentBuilder builder, MyContentManager contentManager,
-                        string importNm, string processorNm)
+        static object LoadNode(ContentBuilder builder, MyContentManager contentManager,
+                        string fileNm, string processorNm)
         {
-            string assetNm = Path.GetFileNameWithoutExtension(_AssetNm);
+            string assetNm = Path.GetFileNameWithoutExtension(fileNm);
             //builder.Add(this._AssetNm, assetNm, importNm, processorNm);
             object result = null;
 
             //string error = builder.Build();
             //if (string.IsNullOrEmpty(error))
             //{
-                result = contentManager.Load<NodesGrp>(assetNm);
+            result = contentManager.Load<NodesGrp>(assetNm);
             //}
             return result;
         }
