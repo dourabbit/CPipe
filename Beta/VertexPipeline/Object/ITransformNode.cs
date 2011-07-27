@@ -378,6 +378,11 @@ namespace VertexPipeline
 
            // this.DataModifiedHandler += UpdateTransform;
         }
+        ~TransformNode()
+        {
+            
+        }
+
         public void Initialize()
         {
             this._world =

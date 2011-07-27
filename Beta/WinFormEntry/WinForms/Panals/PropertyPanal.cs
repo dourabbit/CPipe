@@ -7,6 +7,7 @@ using XNASysLib.Primitives3D;
 using VertexPipeline;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
 
 namespace WinFormsContentLoading
 {
@@ -16,7 +17,8 @@ namespace WinFormsContentLoading
         SceneEntry _entry;
         private System.Windows.Forms.TableLayoutPanel _table;
         List<ISelectable> _selsList;
-
+        ISelectable _obj;
+        ObjImage _before;
         public static UpdatePropertyPanal UpdateHandler;
 
 
@@ -112,7 +114,9 @@ namespace WinFormsContentLoading
             this.Name = "PropertyPanal";
             UpdateHandler += Update;
             
+            
         }
+        
         void OnSelectionUpdate()
         {
             ISelectable[] sels=SelectFunction.Selection.ToArray();
@@ -314,6 +318,7 @@ namespace WinFormsContentLoading
 
         List<PropertyInfo> ShowProperties(ISelectable obj, PropertyInfo[] properties)
         {
+            this._obj = obj;
             List<PropertyInfo> showList = new List<PropertyInfo>();
             foreach (PropertyInfo property in properties)
             {
@@ -367,11 +372,12 @@ namespace WinFormsContentLoading
 
                     textBox.Click += this.TextBoxClick;
                 }
-                Binding b = new Binding("Text", obj, showList[row].Name, true, DataSourceUpdateMode.OnPropertyChanged);
+                Binding b = new Binding("Text", obj, showList[row].Name, true, DataSourceUpdateMode.OnValidation);
+              
                 textBox.DataBindings.Add(b);
                 
-
-                
+                textBox.Validated+=new EventHandler(textBox_Validated);
+                textBox.Validating += new CancelEventHandler(textBox_Validating);
 
                 _table.Controls.Add(label, 0, row);
                 _table.Controls.Add(textBox, 1, row);
@@ -380,5 +386,51 @@ namespace WinFormsContentLoading
 
             return showList;
         }
+        
+
+        protected  void TextChanged(EventArgs e)
+        {
+            SceneNodHierachyModel node = _obj as SceneNodHierachyModel;
+            if (node == null)
+                return;
+            TransformNode after = node.TransformNode.GetCopy();
+            base.OnTextChanged(e);
+        }
+        protected void textBox_Validating(object sender, CancelEventArgs e)
+        {
+
+            SceneNodHierachyModel node = _obj as SceneNodHierachyModel;
+            if (node == null)
+                return;
+            TransformNode before = node.TransformNode.GetCopy();
+
+            TransformNode trans = node.TransformNode.GetCopy();
+         
+            _before = new ObjImage { Trans = trans, Shape = null };
+
+            base.OnValidating(e);
+        }
+        protected void textBox_Validated(object sender, EventArgs e)
+        {
+
+            SceneNodHierachyModel node = _obj as SceneNodHierachyModel;
+            if (node == null)
+                return;
+            TransformNode trans = node.TransformNode.GetCopy();
+
+            ObjImage after = new ObjImage { Trans = trans, Shape = null };
+
+            //if (_before == after)
+            //    return;
+
+            SnapShots targetSnapShot = new SnapShots("PropertyPanal", _before, after, null);
+
+            new SysEvn(0, this,
+                OBJTYPE.Building, SYSEVN.Tool,
+                 new object[3] { "PropertyPanal", node, targetSnapShot }
+                 );
+            base.OnValidated(e);
+        }
+       
     }
 }

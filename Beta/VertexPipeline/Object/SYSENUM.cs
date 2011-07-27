@@ -21,6 +21,7 @@ namespace VertexPipeline
         Import,
         Delete,
         Tool,
+        Panel,
         Select
     }
 }

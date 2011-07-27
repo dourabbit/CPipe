@@ -10,13 +10,22 @@ namespace XNASysLib.XNAKernel
     {
         public TransformNode Trans;
         public ShapeNode Shape;
+
+        public ObjImage() { }
+        ~ObjImage()
+        {
+            Trans = null;
+            Shape = null;
+        }
     }
-    public class SnapShots
+    public class SnapShots : IDisposable
     {
         public ObjImage Before;
         public ObjImage After;
         public object[] Script;
         public string Name;
+
+        bool _disposed = false;
         public SnapShots(string name,ObjImage before, ObjImage after, object[] script)
         {
             Name = name;
@@ -24,14 +33,49 @@ namespace XNASysLib.XNAKernel
             After = after;
             Script = script;
         }
+        ~SnapShots()
+        {
+            // Do not re-create Dispose clean-up code here.
+            // Calling Dispose(false) is optimal in terms of
+            // readability and maintainability.
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            // Check to see if Dispose has already been called.
+            if (!this._disposed)
+            {
+                // If disposing equals true, dispose all managed
+                // and unmanaged resources.
+                if (disposing)
+                {
+                    Before = null;
+                    After = null;
+                    Script = null;
+                    Name = String.Empty;
+                }
+
+
+                // Note disposing has been done.
+                _disposed = true;
+
+            }
+        }
     }
 
-    public class HistoryEntry
+    public class HistoryEntry:IDisposable
     {
         public double Time;
         public string ToolNm;
         public SnapShots SnapShot;
         public SceneNodHierachyModel Target;
+        bool _disposed = false;
         public HistoryEntry(double time, string toolNm,
             SceneNodHierachyModel target, SnapShots snapShot)
         {
@@ -39,6 +83,36 @@ namespace XNASysLib.XNAKernel
             ToolNm = toolNm;
             Target = target;
             SnapShot = snapShot;
+        }
+        ~HistoryEntry()
+        {
+            // Do not re-create Dispose clean-up code here.
+            // Calling Dispose(false) is optimal in terms of
+            // readability and maintainability.
+            Dispose(false);
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            // Check to see if Dispose has already been called.
+            if (!this._disposed)
+            {
+                // If disposing equals true, dispose all managed
+                // and unmanaged resources.
+                if (disposing)
+                {
+                    SnapShot.Dispose();
+                }
+
+
+                // Note disposing has been done.
+                _disposed = true;
+
+            }
         }
     }
 
@@ -117,12 +191,16 @@ namespace XNASysLib.XNAKernel
         }
         public override void ProceedEvent(ISysData gameData)
         {
+            
+
             try
             {
                 Scene scene = (Scene)_game;
                 SysEvn sysEvn = (SysEvn)gameData;
-                OBJTYPE objT = sysEvn.ObjType; 
-
+                OBJTYPE objT = sysEvn.ObjType;
+                string toolNm;
+                SceneNodHierachyModel target;
+                SnapShots image;
                 switch(sysEvn.Event)
                 {
 
@@ -157,10 +235,9 @@ namespace XNASysLib.XNAKernel
                             //        ToolNm---0
                             //        Target---1
                             //        SnapShot---2
-                            string toolNm = (string)sysEvn.Params[0];
-                            SceneNodHierachyModel target = 
-                                (SceneNodHierachyModel)sysEvn.Params[1];
-                            SnapShots image = (SnapShots)sysEvn.Params[2];
+                            toolNm = (string)sysEvn.Params[0];
+                            target = (SceneNodHierachyModel)sysEvn.Params[1];
+                            image = (SnapShots)sysEvn.Params[2];
 
                             //TimeMechine.History.CurIndex++;
                             TimeMechine.History.Push(
@@ -168,6 +245,22 @@ namespace XNASysLib.XNAKernel
                                     (TimeMechine.Time,toolNm,target,image)
                                 );
                            
+                            break;
+                    case SYSEVN.Panel:
+                            //        ToolNm---0
+                            //        Target---1
+                            //        SnapShot---2
+                            toolNm = (string)sysEvn.Params[0];
+                            target =
+                                (SceneNodHierachyModel)sysEvn.Params[1];
+                            image = (SnapShots)sysEvn.Params[2];
+
+                            //TimeMechine.History.CurIndex++;
+                            TimeMechine.History.Push(
+                                new HistoryEntry
+                                    (TimeMechine.Time, toolNm, target, image)
+                                );
+
                             break;
 
                     default:

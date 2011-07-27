@@ -284,50 +284,102 @@ namespace WinFormsContentLoading
            
         
         }
-        private void ValveBtn_Click(object sender, EventArgs e)
-        {
-            //NodCreator newScene =
-
-                NodCreator.CreateNode(SceneEntry.Scene, "_Valve",typeof(Valve));
         
-        }
         private void PipeABtn_Click(object sender, EventArgs e)
         {
 
             new SysEvn(0, this, OBJTYPE.Pipe, SYSEVN.Import, "_PipeA");
-
-            //NodCreator newScene =
-            //   new NodCreator(SceneEntry.Scene, "_PipeA", typeof(Pipe));
-
-            //NodCreator newScene =
-            // new NodCreator(SceneEntry.Scene, "_SubwayStation", typeof(SceneNodHierachyModel));
-
         }
 
         private void PipeBBtn_Click(object sender, EventArgs e)
         {
             //NodCreator newScene =
-            NodCreator.CreateNode(SceneEntry.Scene, "_PipeB", typeof(Pipe));
+            //NodCreator.CreateNode(SceneEntry.Scene, "_PipeB", typeof(Pipe));
+            new SysEvn(0, this, OBJTYPE.Pipe, SYSEVN.Import, "_PipeB");
         }
 
         private void PipeCBtn_Click(object sender, EventArgs e)
         {
-           // NodCreator newScene =
-            NodCreator.CreateNode(SceneEntry.Scene, "_PipeC", typeof(Pipe));
+            // NodCreator newScene =
+            //NodCreator.CreateNode(SceneEntry.Scene, "_PipeC", typeof(Pipe));
+            new SysEvn(0, this, OBJTYPE.Pipe, SYSEVN.Import, "_PipeC");
         }
 
         private void PipeDBtn_Click(object sender, EventArgs e)
         {
             //NodCreator newScene =
             //     new NodCreator(SceneEntry.Scene, "_PipeD", typeof(Pipe));
+            new SysEvn(0, this, OBJTYPE.Pipe, SYSEVN.Import, "_PipeD");
         }
 
         private void PipeEBtn_Click(object sender, EventArgs e)
         {
             //NodCreator newScene =
             //     new NodCreator(SceneEntry.Scene, "_PipeE", typeof(Pipe));
+            new SysEvn(0, this, OBJTYPE.Pipe, SYSEVN.Import, "_PipeE");
+        }
+        private void ChamberBtn_Click(object sender, EventArgs e)
+        {
+            new SysEvn(0, this, OBJTYPE.Chamber, SYSEVN.Import, "_Chamber");
+        }
+        private void ValveBtn_Click(object sender, EventArgs e)
+        {
+            new SysEvn(0, this, OBJTYPE.Valve, SYSEVN.Import, "_Valve");
+
         }
 
+        private void WellBtn_Click(object sender, EventArgs e)
+        {
+            new SysEvn(0, this, OBJTYPE.Well, SYSEVN.Import, "_Well");
+        }
+
+        private void HoleEllipse_Click(object sender, EventArgs e)
+        {
+            new SysEvn(0, this, OBJTYPE.HoleEllipse, SYSEVN.Import, "_HoleEllipse");
+        }
+
+        private void HoleBox_Click(object sender, EventArgs e)
+        {
+            new SysEvn(0, this, OBJTYPE.HoleRect, SYSEVN.Import, "_HoleBox");
+        }
+
+
+        private void BreakPointBtn_Click(object sender, EventArgs e)
+        {
+            new SysEvn(0, this, OBJTYPE.Building, SYSEVN.Import, "_Flag");
+        }
+
+
+        private void BuildingBtn1_Click(object sender, EventArgs e)
+        {
+            new SysEvn(0, this, OBJTYPE.Building, SYSEVN.Import, "_Building1");
+        }
+
+        private void BuildingBtn2_Click(object sender, EventArgs e)
+        {
+            new SysEvn(0, this, OBJTYPE.Building, SYSEVN.Import, "_Building2");
+        }
+
+        private void BuildingBtn3_Click(object sender, EventArgs e)
+        {
+            new SysEvn(0, this, OBJTYPE.Building, SYSEVN.Import, "_Building3");
+        }
+
+        private void RoadBtn_Click(object sender, EventArgs e)
+        {
+         
+            new SysEvn(0, this, OBJTYPE.Building, SYSEVN.Import, "_Road");
+        }
+
+        private void subwayBtn_Click(object sender, EventArgs e)
+        {
+            new SysEvn(0, this, OBJTYPE.Building, SYSEVN.Import, "_SubwayStation");
+        }
+
+        private void BridgeBtn_Click(object sender, EventArgs e)
+        {
+            new SysEvn(0, this, OBJTYPE.Building, SYSEVN.Import, "_Bridge");
+        }
         private void UndoBtn_Click(object sender, EventArgs e)
         {
             if (TimeMechine.LastEntry == null)
@@ -434,88 +486,7 @@ namespace WinFormsContentLoading
 
         }
 
-        private void ChamberBtn_Click(object sender, EventArgs e)
-        {
-            //NodeModelLoader newScene =
-            //    new NodeModelLoader(SceneEntry.Scene,"_Chamber.fbx");
-
-            //NodCreator newScene =
-            //  new NodCreator(SceneEntry.Scene, "_Chamber",
-            //      typeof(Chamber));
-        }
-
-        private void WellBtn_Click(object sender, EventArgs e)
-        {
-            //NodCreator newScene =
-            //  new NodCreator(SceneEntry.Scene, "_Well",
-            //      typeof(Well));
-      
-        }
-
-        private void HoleEllipse_Click(object sender, EventArgs e)
-        {
-            //NodCreator newScene =
-            //  new NodCreator(SceneEntry.Scene, "_HoleEllipse",
-            //      typeof(HoleEllipse));
-        }
-
-        private void HoleBox_Click(object sender, EventArgs e)
-        {
-            //NodCreator newScene =
-            //  new NodCreator(SceneEntry.Scene, "_HoleBox",
-            //      typeof(HoleRect));
-        }
-
-
-        private void BreakPointBtn_Click(object sender, EventArgs e)
-        {
-            //NodCreator newScene =
-            //  new NodCreator(SceneEntry.Scene, "_Flag",
-            //      typeof(SceneNodHierachyModel));
-        }
-
-
-        private void BuildingBtn1_Click(object sender, EventArgs e)
-        {
-            //NodCreator newScene =
-            //  new NodCreator(SceneEntry.Scene, "_Building1",
-            //      typeof(SceneNodHierachyModel));
-        }
-
-        private void BuildingBtn2_Click(object sender, EventArgs e)
-        {
-            //NodCreator newScene =
-            // new NodCreator(SceneEntry.Scene, "_Building2",
-            //     typeof(SceneNodHierachyModel));
-        }
-
-        private void BuildingBtn3_Click(object sender, EventArgs e)
-        {
-            //NodCreator newScene =
-            //new NodCreator(SceneEntry.Scene, "_Building3",
-            //    typeof(SceneNodHierachyModel));
-        }
-
-        private void RoadBtn_Click(object sender, EventArgs e)
-        {
-          //  NodCreator newScene =
-          //new NodCreator(SceneEntry.Scene, "_Road",
-          //    typeof(SceneNodHierachyModel));
-        }
-
-        private void subwayBtn_Click(object sender, EventArgs e)
-        {
-             //   NodCreator newScene =
-             //new NodCreator(SceneEntry.Scene, "_SubwayStation",
-             //    typeof(SceneNodHierachyModel));
-        }
-
-        private void BridgeBtn_Click(object sender, EventArgs e)
-        {
-            //        NodCreator newScene =
-            //new NodCreator(SceneEntry.Scene, "_Bridge",
-            //    typeof(SceneNodHierachyModel));
-        }
+        
 
         void HoleBox_MouseLeave(object sender, System.EventArgs e)
         {

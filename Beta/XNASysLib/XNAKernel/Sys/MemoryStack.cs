@@ -133,19 +133,19 @@ namespace XNASysLib.XNAKernel
         public void Push(T historyEntry)
         {
             //TimeMechine.History.CurIndex++;
-            _curIndex++;
+            
             //Override the data, then clean the list
-            if (_curIndex < this.Count-1)
+            if (_curIndex < this.Count)
             {
 
-                //this[_curIndex] = historyEntry;
-                //if (this.Count -1 > _curIndex)
-                //    this.RemoveRange(_curIndex+1,this.Count-_curIndex-1);
-                //return;
-                this.RemoveRange(_curIndex, this.Count-_curIndex);
+                for (int i = _curIndex + 1; i < this.Count; i++)
+                {
+                    ((IDisposable)(this[i])).Dispose();
+                }
+                this.RemoveRange(_curIndex + 1, this.Count - _curIndex - 1);
             }
 
-
+            _curIndex++;
             //Add the Data
            // _maxIndex++;
 
