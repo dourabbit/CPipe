@@ -421,6 +421,10 @@ namespace WinFormsContentLoading
                     case "New":
                         SceneEntry.Scene.Components.Remove(entry.Target);
                         break;
+                    case "PropertyPanal":
+                        entry.Target.TransformNode = entry.SnapShot.Before.Trans;
+                        entry.Target.TransformNode.DataModifiedHandler.Invoke();
+                        break;
                     default:
                         break;
                 
@@ -458,6 +462,10 @@ namespace WinFormsContentLoading
                     case "New":
                         //SceneEntry.Scene.Components.Remove(entry.Target);
                         SceneEntry.Scene.Components.Add(entry.Target);
+                        break;
+                    case "PropertyPanal":
+                        entry.Target.TransformNode = entry.SnapShot.Before.Trans;
+                        entry.Target.TransformNode.DataModifiedHandler.Invoke();
                         break;
                     default:
                         break;

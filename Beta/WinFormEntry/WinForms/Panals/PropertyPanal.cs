@@ -373,7 +373,9 @@ namespace WinFormsContentLoading
                     textBox.Click += this.TextBoxClick;
                 }
                 Binding b = new Binding("Text", obj, showList[row].Name, true, DataSourceUpdateMode.OnValidation);
-              
+                b.Format+=new ConvertEventHandler(b_Format);
+                b.Parse +=new ConvertEventHandler(b_Parse);
+                b.BindingComplete +=new BindingCompleteEventHandler(b_BindingComplete);
                 textBox.DataBindings.Add(b);
                 
                 textBox.Validated+=new EventHandler(textBox_Validated);
@@ -386,8 +388,19 @@ namespace WinFormsContentLoading
 
             return showList;
         }
+        protected void b_Format(object sender, ConvertEventArgs e)
+        { 
         
+        }
+        protected void b_Parse(object sender, ConvertEventArgs e)
+        {
 
+        }
+        protected void b_BindingComplete(object sender, BindingCompleteEventArgs e)
+        { 
+        
+        
+        }
         protected  void TextChanged(EventArgs e)
         {
             SceneNodHierachyModel node = _obj as SceneNodHierachyModel;
