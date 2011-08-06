@@ -16,7 +16,7 @@ namespace VertexPipeline
     }
     public enum SYSEVN
     { 
-        New=0,
+        Initial=0,
         Save,
         Import,
         Delete,

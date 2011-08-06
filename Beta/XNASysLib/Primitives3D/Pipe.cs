@@ -214,17 +214,18 @@ namespace XNASysLib.Primitives3D
             }
             set
             {
-                if (this.Root is SceneNodHierachyModel)
-                {
-                    SceneNodHierachyModel root = (SceneNodHierachyModel)this.Root;
-                    foreach (SceneNodHierachyModel node in root.FlattenNods)
-                    {
-                        PipeBase pipe = node as PipeBase;
-                        if (pipe != null)
-                            pipe.TransformNode.Scale =
-                                new Vector3(value, value, this.TransformNode.Scale.Z);
-                    }
-                }
+                //if (this.Root is SceneNodHierachyModel)
+                //{
+                //    SceneNodHierachyModel root = (SceneNodHierachyModel)this.Root;
+                //    foreach (SceneNodHierachyModel node in root.FlattenNods)
+                //    {
+                //        PipeBase pipe = node as PipeBase;
+                //        if (pipe != null)
+                //            pipe.TransformNode.Scale =
+                //                new Vector3(value, value, this.TransformNode.Scale.Z);
+                //    }
+                //}
+                this.TransformNode.Scale = new Vector3(value, value, this.TransformNode.Scale.Z);
                 this._selCompData.
                     dataModifitionHandler.Invoke();
             }

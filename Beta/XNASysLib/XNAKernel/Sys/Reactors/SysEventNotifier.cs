@@ -211,17 +211,47 @@ namespace XNASysLib.XNAKernel
                             {
                                 case OBJTYPE.Building:
                                     //FBXModelLoader newScene 
-                                    obj=FBXModelLoader.Import(scene, assetNm);
+                                    //obj=FBXModelLoader.Import(scene, assetNm);
+                                    obj = NodCreator.CreateNode(scene, assetNm, typeof(Building));
                                     break;
                                 case OBJTYPE.Pipe:
                                     //NodCreator newScene =
                                     //new NodCreator(scene, "_PipeA", typeof(Pipe));
                                     obj = NodCreator.CreateNode(scene, assetNm, typeof(Pipe));
                                     break;
-                                default:
-                                    obj = NodCreator.CreateNode(scene, assetNm, typeof(Pipe));
+                                case OBJTYPE.Chamber:
+                                    //NodCreator newScene =
+                                    //new NodCreator(scene, "_PipeA", typeof(Pipe));
+                                    obj = NodCreator.CreateNode(scene, assetNm, typeof(Chamber));
                                     break;
+                                case OBJTYPE.HoleEllipse:
+                                    //NodCreator newScene =
+                                    //new NodCreator(scene, "_PipeA", typeof(Pipe));
+                                    obj = NodCreator.CreateNode(scene, assetNm, typeof(HoleEllipse));
+                                    break;
+                                case OBJTYPE.HoleRect:
+                                    //NodCreator newScene =
+                                    //new NodCreator(scene, "_PipeA", typeof(Pipe));
+                                    obj = NodCreator.CreateNode(scene, assetNm, typeof(HoleRect));
+                                    break;
+                                case OBJTYPE.Valve:
+                                    //NodCreator newScene =
+                                    //new NodCreator(scene, "_PipeA", typeof(Pipe));
+                                    obj = NodCreator.CreateNode(scene, assetNm, typeof(Valve));
+                                    break;
+                                case OBJTYPE.Well:
+                                    //NodCreator newScene =
+                                    //new NodCreator(scene, "_PipeA", typeof(Pipe));
+                                    obj = NodCreator.CreateNode(scene, assetNm, typeof(Well));
+                                    break;
+                                default:
+                                    //obj = NodCreator.CreateNode(scene, assetNm, typeof(Pipe));
+                                    return;
                             }
+
+
+                            new SysEvn(0, obj, objT, SYSEVN.Initial, assetNm);
+                                    
                             ObjImage before = null;
                             ObjImage after = null;
 

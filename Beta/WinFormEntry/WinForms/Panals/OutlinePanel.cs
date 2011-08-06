@@ -107,7 +107,7 @@ namespace WinFormsContentLoading
             object sender = evn.Sender;
             SYSEVN e = evn.Event;
             
-            if (e == SYSEVN.New)
+            if (e == SYSEVN.Initial)
                 this.newEvn(sender);
 
             else if (e == SYSEVN.Select)
