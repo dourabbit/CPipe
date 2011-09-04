@@ -32,6 +32,11 @@ namespace XNASysLib.XNAKernel
             get { return this._game; }
         }
 
+        //Default constructor added only for serialization
+        protected UpdatableComponent()
+        { 
+        
+        }
         public UpdatableComponent(IGame game)
         {
             this._game = game;

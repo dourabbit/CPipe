@@ -21,6 +21,7 @@ using XNASysLib.XNAKernel;
 using VertexPipeline;
 using VertexPipeline.Data;
 using XNAPhysicsLib;
+using System.Runtime.Serialization;
 #endregion
 
 namespace XNASysLib.Primitives3D
@@ -29,15 +30,10 @@ namespace XNASysLib.Primitives3D
     public class HierachyModelCollection : List<SceneNodHierachyModel>
     { }*/
 
-    public interface ISceneNod : INode
-    {
-        Type Type
-        {
-            get;
-            set;
-        }
-    }
-    public class SceneNodHierachyModel : ScenePrimitive, ISceneNod
+   
+
+    [Serializable]
+    public class SceneNodHierachyModel : ScenePrimitive, ISceneModel, ISerilization
     {
         public ShapeNode ShapeNode { get; set; }
         protected Vector3 _modelCenter;
@@ -48,9 +44,9 @@ namespace XNASysLib.Primitives3D
             set { this._ID = value; }
         }
         public INode Parent { get; set; }
-        public NodeChildren<INode> Children{ get; set; }
+        public NodeChildren<INode> Children { get; set; }
         public INode Root { get; set; }
-        public int Index { get; set; }
+        public int ParentIndex { get; set; }
         public int DataSlot { get { return _dataSlotIndex; } }
         int _dataSlotIndex;
         public ObjData ObjDataGen;
@@ -200,13 +196,28 @@ namespace XNASysLib.Primitives3D
             }
         }
 
-
+        //protected SceneNodHierachyModel():this(Scene.Scenes[0])
+        //{
+        //    IGame game = Scene.Scenes[0];
+            
+        //}
         public SceneNodHierachyModel(IGame game)//, string assetNm)
             : base(game)
         {
 
         }
-
+        public SceneNodHierachyModel(SerializationInfo info, StreamingContext ctxt):this(Scene.Scenes[0])
+        {
+            this.TransformNode = (TransformNode)info.GetValue("TransformNode",typeof(TransformNode));
+            this.ShapeNode = (ShapeNode)info.GetValue("ShapeNode", typeof(ShapeNode));
+            this.ParentIndex = info.GetInt32("ParentIndex");
+        }
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("TransformNode", this.TransformNode);
+            info.AddValue("ShapeNode", this.ShapeNode);
+            info.AddValue("ParentIndex",this.ParentIndex);
+        }
         public override void Initialize()
         {
 
@@ -398,7 +409,7 @@ namespace XNASysLib.Primitives3D
 
             //base.Draw(gameTime, cam);
         }
-        
+
 
         public static void FlattenNodTree(INode node, ref List<INode> result,
                                                             ref int curIndex)
@@ -406,12 +417,12 @@ namespace XNASysLib.Primitives3D
 
             curIndex++;
             result.Add(node);
-            node.Index = curIndex;
+            //node.ParentIndex = curIndex;
 
 
             // Recurse over any child nodes.
             if (node.Children != null && node.Children.Count != 0)
-                foreach (INode child in node.Children)
+                foreach (ISceneModel child in node.Children)
                 {
                     FlattenNodTree(child, ref result, ref curIndex);
                 }

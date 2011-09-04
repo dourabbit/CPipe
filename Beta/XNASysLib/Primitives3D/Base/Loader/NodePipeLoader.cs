@@ -20,6 +20,7 @@ using XNASysLib.XNAKernel;
 using System.Collections.ObjectModel;
 using VertexPipeline;
 using VertexPipeline.Data;
+using XNASysLib.Primitives3D.Base.Loader;
 #endregion
 
 namespace XNASysLib.Primitives3D
@@ -31,27 +32,27 @@ namespace XNASysLib.Primitives3D
         string _AssetNm;
         IGame _game;
         List<TransformNode> nodes = new List<TransformNode>();
-        void ReGroupNodes
-            (TransformNode curNod, NodesGrp data,
-            int index,ref TransformNode root)
-        {
-            string nm = data.TransData.NameGrp[index];
-            int parentIndex = data.TransData.ParentIndex[index];
-            Matrix relativeMat= data.TransData.RelativeMatrixGrp[index];
+        //void ReGroupNodes
+        //    (TransformNode curNod, NodesGrp data,
+        //    int index,ref TransformNode root)
+        //{
+        //    string nm = data.TransData.NameGrp[index];
+        //    int parentIndex = data.TransData.ParentIndex[index];
+        //    Matrix relativeMat= data.TransData.RelativeMatrixGrp[index];
 
-            curNod.Children = new NodeChildren<INode>();
-            curNod.NodeNm = nm;
-            if (parentIndex == -1)
-            {
-                root = curNod;
-            }
-            if (parentIndex >=0 && parentIndex < nodes.Count)
-            {
-                curNod.Parent = nodes[parentIndex];
-                nodes[parentIndex].Children.Add(curNod);
-            }
-            curNod.World = relativeMat;
-        }
+        //    curNod.Children = new NodeChildren<INode>();
+        //    curNod.NodeNm = nm;
+        //    if (parentIndex == -1)
+        //    {
+        //        root = curNod;
+        //    }
+        //    if (parentIndex >=0 && parentIndex < nodes.Count)
+        //    {
+        //        curNod.Parent = nodes[parentIndex];
+        //        nodes[parentIndex].Children.Add(curNod);
+        //    }
+        //    curNod.World = relativeMat;
+        //}
 
 
         public void ProcessSceneNod(SceneNodHierachyModel curSceneNod,
@@ -61,6 +62,7 @@ namespace XNASysLib.Primitives3D
 
             curIndex++;
             curSceneNod.NodeNm = transNod.NodeNm;
+            curSceneNod.ID = transNod.NodeNm;
             curSceneNod.Children = new NodeChildren<INode>();
             curSceneNod.Root = root;
             curSceneNod.TransformNode = transNod;
@@ -74,7 +76,8 @@ namespace XNASysLib.Primitives3D
             {
                 SceneNodHierachyModel childSceneH = new PipeBase(_game);
                 curSceneNod.Children.Add(childSceneH);
-                childSceneH.Parent = curSceneNod;
+                childSceneH.Parent = curSceneNod; 
+                childSceneH.ParentIndex = childTransNod.ParentIndex;
                 ProcessSceneNod(childSceneH, childTransNod,shapeGrp,ref root, ref curIndex);
             }
 
@@ -102,7 +105,7 @@ namespace XNASysLib.Primitives3D
             {
                 TransformNode nod = new TransformNode();
                 nodes.Add(nod);
-                ReGroupNodes(nod,shapeGrp,i,ref transNodRoot);
+                LoadHelper.ReGroupNodes(nod, shapeGrp, i, ref transNodRoot, nodes);
                 nod.Root = transNodRoot;
             }
 

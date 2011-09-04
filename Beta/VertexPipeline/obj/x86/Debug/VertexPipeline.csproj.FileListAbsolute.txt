@@ -423,3 +423,13 @@ C:\Users\Chengfuc\CPipe\Beta\VertexPipeline\bin\x86\Debug\VertexPipeline.pdb
 C:\Users\Chengfuc\CPipe\Beta\VertexPipeline\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Chengfuc\CPipe\Beta\VertexPipeline\obj\x86\Debug\VertexPipeline.dll
 C:\Users\Chengfuc\CPipe\Beta\VertexPipeline\obj\x86\Debug\VertexPipeline.pdb
+C:\Users\Chengfuc\Dropbox\portfolio\mocap\CPipe\Beta\VertexPipeline\bin\x86\Debug\VertexPipeline.dll
+C:\Users\Chengfuc\Dropbox\portfolio\mocap\CPipe\Beta\VertexPipeline\bin\x86\Debug\VertexPipeline.pdb
+C:\Users\Chengfuc\Dropbox\portfolio\mocap\CPipe\Beta\VertexPipeline\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Chengfuc\Dropbox\portfolio\mocap\CPipe\Beta\VertexPipeline\obj\x86\Debug\VertexPipeline.dll
+C:\Users\Chengfuc\Dropbox\portfolio\mocap\CPipe\Beta\VertexPipeline\obj\x86\Debug\VertexPipeline.pdb
+C:\Users\Jimmy\Dropbox\portfolio\mocap\CPipe\Beta\VertexPipeline\bin\x86\Debug\VertexPipeline.dll
+C:\Users\Jimmy\Dropbox\portfolio\mocap\CPipe\Beta\VertexPipeline\bin\x86\Debug\VertexPipeline.pdb
+C:\Users\Jimmy\Dropbox\portfolio\mocap\CPipe\Beta\VertexPipeline\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Jimmy\Dropbox\portfolio\mocap\CPipe\Beta\VertexPipeline\obj\x86\Debug\VertexPipeline.dll
+C:\Users\Jimmy\Dropbox\portfolio\mocap\CPipe\Beta\VertexPipeline\obj\x86\Debug\VertexPipeline.pdb

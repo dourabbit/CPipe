@@ -9,20 +9,16 @@
 
 #region Using Statements
 using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using XNABuilder;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections;
-using XNASysLib.XNAKernel;
 using VertexPipeline;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
 #endregion
 
 namespace XNASysLib.Primitives3D
 {
-    public class Building : SceneNodHierachyModel
+    [Serializable]
+    public class Building : SceneNodHierachyModel,ISerilization
     {
         
         public override bool KeepSel

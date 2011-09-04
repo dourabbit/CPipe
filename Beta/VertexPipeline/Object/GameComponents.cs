@@ -26,6 +26,13 @@ namespace VertexPipeline
         {
             _game= game;
         }
+        //public List<T> GetModels()
+        //{ 
+        //    List<T> result = new List<T>();
+        
+        //    return 
+        
+        //}
         public  void Add(IUpdatableComponent comp)
         {
             if (comp is IDrawableComponent)

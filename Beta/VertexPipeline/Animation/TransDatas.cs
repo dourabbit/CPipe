@@ -30,7 +30,8 @@ namespace VertexPipeline.Animation
         [ContentSerializer]
         public List<Matrix> RelativeMatrixGrp { get; set; }
 
-        /*[ContentSerializer]
+        /*
+        [ContentSerializer]
         public List<int> TransIndex { get; set; }
         */
         [ContentSerializer]

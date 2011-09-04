@@ -28,6 +28,7 @@ namespace XNASysLib.Primitives3D.Base.Loader
             {
                 curNod.Parent = nodes[parentIndex];
                 nodes[parentIndex].Children.Add(curNod);
+                curNod.ParentIndex = parentIndex;
             }
             curNod.World = relativeMat;
         }
@@ -109,6 +110,7 @@ namespace XNASysLib.Primitives3D.Base.Loader
                 SceneNodHierachyModel childSceneH = new SceneNodHierachyModel(game);
                 curSceneNod.Children.Add(childSceneH);
                 childSceneH.Parent = curSceneNod;
+                childSceneH.ParentIndex = childTransNod.ParentIndex;
                 //recursive
                 ProcessSceneNod(game,childSceneH, childTransNod, shapeGrp, ref root, ref curIndex);
             }

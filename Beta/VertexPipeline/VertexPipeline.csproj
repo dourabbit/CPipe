@@ -117,7 +117,6 @@
     <Compile Include="Object\Scene.cs" />
     <Compile Include="Object\ServiceContainer.cs" />
     <Compile Include="Object\ShapeNode.cs" />
-    <Compile Include="Object\NodeModelData.cs" />
     <Compile Include="Processors\NodModelReader.cs" />
     <Compile Include="Object\SYSENUM.cs" />
     <Compile Include="Object\TransformHelper.cs" />

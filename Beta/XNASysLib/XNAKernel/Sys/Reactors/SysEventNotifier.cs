@@ -245,7 +245,7 @@ namespace XNASysLib.XNAKernel
                                     obj = NodCreator.CreateNode(scene, assetNm, typeof(Well));
                                     break;
                                 default:
-                                    //obj = NodCreator.CreateNode(scene, assetNm, typeof(Pipe));
+                                    obj = NodCreator.CreateNode(scene, assetNm, typeof(SceneNodHierachyModel));
                                     return;
                             }
 

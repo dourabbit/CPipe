@@ -107,12 +107,12 @@ namespace WinFormsContentLoading
             entry1.MouseMove += this.MouseMoveRegister;
 
 
-            SceneEntry.Scene.UpdateScene += delegate()
-            {
+            //SceneEntry.Scene.UpdateScene += delegate()
+            //{
 
-                //this._mem.UpdateList();
+            //    //this._mem.UpdateList();
 
-            };
+            //};
 
             TimeMechine.History.Push(new HistoryEntry(TimeMechine.Time, "FirstEntry", null, null));
             TimeMechine.History.MemChanging += this._mem.UpdateList;
@@ -346,7 +346,7 @@ namespace WinFormsContentLoading
 
         private void BreakPointBtn_Click(object sender, EventArgs e)
         {
-            new SysEvn(0, this, OBJTYPE.Building, SYSEVN.Import, "_Flag");
+            new SysEvn(0, this, OBJTYPE.NULL, SYSEVN.Import, "_Flag");
         }
 
 
@@ -637,6 +637,61 @@ namespace WinFormsContentLoading
                 return;
             //NodCreator newObj = new NodCreator(SceneEntry.Scene, model);
             
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //SerializerHelper.Load();
+            OpenFileDialog fileDialog = new OpenFileDialog();
+
+            // Default to the directory which contains our content files.
+            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+            string relativePath = Path.Combine(assemblyLocation, "..\\Saves");
+            string contentPath = Path.GetFullPath(relativePath);
+
+            fileDialog.InitialDirectory = contentPath;
+
+            fileDialog.Title = "Load Model";
+
+            fileDialog.Filter = "CPipe Files (*.fbx;)|*.cpipe;|" +
+                                
+                                "All Files (*.*)|*.*";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                //new SysEvn(0, this, OBJTYPE.Building, SYSEVN.Import, fileDialog.FileName);
+                //LoadModel(fileDialog.FileName);
+                SerializerHelper.Load(fileDialog.FileName);
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+            //SerializerHelper.Save();
+            SaveFileDialog fileDialog = new SaveFileDialog();
+
+            // Default to the directory which contains our content files.
+            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+            string relativePath = Path.Combine(assemblyLocation, "..\\Saves");
+            string contentPath = Path.GetFullPath(relativePath);
+
+            fileDialog.InitialDirectory = contentPath;
+
+            fileDialog.Title = "Load Model";
+
+            fileDialog.Filter = "CPipe Files (*.fbx;)|*.cpipe;|" +
+
+                                "All Files (*.*)|*.*";
+
+            if (fileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                //new SysEvn(0, this, OBJTYPE.Building, SYSEVN.Import, fileDialog.FileName);
+                //LoadModel(fileDialog.FileName);
+                SerializerHelper.Save(fileDialog.FileName, Scene.Scenes[0].Components);
+            }
         }
 
 

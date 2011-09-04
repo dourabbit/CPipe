@@ -12,7 +12,9 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+
 #endregion
 
 namespace VertexPipeline
@@ -20,10 +22,10 @@ namespace VertexPipeline
     /// <summary>
     /// Define the Load and Save
     /// </summary>
-    public interface ISerilization
+    public interface ISerilization:ISerializable
     {
-        void Load(ITransformNode Trans, IShapeNode Shape);
-        void Save(string Path);
+        //void Load(ITransformNode Trans, IShapeNode Shape);
+        //void Save(string Path);
     }
     
     public interface INode
@@ -33,10 +35,10 @@ namespace VertexPipeline
         NodeChildren<INode> Children
         { get; set; }
         INode Root { get; set; }
-        int Index { get; set; }
+        int ParentIndex { get; set; }
 
     }
-    public interface ITransformNode:INode
+    public interface ITransformNode
     {
         Matrix World
         { get; set; }
@@ -60,14 +62,56 @@ namespace VertexPipeline
         bool IsMuteTransform
         { get; }
     }
+    public interface IShapeObj
+    {
+        IShapeNode ShapeNode
+        {
+            get;
+            set;
+        }
+    }
     public delegate void OnDataModified();
     
     public delegate void TransformChanged();
-    public class TransformNode : ITransformNode
+
+    [Serializable]
+    public class TransformNode : ITransformNode, ISerilization, INode
     {
         public TransformNode GetCopy()
         {
             return (TransformNode)this.MemberwiseClone();
+        }
+
+        public TransformNode(SerializationInfo info, StreamingContext ctxt)
+        { 
+            
+            //protected Vector3 _translate;
+            //protected Matrix _absoluteTrans;
+            //protected Vector3 _rotate;
+            //protected Matrix _pivot;
+            //protected Vector3 _scale;
+            //protected Matrix _world;
+            //protected string _nodeNm;
+            this._translate = (Vector3)info.GetValue("_translate", typeof(Vector3));
+            this._absoluteTrans = (Matrix)info.GetValue("_absoluteTrans", typeof(Matrix));
+            this._rotate = (Vector3)info.GetValue("_rotate", typeof(Vector3));
+            this._pivot = (Matrix)info.GetValue("_pivot", typeof(Vector3));
+            this._scale = (Vector3)info.GetValue("_scale", typeof(Vector3));
+            this._world = (Matrix)info.GetValue("_world", typeof(Matrix));
+            this._nodeNm = (string)info.GetValue("_nodeNm", typeof(string));
+        
+        }
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+
+
+            info.AddValue("_translate", _translate);
+            info.AddValue("_absoluteTrans", _absoluteTrans);
+            info.AddValue("_rotate", _rotate);
+            info.AddValue("_pivot", _pivot);
+            info.AddValue("_scale", _scale);
+            info.AddValue("_world", _world);
+            info.AddValue("_nodeNm", _nodeNm);
         }
         public string NodeNm
         { 
@@ -83,39 +127,40 @@ namespace VertexPipeline
             } 
         }
         public INode Parent
-        { 
-            get 
-            { 
-                return _parent; 
-            } 
-            set 
+        {
+            get
+            {
+                return _parent;
+            }
+            set
             {
                 _parent = value;
                 if (DataModifiedHandler != null)
                     DataModifiedHandler.Invoke();
             }
         }
-        public NodeChildren<INode> Children 
-        { 
-            get 
-            { 
-                return _children; 
-            } 
-            set 
-            {
-                _children = value; 
-            } 
-        }
-        public INode Root 
-        { 
+        public int ParentIndex { get; set; }
+        public NodeChildren<INode> Children
+        {
             get
-            { 
-                return _root; 
-            } 
-            set 
             {
-                _root = value; 
-            } 
+                return _children;
+            }
+            set
+            {
+                _children = value;
+            }
+        }
+        public INode Root
+        {
+            get
+            {
+                return _root;
+            }
+            set
+            {
+                _root = value;
+            }
         }
         public Matrix AbsoluteTransform 
         {
@@ -129,11 +174,11 @@ namespace VertexPipeline
                 _absoluteTrans = value;
             }
         }
-        Matrix _absoluteTrans;
-        public int Index {  get; set; }
+        
         public OnDataModified DataModifiedHandler;
        // public TransformChanged TransformChangedHandler;
         protected Vector3 _translate;
+        protected Matrix _absoluteTrans;
         protected Vector3 _rotate;
         protected Matrix _pivot;
         protected Vector3 _scale;

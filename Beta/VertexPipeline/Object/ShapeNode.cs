@@ -15,16 +15,40 @@ using VertexPipeline.Animation;
 using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
 using VertexPipeline.Data;
 using System;
+using System.Runtime.Serialization;
 
 namespace VertexPipeline
 {
-    public struct ShapeSerializeData
-    { 
-        public string Name;
-        public ushort[] Indices;
-        public VertexPositionNormalTexture[] Vertices; 
-        public BoundingSphere[] BoundingSpheres;
-    }
+    //[Serializable]
+    //public class ShapeSerializeData:ISerilization
+    //{ 
+    //    public string Name;
+    //    public ushort[] Indices;
+    //    public VertexPositionNormalTexture[] Vertices; 
+    //    public BoundingSphere[] BoundingSpheres;
+
+    //    public ShapeSerializeData(SerializationInfo info, StreamingContext ctxt)
+    //    {
+    //        this.Name = (string)info.GetValue("Name", typeof(string));
+    //        this.Indices = (ushort[])info.GetValue("Indices", typeof(ushort[]));
+    //        this.Vertices=(VertexPositionNormalTexture[])info.
+    //                    GetValue("Vertices",typeof(VertexPositionNormalTexture[]));
+    //        this.BoundingSpheres = (BoundingSphere[])info.
+    //                    GetValue("BoundingSpheres", typeof(BoundingSphere[]));
+    //    }
+    //    public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+    //    {
+
+
+    //        info.AddValue("Name", Name);
+    //        info.AddValue("Indices", Indices);
+    //        info.AddValue("Vertices", Vertices);
+    //        info.AddValue("BoundingSpheres", BoundingSpheres);
+    //    }
+
+
+
+    //}
 
     /// <summary>
     /// The Struture to store the ShapeNode Data 
@@ -41,7 +65,8 @@ namespace VertexPipeline
     }
     public delegate void PreDraw();
     public delegate void ShapeNodeChanging();
-    public class ShapeNode : IShapeNode
+    [Serializable]
+    public class ShapeNode : IShapeNode, ISerilization
     {
         public string Name { get; set; }
         public  int ParentIndex{get;set;}
@@ -68,16 +93,16 @@ namespace VertexPipeline
 
         public ShapeNode GetCopy()
         {
-            return //(ShapeNode)this.MemberwiseClone();
-                new ShapeNode(
-                    new ShapeSerializeData()
-                    {
+            return (ShapeNode)this.MemberwiseClone();
+               // new ShapeNode(
+                    //new ShapeSerializeData()
+                    //{
 
-                        BoundingSpheres = (BoundingSphere[])this.BoundingSpheres.Clone(),
-                        Indices = this.Indices.ToArray(),
-                        Name = this.Name,
-                        Vertices = this.Vertices.ToArray()
-                    });
+                    //    BoundingSpheres = (BoundingSphere[])this.BoundingSpheres.Clone(),
+                    //    Indices = this.Indices.ToArray(),
+                    //    Name = this.Name,
+                    //    Vertices = this.Vertices.ToArray()
+                    //});
         }
         public IndexBuffer IndexBuffer
         { get { return _indexBuffer; } }
@@ -99,19 +124,20 @@ namespace VertexPipeline
             //RenderVertices = new List<VertexPositionNormalTexture>();
         }
 
-        public ShapeNode(ShapeSerializeData data)
-        {
-            this.Name = data.Name;
-            this._indices = new List<ushort>();
-            foreach (ushort tmp in data.Indices)
-                _indices.Add(tmp);
-            this._vertices = new List<VertexPositionNormalTexture>();
-            foreach (VertexPositionNormalTexture tmp in data.Vertices)
-                _vertices.Add(tmp);
-            this.BoundingSpheres = data.BoundingSpheres;
-            this._isIntialized = false;
-            
-        }
+        //public ShapeNode(ShapeSerializeData data)
+        //{
+        //    this.Name = data.Name;
+        //    this._indices = new List<ushort>();
+        //    foreach (ushort tmp in data.Indices)
+        //        _indices.Add(tmp);
+        //    this._vertices = new List<VertexPositionNormalTexture>();
+        //    foreach (VertexPositionNormalTexture tmp in data.Vertices)
+        //        _vertices.Add(tmp);
+        //    this.BoundingSpheres = data.BoundingSpheres;
+        //    this._isIntialized = false;
+        //}
+
+       
         /// <summary>
         /// Combine two shapes into shapeNode, the second arguement
         /// </summary>
@@ -166,7 +192,32 @@ namespace VertexPipeline
                 typeof(VertexPositionNormalTexture), data.Vertices.Length, BufferUsage.WriteOnly);
             */
         }
-
+        public ShapeNode(SerializationInfo info, StreamingContext ctxt)
+        {
+            this.ParentIndex = info.GetInt32("ParentIndex");
+            this.Name = info.GetString("Name");//data.Name;
+            this._indices = (List<ushort>)info.GetValue("Indices", typeof(List<ushort>));
+            //new List<ushort>();
+            //foreach (ushort tmp in data.Indices)
+            //    _indices.Add(tmp);
+            this._vertices = (List<VertexPositionNormalTexture>)info.
+                GetValue("Vertices", typeof(List<VertexPositionNormalTexture>));
+            //new List<VertexPositionNormalTexture>();
+            //foreach (VertexPositionNormalTexture tmp in data.Vertices)
+            //    _vertices.Add(tmp);
+            this.BoundingSpheres = (BoundingSphere[])info.
+                GetValue("BoundingSpheres", typeof(BoundingSphere[]));
+            //data.BoundingSpheres;
+            this._isIntialized = false;
+        }
+        public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        {
+            info.AddValue("ParentIndex", ParentIndex);
+            info.AddValue("Name",this.Name);
+            info.AddValue("Indices", this._indices);
+            info.AddValue("Vertices", this._vertices);
+            info.AddValue("BoundingSpheres", this.BoundingSpheres);
+        }
         public void GetBounding(out Vector3 center, out float radius)
         {
             List<Vector3> points = new List<Vector3>();
@@ -181,9 +232,6 @@ namespace VertexPipeline
           
             center = this.BoundingSpheres[0].Center;
             radius = this.BoundingSpheres[0].Radius;
-
-
-
         }
 
         private List<VertexPositionNormalTexture> getVertices(ShapeReadingData data)

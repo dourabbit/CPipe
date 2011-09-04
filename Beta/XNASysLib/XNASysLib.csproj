@@ -45,6 +45,7 @@
   <ItemGroup>
     <None Include="Display\Compass.cs" />
     <Compile Include="Interfaces\IDataReactor.cs" />
+    <Compile Include="Primitives3D\Base\Serialization.cs" />
     <Compile Include="Primitives3D\Base\Loader\LoadHelper.cs" />
     <Compile Include="Primitives3D\CommPipe.cs" />
     <Compile Include="Primitives3D\Chamber.cs" />
@@ -59,7 +60,7 @@
     <Compile Include="Primitives3D\Base\Loader\NodCreator.cs" />
     <Compile Include="Primitives3D\Base\SceneNodHierachyModel.cs" />
     <None Include="Primitives3D\Base\_SceneNodModel.cs" />
-    <Compile Include="Primitives3D\Base\Loader\FBXModelLoader.cs" />
+    <None Include="Primitives3D\Base\Loader\_FBXModelLoader.cs" />
     <Compile Include="Primitives3D\PipeBase.cs" />
     <Compile Include="Primitives3D\Base\SceneXNAObj.cs" />
     <None Include="Primitives3D\Base\_ScenePreloadedObj.cs" />

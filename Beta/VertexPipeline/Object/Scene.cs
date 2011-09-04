@@ -14,14 +14,31 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System.Runtime.Serialization;
 
 #endregion
 
 namespace VertexPipeline
 {
-    public delegate void UpdateHandler();
+    //public delegate void UpdateHandler();
 
-   
+    public interface ISceneModel : INode,ITransObj, IUpdatableComponent
+    {
+        Type Type
+        {
+            get;
+            set;
+        }
+        ShapeNode ShapeNode
+        {
+            get;
+            set;
+        }
+        List<INode> FlattenNods
+        {
+            get;
+        }
+    }
     public partial class Scene: IGame
     {
         #region Fields
@@ -37,8 +54,32 @@ namespace VertexPipeline
         public static List<Scene> Scenes = new List<Scene>();
         #endregion
         //public SysEvent SysEvnHandler;
-        public event UpdateHandler UpdateScene;
+        //public event UpdateHandler UpdateScene;
         #region Properties
+
+        public List<ISceneModel> Models
+        {
+            get 
+            {
+                List<ISceneModel> result= new List<ISceneModel>();
+                foreach (IUpdatableComponent comp in _components.FindAll(
+                   delegate(IUpdatableComponent matcher)
+                   {
+                       return matcher is ISceneModel ? true : false;
+                   })) 
+                   {
+                       result.Add((ISceneModel)comp);
+                    }
+
+                return result;
+            }
+            set
+            {
+                foreach (ISceneModel model in value)
+                    _components.Add(model);
+            }
+        
+        }
 
         public Rectangle ActiveViewRect
         {
@@ -85,6 +126,15 @@ namespace VertexPipeline
             Scenes.Add(this);
             this.Initialize();
         }
+        //public Scene(SerializationInfo info, StreamingContext ctxt)
+        //{
+        //    this.Models = (List<ISceneModel>)info.GetValue("Models", typeof(List<ISceneModel>));
+        
+        //}
+        //public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+        //{
+        //    info.AddValue("Models", this.Models);
+        //}
         protected virtual void Initialize()
         {
             _visible = true;
@@ -94,8 +144,8 @@ namespace VertexPipeline
       
         public virtual void Update()
         {
-            if (this.UpdateScene != null)
-                this.UpdateScene.Invoke();
+            //if (this.UpdateScene != null)
+            //    this.UpdateScene.Invoke();
 
             try
             {

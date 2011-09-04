@@ -74,6 +74,7 @@ namespace XNASysLib.Primitives3D
                 childSceneH.TransformNode.AbsoluteTransform = Matrix.Identity;
                 childSceneH.ShapeNode = curSceneNod.ShapeNode;
                 childSceneH.Parent = curSceneNod;
+                childSceneH.ParentIndex = 0;
                 childSceneH.ID = transNod.NodeNm;
                 curSceneNod.ShapeNode = null;
                 curSceneNod.ID = "root";
@@ -85,7 +86,7 @@ namespace XNASysLib.Primitives3D
             foreach (ShapeNode shape in shapeGrp)
             {
                 if (shape.ParentIndex != curIndex)
-                    continue;//skip when it is not current cild
+                    continue;//skip when it is not current child
 
                 if (curSceneNod.ShapeNode == null)
                 {
@@ -121,7 +122,7 @@ namespace XNASysLib.Primitives3D
                     ShapeNode.CombineShape(shape, curSceneNod.ShapeNode);
                 }
             }
-            // Recurse over any child nodes.
+            // Recursively go over every child nodes.
             foreach (TransformNode childTransNod in transNod.Children)
             {
                 ConstructorInfo constructor = type.GetConstructor(new Type[] { _game.GetType() });
@@ -129,6 +130,7 @@ namespace XNASysLib.Primitives3D
                 //new Pipe(_game);
                 curSceneNod.Children.Add(childSceneH);
                 childSceneH.Parent = curSceneNod;
+                childSceneH.ParentIndex = childTransNod.ParentIndex;
                 ProcessSceneNod(childSceneH, childTransNod, shapeGrp, ref root, ref curIndex, _game, type);
             }
         }
@@ -164,6 +166,7 @@ namespace XNASysLib.Primitives3D
                 {
                     int parentIndex = original.FlattenNods.IndexOf(original.Parent);
                     newModel.Parent = newModels[parentIndex];
+                    newModel.ParentIndex = parentIndex;
                     newModels[parentIndex].Children.Add(newModel);
                 }
             }

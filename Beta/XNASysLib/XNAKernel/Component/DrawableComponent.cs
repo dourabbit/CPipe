@@ -36,6 +36,10 @@ namespace XNASysLib.XNAKernel
         protected Color _color;
         public TransformNode TransformNode { get; set; }
 
+        protected DrawableComponent()
+        { 
+        
+        }
         public DrawableComponent(IGame game):base(game)
         {
             _basicEffect = new BasicEffect(game.GraphicsDevice);

@@ -12,7 +12,8 @@ namespace VertexPipeline
         Chamber,
         Well,
         HoleEllipse,
-        HoleRect
+        HoleRect,
+        NULL
     }
     public enum SYSEVN
     { 

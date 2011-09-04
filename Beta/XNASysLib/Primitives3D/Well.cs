@@ -18,10 +18,12 @@ using System.Collections.Generic;
 using System.Collections;
 using XNASysLib.XNAKernel;
 using VertexPipeline;
+using System.Runtime.Serialization;
 #endregion
 
 namespace XNASysLib.Primitives3D
 {
+    [Serializable]
     public class Well : SceneNodHierachyModel
     {
         int _diameter;
@@ -167,7 +169,11 @@ namespace XNASysLib.Primitives3D
         { 
         
         }
-    
+        public Well(SerializationInfo info, StreamingContext ctxt)
+            : base(info,ctxt)
+        { }
+
+        
     
     }
 

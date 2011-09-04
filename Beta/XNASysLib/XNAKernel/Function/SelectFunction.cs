@@ -69,7 +69,7 @@ namespace XNASysLib.XNAKernel
 
         static void newSelEvn(ISelectable obj)
         {
-            ISceneNod model = obj as ISceneNod;
+            ISceneModel model = obj as ISceneModel;
 
 
             Stack<string> nodeFullNm = new Stack<string>();
@@ -84,23 +84,23 @@ namespace XNASysLib.XNAKernel
                     tmp = tmp.Parent;
             }
             OBJTYPE objT;
-            if ((ISceneNod)model.Parent == null)
+            if ((ISceneModel)model.Parent == null)
                 return;
 
 
-            if (((ISceneNod)model.Parent).Type == typeof(Pipe))
+            if (((ISceneModel)model.Parent).Type == typeof(Pipe))
                 objT = OBJTYPE.Pipe;
-            else if (((ISceneNod)model.Parent).Type == typeof(Valve))
+            else if (((ISceneModel)model.Parent).Type == typeof(Valve))
                 objT = OBJTYPE.Valve;
-            else if (((ISceneNod)model.Parent).Type == typeof(HoleEllipse))
+            else if (((ISceneModel)model.Parent).Type == typeof(HoleEllipse))
                 objT = OBJTYPE.HoleEllipse;
 
-            else if (((ISceneNod)model.Parent).Type == typeof(HoleRect))
+            else if (((ISceneModel)model.Parent).Type == typeof(HoleRect))
                 objT = OBJTYPE.HoleRect;
-            else if (((ISceneNod)model.Parent).Type == typeof(Chamber))
+            else if (((ISceneModel)model.Parent).Type == typeof(Chamber))
                 objT = OBJTYPE.Chamber;
 
-            else if (((ISceneNod)model.Parent).Type == typeof(Well))
+            else if (((ISceneModel)model.Parent).Type == typeof(Well))
                 objT = OBJTYPE.Well;
 
             else
